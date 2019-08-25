@@ -22,6 +22,7 @@ import {
   AgmCoreModule
 } from '@agm/core';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { EmployeeManagementComponent } from './employee-management/employee-management.component';
 
 @NgModule({
   imports: [
