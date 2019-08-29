@@ -15,6 +15,7 @@ import {
   MatSelectModule
 } from '@angular/material';
 import { EmployeeManagementComponent } from 'app/employee-management/employee-management.component';
+import { MaterialModule } from 'app/shared/material.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -27,6 +28,7 @@ import { EmployeeManagementComponent } from 'app/employee-management/employee-ma
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
+    MaterialModule
   ],
   declarations: [
     DashboardComponent,

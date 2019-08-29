@@ -27,7 +27,15 @@ padding-left: 260px;
                       <input matInput #empName formControlName="empName" placeholder="">
                   </mat-form-field>
                   <mat-form-field appearance="outline">
-                    <mat-label>Employee Designation</mat-label>
+                    <mat-label>Department</mat-label>
+                    <input matInput #empDept formControlName="empDept" placeholder="">
+                          <mat-option value="Sales">Sales</mat-option>  
+                          <mat-option value="IT">IT</mat-option> 
+                          <mat-option value="Inventory">Inventory</mat-option> 
+                          <mat-option value="Management" selected>Management</mat-option>
+                </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Designation</mat-label>
                     <input matInput #empDesig formControlName="empDesig" placeholder="">
                 </mat-form-field>
                   <mat-form-field appearance="outline">
