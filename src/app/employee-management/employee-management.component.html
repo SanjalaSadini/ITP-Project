@@ -28,11 +28,12 @@ padding-left: 260px;
                   </mat-form-field>
                   <mat-form-field appearance="outline">
                     <mat-label>Department</mat-label>
-                    <input matInput #empDept formControlName="empDept" placeholder="">
+                    <mat-select #empDept formControlName="empDept" placeholder="">
                           <mat-option value="Sales">Sales</mat-option>  
                           <mat-option value="IT">IT</mat-option> 
                           <mat-option value="Inventory">Inventory</mat-option> 
                           <mat-option value="Management" selected>Management</mat-option>
+                    </mat-select>     
                 </mat-form-field>
                   <mat-form-field appearance="outline">
                     <mat-label>Designation</mat-label>
