@@ -1,3 +1,4 @@
+<!-- <link rel="text" href="../../css/bootstrap.min.css"/> -->
 <!-- Navbar -->
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
@@ -15,17 +16,18 @@
 
       
     <!-- Links -->
+    
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
       <!-- Left -->
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home
+          <a class="nav-link" href="#"> <b>Home</b>
             <span class="sr-only">(current)</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/inventory">Our Dresses</a>
+          <a class="nav-link" routerLink="/inventory"> <b>Our Dresses</b></a>
         </li>
         <!-- <li class="nav-item">
           <a class="nav-link" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">Free tutorials</a>
@@ -34,22 +36,16 @@
 
       <!-- Right -->
       <ul class="navbar-nav nav-flex-icons ml-auto">
-        <!-- <li class="nav-item">
-          <a href="https://www.facebook.com" class="nav-link" target="_blank">
-            Facebook
-            <i class="fab fa-facebook-f"></i>
-          </a>
-        </li> -->
         <li class="nav-item">
             <a class="nav-link" [routerLink]="['/admin']">
-              Dashboard
+              <b> Dashboard </b>
               <i class="material-icons"></i>
             </a>
           </li>
         <li class="nav-item">
           <a [routerLink]="['/login']" class="nav-link border border-light rounded"
             target="_self">
-            <i class="fab fa-github mr-2"></i>Sign In / Sign Up
+            <i class="fab fa-github mr-2"></i> <b>Sign In / Sign Up</b>
           </a>
         </li>
       </ul>
