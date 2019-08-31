@@ -6,14 +6,25 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LandingComponent } from './landing/landing.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
+import { SignUpComponent} from './user/sign-up/sign-up.component';
+import { DashboardComponent} from './dashboard/dashboard.component';
 
 const routes: Routes =[
   { path: '', redirectTo: 'index', pathMatch: 'full'},
   { path: 'index', component: LandingComponent },
   
   { path: 'signIn', component: SignInComponent,
-    children: [{ path: '', component: SignInComponent }]
+    children: [{ path: 'signIn', component: SignInComponent }]  
   },
+
+  { path: 'signup', component: SignUpComponent,
+    children: [{ path: 'signup', component: SignUpComponent }]
+  },
+
+  { path: 'dashboard', component: DashboardComponent,
+  children: [{ path: 'dashboard', component: DashboardComponent }]
+  },
+
 
 ];
 

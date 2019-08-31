@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-
 export class MyErrorStateMatcher implements ErrorStateMatcher {
 
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -29,12 +28,12 @@ export class SignInComponent implements OnInit {
   serverErrorMessages: string;
   userDetails;
 
-  // ngOnInit() {
-  //   this.loginForm();
-  //   if (this.userService.isLoggedIn()){
-  //     this.router.navigateByUrl('/admin');
-  //   }
-  // }
+  ngOnInit() {
+    this.loginForm();
+    // if (this.userService.isLoggedIn()){
+    //   this.router.navigateByUrl('/admin');
+    // }
+  }
 
   get email(){
     return this.signInForm.get('email');
@@ -80,4 +79,4 @@ export class SignInComponent implements OnInit {
   //     }
   //   )
   // }
-}
+ }
