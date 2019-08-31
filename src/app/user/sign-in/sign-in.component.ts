@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+
 export class MyErrorStateMatcher implements ErrorStateMatcher {
 
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -14,69 +15,69 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   }
 }
 
-// @Component({
-//   selector: 'app-sign-in',
-//   templateUrl: './sign-in.component.html',
-//   styleUrls: ['./sign-in.component.css']
-// })
-// export class SignInComponent implements OnInit {
+@Component({
+  selector: 'app-sign-in',
+  templateUrl: './sign-in.component.html',
+  styleUrls: ['./sign-in.component.scss']
+})
+export class SignInComponent implements OnInit {
 
-//   constructor(public fb: FormBuilder, private router: Router) { }
+  constructor(public fb: FormBuilder, private router: Router) { }
 
-//   matcher = new MyErrorStateMatcher();
-//   public signInForm: FormGroup;
-//   serverErrorMessages: string;
-//   userDetails;
+  matcher = new MyErrorStateMatcher();
+  public signInForm: FormGroup;
+  serverErrorMessages: string;
+  userDetails;
 
-//   // ngOnInit() {
-//   //   this.loginForm();
-//   //   if (this.userService.isLoggedIn()){
-//   //     this.router.navigateByUrl('/admin');
-//   //   }
-//   // }
+  // ngOnInit() {
+  //   this.loginForm();
+  //   if (this.userService.isLoggedIn()){
+  //     this.router.navigateByUrl('/admin');
+  //   }
+  // }
 
-//   get email(){
-//     return this.signInForm.get('email');
-//   }
+  get email(){
+    return this.signInForm.get('email');
+  }
 
-//   get password(){
-//     return this.signInForm.get('password');
-//   }
+  get password(){
+    return this.signInForm.get('password');
+  }
 
-//   loginForm() {
-//     this.signInForm = this.fb.group({
-//       email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
-//       password: ['', [Validators.required, Validators.minLength(8)]]
-//     });
-//   }
+  loginForm() {
+    this.signInForm = this.fb.group({
+      email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
+      password: ['', [Validators.required, Validators.minLength(8)]]
+    });
+  }
 
-//   // onSubmit(form: NgForm){
-//   //   console.log("in on submit");
-//   //   this.userService.login(form.value).subscribe(
-//   //     res => {
-//   //       this.userService.setToken(res['token']);
+  // onSubmit(form: NgForm){
+  //   console.log("in on submit");
+  //   this.userService.login(form.value).subscribe(
+  //     res => {
+  //       this.userService.setToken(res['token']);
         
-//   //       console.log("in user profile");
-//   //       // this.router.navigateByUrl('/userprofile');
+  //       console.log("in user profile");
+  //       // this.router.navigateByUrl('/userprofile');
 
-//   //       this.userService.getUserProfile().subscribe(
-//   //         res => {
-//   //           this.userDetails = res['user'];
-//   //           console.log(this.userDetails);
-//   //           console.log(this.userDetails.userRole);
-//   //           if (this.userDetails.userRole == '2'){
-//   //             this.router.navigateByUrl('/userprofile')
-//   //           }
-//   //           else if (this.userDetails.userRole == '1'){
-//   //             this.router.navigateByUrl('/admin');
-//   //           }
-//   //         },
-//   //         err => {}
-//   //       );
-//   //     },
-//   //     err => {
-//   //       this.serverErrorMessages = err.error.message;
-//   //     }
-//   //   )
-//   // }
-// }
+  //       this.userService.getUserProfile().subscribe(
+  //         res => {
+  //           this.userDetails = res['user'];
+  //           console.log(this.userDetails);
+  //           console.log(this.userDetails.userRole);
+  //           if (this.userDetails.userRole == '2'){
+  //             this.router.navigateByUrl('/userprofile')
+  //           }
+  //           else if (this.userDetails.userRole == '1'){
+  //             this.router.navigateByUrl('/admin');
+  //           }
+  //         },
+  //         err => {}
+  //       );
+  //     },
+  //     err => {
+  //       this.serverErrorMessages = err.error.message;
+  //     }
+  //   )
+  // }
+}

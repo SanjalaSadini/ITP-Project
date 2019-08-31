@@ -5,11 +5,15 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LandingComponent } from './landing/landing.component';
+import { SignInComponent } from './user/sign-in/sign-in.component';
 
 const routes: Routes =[
   { path: '', redirectTo: 'index', pathMatch: 'full'},
-  { path: 'index', component: LandingComponent }
+  { path: 'index', component: LandingComponent },
   
+  { path: 'signIn', component: SignInComponent,
+    children: [{ path: '', component: SignInComponent }]
+  },
 
 ];
 
