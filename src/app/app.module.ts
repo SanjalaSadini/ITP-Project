@@ -16,6 +16,9 @@ import { LandingComponent } from './landing/landing.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
 import { UserComponent } from './user/user/user.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -30,8 +33,13 @@ import { UserComponent } from './user/user/user.component';
     AppRoutingModule,
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
-    })
+    }),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+ 	AngularFirestoreModule,
+    
+
   ],
+  
   declarations: [
     AppComponent,
     AdminLayoutComponent,

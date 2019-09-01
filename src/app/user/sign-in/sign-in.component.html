@@ -4,71 +4,71 @@
 
 <div style="background-color: rgb(145, 162, 165)">
 
-    <div class="container">
-      <br><br><br><br>
-      <div class="row">
-        <div class="col-md-3">
-    
-        </div>
-        <div class="col-md-9">
-      <mat-card class="example-card text-center" style="background-image: url('assets/img/signin.jpg'); background-repeat: no-repeat; background-size: cover; height: 700px; width:70%">
-        <mat-card-title class="text-center">
-          <h2>
-            <strong> 
-             <b> Sign In </b>
-            </strong>
-          </h2>
-        </mat-card-title>
-        <hr>
-        <mat-card-content class="px-lg-5 pt-0">
-          <form class="text-center" [formGroup]="signInForm" (ngSubmit)="onSubmit(signInForm)">
-              <div class="md-form">
-                <mat-form-field>
-                  <mat-label appearance="outline">
-                    <p style="color: black">
+  <div class="container">
+    <br><br><br><br>
+    <div class="row">
+      <div class="col-md-3">
+  
+      </div>
+      <div class="col-md-9">
+    <mat-card class="example-card text-center" style="background-image: url('assets/img/signin.jpg'); background-repeat: no-repeat; background-size: cover; height: 700px; width:70%">
+      <mat-card-title class="text-center">
+        <h2>
+          <strong> 
+           <b> Sign In </b>
+          </strong>
+        </h2>
+      </mat-card-title>
+      <hr>
+      <mat-card-content class="px-lg-5 pt-0">
+        <form class="text-center" [formGroup]="signInForm" (ngSubmit)="onSubmit(signInForm)">
+            <div class="md-form">
+              <mat-form-field>
+                <mat-label appearance="outline">
+                  <p style="color: black">
+                    <strong>
+                     <b> Email </b>
+                    </strong>
+                  </p>
+                </mat-label>
+                <input matInput type="email" class="form-control" formControlName="email" matInput>
+                <mat-error>
+                  Enter valid registered email!
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="md-form">
+              <mat-form-field>
+                <mat-label appearance="outline">
+                    <p  style="color: black">
                       <strong>
-                       <b> Email </b>
+                       <b> Password </b>
                       </strong>
                     </p>
-                  </mat-label>
-                  <input matInput type="email" class="form-control" formControlName="email" matInput>
-                  <mat-error>
-                    Enter valid registered email!
-                  </mat-error>
-                </mat-form-field>
-              </div>
-              <div class="md-form">
-                <mat-form-field>
-                  <mat-label appearance="outline">
-                      <p  style="color: black">
-                        <strong>
-                         <b> Password </b>
-                        </strong>
-                      </p>
-                  </mat-label>
-                  <input type="password" formControlName="password" class="form-control" matInput>
-                  <mat-error>
-                      Enter valid password!
-                  </mat-error>
-                </mat-form-field>
-              </div>
-              <div class="alert alert-danger" role="alert" *ngIf="serverErrorMessages">
-                {{serverErrorMessages}}
-              </div>
-              <div class="example-button-row">
-                <button style = "color:whitesmoke" outline="true" rounded="true" block="true" class="my-4 waves-effect z-depth-0" type="submit" style="width: 30%" [disabled]="!signInForm.valid">
-                  <mat-icon matSuffix>save_alt</mat-icon>
-                  Sign In
-                </button>
-              </div>
-              <p>
-                <strong><b>Not Registered yet?</b><a style="color: black" [routerLink]="['/signup']"> <b> Sign Up</b> </a></strong>
-              </p>
-          </form>
-        </mat-card-content>
-      </mat-card>
-    </div>
-    </div>
-    </div>
-    <br><br><br><br><br>
-    </div>
+                </mat-label>
+                <input type="password" formControlName="password" class="form-control" matInput>
+                <mat-error>
+                    Enter valid password!
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="serverErrorMessages">
+              {{serverErrorMessages}}
+            </div>
+            <div class="example-button-row">
+              <button style = "color:whitesmoke" outline="true" rounded="true" block="true" class="my-4 waves-effect z-depth-0" type="submit" style="width: 30%" [disabled]="!signInForm.valid">
+                <mat-icon matSuffix>save_alt</mat-icon>
+                Sign In
+              </button>
+            </div>
+            <p>
+              <strong><b>Not Registered yet?</b><a style="color: black" [routerLink]="['/signup']"> <b> Sign Up</b> </a></strong>
+            </p>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  </div>
+  </div>
+  <br><br><br><br><br>
+  </div>
