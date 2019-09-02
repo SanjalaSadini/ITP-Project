@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm, FormBuilder, Validators, FormGroup, AbstractControl } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { AuthService } from '../../auth/auth.service';
+import { Router, Params } from '@angular/router';
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -20,7 +22,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class SignUpComponent implements OnInit {
 
-  constructor(public fb: FormBuilder) { }
+  constructor(public fb: FormBuilder ,public authService: AuthService,private router: Router) { }
 
   matcher = new MyErrorStateMatcher();
   public signUpForm: FormGroup;
@@ -31,7 +33,7 @@ export class SignUpComponent implements OnInit {
   ngOnInit() {
     this.registerForm();
   }
-
+  
   registerForm() {
     this.signUpForm = this.fb.group({
       userRole: ['2'],
@@ -75,7 +77,20 @@ export class SignUpComponent implements OnInit {
     return this.signUpForm.get('password');
   }
 
-  // onSubmit(form: NgForm){
+   onSubmit(form: NgForm){
+    console.log("in on submit",form.value);
+
+    this.authService.doRegister(form.value)
+    .then(res => {
+      console.log(res);
+      this.router.navigate(['/signIn']);
+      // this.errorMessage = "";
+      // this.successMessage = "Your account has been created";
+    }, err => {
+      console.log(err);
+      // this.errorMessage = err.message;
+      // this.successMessage = "";
+    })
   //   this.userService.postUser(form.value).subscribe(
   //     res => {
   //       this.showSuccessMessage = true;
@@ -93,7 +108,7 @@ export class SignUpComponent implements OnInit {
   //       }
   //     }
   //   );
-  // }
+  }
 
   // resetForm(form: NgForm) {
   //   this.userService.selectedUser = {

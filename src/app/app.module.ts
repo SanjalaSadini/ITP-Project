@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './shared/material.module';
+import { routes } from './app.routing';
 
 import {
   AgmCoreModule
@@ -19,7 +20,8 @@ import { UserComponent } from './user/user/user.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
-
+import { AngularFireAuthModule  } from '@angular/fire/auth';
+import { AuthService } from './auth/auth.service';
 
 @NgModule({
   imports: [
@@ -28,8 +30,9 @@ import { environment } from '../environments/environment';
     ReactiveFormsModule,
     HttpModule,
     MaterialModule,
+    AngularFireAuthModule,
     ComponentsModule,
-    RouterModule,
+    RouterModule.forRoot(routes),
     AppRoutingModule,
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
@@ -51,7 +54,7 @@ import { environment } from '../environments/environment';
 
 
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

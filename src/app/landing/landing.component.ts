@@ -30,6 +30,12 @@ export class LandingComponent implements OnInit {
   serverErrorMessages: string;
 
   ngOnInit() {
+    this.contactUsForm = new FormGroup({
+      fullName: new FormControl(),
+      email: new FormControl(),
+      message: new FormControl(),
+   });
+
   }
 
   messageForm() {
@@ -52,25 +58,25 @@ export class LandingComponent implements OnInit {
     return this.contactUsForm.get('message');
   }
 
-  // onSubmit(form: NgForm){
-  //   this.userService.sendMessage(form.value).subscribe(
-  //     res => {
-  //       this.showSuccessMessage = true;
-  //       setTimeout(() => this.showSuccessMessage = false,4000);
-  //       // this.signUpForm.reset();
-  //       this.resetForm(form);
-  //     },
-  //     err => {
-  //       if (err.status == 422) {
-  //         this.serverErrorMessages = err.error.join('<br/>');
-  //       }
-  //       else {
-  //         this.serverErrorMessages = 'Something went wrong!';
-  //         setTimeout(() => this.serverErrorMessages = '',4000);
-  //       }
-  //     }
-  //   );
-  // }
+  onSubmit(form: NgForm){
+    // this.userService.sendMessage(form.value).subscribe(
+    //   res => {
+    //     this.showSuccessMessage = true;
+    //     setTimeout(() => this.showSuccessMessage = false,4000);
+    //     // this.signUpForm.reset();
+    //     this.resetForm(form);
+    //   },
+    //   err => {
+    //     if (err.status == 422) {
+    //       this.serverErrorMessages = err.error.join('<br/>');
+    //     }
+    //     else {
+    //       this.serverErrorMessages = 'Something went wrong!';
+    //       setTimeout(() => this.serverErrorMessages = '',4000);
+    //     }
+    //   }
+    // );
+  }
 
   resetForm(form: NgForm) {
     form.resetForm();

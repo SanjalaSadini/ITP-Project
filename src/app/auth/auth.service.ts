@@ -1,37 +1,44 @@
+import { Injectable } from "@angular/core";
+import 'rxjs/add/operator/toPromise';
+import { AngularFireAuth } from '@angular/fire/auth';
+import * as firebase from 'firebase/app';
 
-// import { Injectable } from  '@angular/core';
-// import { Router } from  "@angular/router";
-// import { auth } from  'firebase/app';
-// import { AngularFireAuth } from  "@angular/fire/auth";
-// import { User } from  'firebase';
+@Injectable()
+export class AuthService {
 
-// @Injectable({
-//     providedIn:  'root'
-// })
-// export  class  AuthService {
-//   user:  User;
-//   constructor(public  afAuth:  AngularFireAuth, public  router:  Router) { 
+  constructor(
+   public afAuth: AngularFireAuth
+ ){}
 
-//     this.afAuth.authState.subscribe(user => {
-//       if (user){
-//         this.user = user;
-//         localStorage.setItem('user', JSON.stringify(this.user));
-//       } else {
-//         localStorage.setItem('user', null);
-//       }
-//     })
-    
-//   }
+  doRegister(value){
+    return new Promise<any>((resolve, reject) => {
+      firebase.auth().createUserWithEmailAndPassword(value.email, value.password)
+      .then(res => {
+        resolve(res);
+      }, err => reject(err))
+    })
+  }
 
-//   async  login(email:  string, password:  string) {
+  doLogin(value){
+    return new Promise<any>((resolve, reject) => {
+      firebase.auth().signInWithEmailAndPassword(value.email, value.password)
+      .then(res => {
+        resolve(res);
+      }, err => reject(err))
+    })
+  }
 
-//     try {
-//         await  this.afAuth.auth.signInWithEmailAndPassword(email, password)
-//         this.router.navigate(['/dashboard']);
-//     } catch (e) {
-//         alert("Error!"  +  e.message);
-//     }
-//     }
+  doLogout(){
+    return new Promise((resolve, reject) => {
+      if(firebase.auth().currentUser){
+        this.afAuth.auth.signOut();
+        resolve();
+      }
+      else{
+        reject();
+      }
+    });
+  }
 
-// }
 
+}

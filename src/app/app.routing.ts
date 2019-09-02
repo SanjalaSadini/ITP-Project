@@ -7,11 +7,13 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { LandingComponent } from './landing/landing.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
 import { SignUpComponent} from './user/sign-up/sign-up.component';
+import { DashboardComponent} from './dashboard/dashboard.component';
 
-const routes: Routes =[
-  { path: '', redirectTo: 'index', pathMatch: 'full'},
-  { path: 'index', component: LandingComponent },
-  
+export const routes: Routes =[
+  { path: 'dashboard', component: DashboardComponent,
+  children: [{ path: 'dashboard', component: DashboardComponent }]
+  },
+
   { path: 'signIn', component: SignInComponent,
     children: [{ path: 'signIn', component: SignInComponent }]  
   },
@@ -19,6 +21,11 @@ const routes: Routes =[
   { path: 'signup', component: SignUpComponent,
     children: [{ path: 'signup', component: SignUpComponent }]
   },
+  
+  { path: '', redirectTo: 'index', pathMatch: 'full'},
+  { path: 'index', component: LandingComponent },
+  
+  
 
 
 ];
