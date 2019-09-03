@@ -23,7 +23,7 @@ import { DashboardComponent } from 'app/dashboard/dashboard.component';
   exports: [
     FooterComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
   ]
 })
 export class ComponentsModule { }
