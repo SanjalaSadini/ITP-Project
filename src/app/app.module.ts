@@ -21,7 +21,10 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { AngularFireAuthModule  } from '@angular/fire/auth';
+import { AngularFireStorage,AngularFireStorageReference,AngularFireUploadTask } from '@angular/fire/storage';
 import { AuthService } from './auth/auth.service';
+import { EmployeeManagementComponent } from './employee-management/employee-management.component';
+
 
 @NgModule({
   imports: [
@@ -38,8 +41,9 @@ import { AuthService } from './auth/auth.service';
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     }),
     AngularFireModule.initializeApp(environment.firebaseConfig),
- 	AngularFirestoreModule,
-    
+   AngularFirestoreModule,
+   //AngularFireStorage
+  
 
   ],
   
@@ -50,6 +54,7 @@ import { AuthService } from './auth/auth.service';
     SignUpComponent,
     SignInComponent,
     UserComponent,
+    EmployeeManagementComponent,
 
 
 

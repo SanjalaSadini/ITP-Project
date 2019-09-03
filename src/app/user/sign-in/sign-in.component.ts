@@ -5,6 +5,7 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from  'app/auth/auth.service';
 
+
 // export class MyErrorStateMatcher implements ErrorStateMatcher {
 
 //   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -63,7 +64,7 @@ export class SignInComponent implements OnInit {
     .then(res => {
       console.log(res);
 
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['/employee']);
     }, err => {
       console.log(err);
       // this.errorMessage = err.message;

@@ -1,11 +1,9 @@
 
-<div class ="emp" style="
-padding-left: 260px;
-">
+<div class ="emp" >
   <mat-card class = "formcard">
       <div class = "menu">
           <mat-card-title>
-              <h2>Employee Information</h2>
+              <h2><b>Employee Information</b></h2>
           </mat-card-title>
           <mat-form-field >
               <mat-label class = "Search" >Search</mat-label>
@@ -19,15 +17,15 @@ padding-left: 260px;
               <form [formGroup]="employeesForm" (ngSubmit)="onSubmit()">
                 <input type="hidden" formControlName="_id">
                 <mat-form-field appearance="outline">
-                      <mat-label>Employee ID</mat-label>
+                      <mat-label> <b>Employee ID</b></mat-label>
                       <input matInput #empID formControlName="empId" placeholder="">
                   </mat-form-field>
                   <mat-form-field appearance="outline">
-                      <mat-label>Employee Name</mat-label>
+                      <mat-label><b>Employee Name</b></mat-label>
                       <input matInput #empName formControlName="empName" placeholder="">
                   </mat-form-field>
                   <mat-form-field appearance="outline">
-                    <mat-label>Department</mat-label>
+                    <mat-label><b>Department</b></mat-label>
                     <mat-select #empDept formControlName="empDept" placeholder="">
                           <mat-option value="Sales">Sales</mat-option>  
                           <mat-option value="IT">IT</mat-option> 
@@ -36,42 +34,43 @@ padding-left: 260px;
                     </mat-select>     
                 </mat-form-field>
                   <mat-form-field appearance="outline">
-                    <mat-label>Designation</mat-label>
-                    <input matInput #empDesig formControlName="empDesig" placeholder="">
+                    <mat-label><b>Designation</b></mat-label>
+                    <input matInput #empDesignation formControlName="empDesignation" placeholder="">
                 </mat-form-field>
                   <mat-form-field appearance="outline">
-                      <mat-label>Address</mat-label>
-                      <input matInput #empAdd formControlName="empAdd" placeholder="">
+                      <mat-label><b>Address</b></mat-label>
+                      <input matInput #empAddress formControlName="empAddress" placeholder="">
                   </mat-form-field>
                   <mat-form-field appearance="outline">
-                      <mat-label>Contact No</mat-label>
+                      <mat-label><b>Contact No</b></mat-label>
                       <input matInput #empContact formControlName="empContact" placeholder="">
                   </mat-form-field>
                   <mat-form-field appearance="outline">
-                    <mat-label>Employee Email</mat-label>
+                    <mat-label><b>Employee Email</b></mat-label>
                     <input matInput #empEmail formControlName="empEmail" placeholder="">
                 </mat-form-field>
                 <mat-form-field appearance="outline">
-                  <mat-label>Date of Birth</mat-label>
+                  <mat-label><b>Date of Birth</b></mat-label>
                   <input matInput #birthday formControlName = "birthday" placeholder="Choose a date">
                   <mat-datepicker-toggle matSuffix [for]="fdate"></mat-datepicker-toggle>      
               </mat-form-field>
                   <mat-form-field appearance="outline">
-                      <mat-label>Gender</mat-label>
+                      <mat-label><b>Gender</b></mat-label>
                   <mat-select #empGender formControlName="empGender"> 
                           <mat-option value="Male">Male</mat-option>  
                           <mat-option value="Female" selected>Female</mat-option>
                   </mat-select>
                   </mat-form-field>
                   <mat-form-field appearance="outline">
-                      <mat-label>Work Started Date</mat-label>
+                      <mat-label><b>Work Started Date</b></mat-label>
                       <input matInput #startDate formControlName = "startDate" placeholder="Choose a date">
                       <mat-datepicker-toggle matSuffix [for]="fdate"></mat-datepicker-toggle>      
                   </mat-form-field>
                   <mat-form-field appearance="outline">
-                    <mat-label>Educational Qualification</mat-label>
+                    <mat-label><b>Educational Qualification</b></mat-label>
                     <input matInput #empEdu formControlName="empEdu" placeholder="">
                 </mat-form-field>
+                <input type="file" (change)="upload($event)" accept=".png,.jpg,.txt"/>
                   <mat-card-actions>
                           <div class="example-button-row">
                           <button mat-flat-button color="primary">Submit</button>    

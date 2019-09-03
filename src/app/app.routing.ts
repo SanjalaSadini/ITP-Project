@@ -8,10 +8,11 @@ import { LandingComponent } from './landing/landing.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
 import { SignUpComponent} from './user/sign-up/sign-up.component';
 import { DashboardComponent} from './dashboard/dashboard.component';
+import { EmployeeManagementComponent } from './employee-management/employee-management.component';
 
 export const routes: Routes =[
-  { path: 'dashboard', component: DashboardComponent,
-  children: [{ path: 'dashboard', component: DashboardComponent }]
+  { path: 'employee', component: EmployeeManagementComponent,
+  children: [{ path: 'employee', component: EmployeeManagementComponent }]
   },
 
   { path: 'signIn', component: SignInComponent,
