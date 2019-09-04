@@ -161,6 +161,10 @@ import * as Chartist from 'chartist';
 
 export class AdminLayoutComponent implements OnInit {
 
+    private _router: Subscription;
+    private lastPoppedUrl: string;
+    private yScrollStack: number[] = [];
+
     constructor() { }
     startAnimationForLineChart(chart){
         let seq: any, delays: any, durations: any;

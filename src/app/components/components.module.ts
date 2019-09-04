@@ -7,6 +7,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { DashboardComponent } from 'app/dashboard/dashboard.component';
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -18,6 +19,7 @@ import { DashboardComponent } from 'app/dashboard/dashboard.component';
     SidebarComponent,
     LoginPageComponent,
     DashboardComponent,
+    
   ],
   exports: [
     FooterComponent,
