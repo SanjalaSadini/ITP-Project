@@ -8,8 +8,13 @@ import { LandingComponent } from './landing/landing.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
 import { SignUpComponent} from './user/sign-up/sign-up.component';
 import { EmployeeManagementComponent} from './employee-management/employee-management.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
-export const routes: Routes =[
+export const routes: Routes =[ 
+
+  { path: 'user-profile', component: UserProfileComponent,
+  children: [{ path: 'user-profile', component: UserProfileComponent }]
+  },
 
   { path: 'employee-management', component: EmployeeManagementComponent,
   children: [{ path: 'employee-management', component: EmployeeManagementComponent }]

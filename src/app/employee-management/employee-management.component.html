@@ -1,10 +1,14 @@
-<!-- <app-sidebar></app-sidebar> -->
-<div class ="emp" >
+<app-sidebar></app-sidebar>
+<div class ="emp" style="padding-left: 260px;">
   <mat-card class = "formcard">
       <div class = "menu">
-          <mat-card-title>
+          <div class="card-header card-header-danger" style="background-color:whitesmoke">
+              <h2 class="card-title"><b>Employee Information</b></h2>
+              <p class="card-category" style="color: black"> <b>Complete Employee Information</b></p>
+          <!-- <mat-card-title>
               <h2><b>Employee Information</b></h2>
-          </mat-card-title>
+          </mat-card-title> -->
+          </div>
           <mat-form-field >
               <mat-label class = "Search" >Search</mat-label>
               <input matInput #term (keyup)="search(term.value)">
@@ -57,8 +61,10 @@
                   <mat-form-field appearance="outline">
                       <mat-label><b>Gender</b></mat-label>
                   <mat-select #empGender formControlName="empGender"> 
-                          <mat-option value="Male">Male</mat-option>  
-                          <mat-option value="Female" selected>Female</mat-option>
+                          <!-- <button value="Male" selected > Male </button>
+                          <button value="Male" selected > Female </button> -->
+                          <mat-option value="Male" selected >Male</mat-option>  
+                          <mat-option value="Female" selected >Female</mat-option>
                   </mat-select>
                   </mat-form-field>
                   <mat-form-field appearance="outline">

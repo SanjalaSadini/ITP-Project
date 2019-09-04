@@ -24,6 +24,7 @@ import { AngularFireAuthModule  } from '@angular/fire/auth';
 import { AngularFireStorage,AngularFireStorageReference,AngularFireUploadTask } from '@angular/fire/storage';
 import { AuthService } from './auth/auth.service';
 import { EmployeeManagementComponent } from './employee-management/employee-management.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 
@@ -56,6 +57,7 @@ import { EmployeeManagementComponent } from './employee-management/employee-mana
     SignInComponent,
     UserComponent,
     EmployeeManagementComponent,
+    UserProfileComponent
 
 
 
