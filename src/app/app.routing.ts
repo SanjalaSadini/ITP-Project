@@ -7,8 +7,13 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { LandingComponent } from './landing/landing.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
 import { SignUpComponent} from './user/sign-up/sign-up.component';
+import { EmployeeManagementComponent} from './employee-management/employee-management.component';
 
 export const routes: Routes =[
+
+  { path: 'employee-management', component: EmployeeManagementComponent,
+  children: [{ path: 'employee-management', component: EmployeeManagementComponent }]
+  },
 
   { path: 'adminLayout', component: AdminLayoutComponent,
   children: [{ path: 'adminLayout', component: AdminLayoutComponent }]
