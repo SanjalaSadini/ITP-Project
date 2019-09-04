@@ -1,9 +1,11 @@
-<div class="logo">
+<!-- <div class="logo">
+    <app-side-bar></app-side-bar>
     <a href="https://www.creative-tim.com" class="simple-text">
        <b> The London Cut </b>
     </a>
 </div>
-<div class="sidebar-wrapper">
+<div class="sidebar-wrapper"> -->
+
   <!-- <div *ngIf="isMobileMenu()">
     <form class="navbar-form">
       <span class="bmd-form-group">
@@ -44,7 +46,9 @@
         </li>
     </ul>
   </div> -->
-    <ul class="nav">
+
+  
+    <!-- <ul class="nav">
         <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
             <a class="nav-link" [routerLink]="[menuItem.path]">
                 <i class="material-icons">{{menuItem.icon}}</i>
@@ -52,4 +56,61 @@
             </a>
         </li>
     </ul>
-</div>
+</div> -->
+
+
+<div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
+    <!--
+      Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+  
+      Tip 2: you can also add an image using data-image tag
+  -->
+
+    <div class="logo">
+      <a [routerLink]="['/']" class="simple-text logo-normal">
+        <b>The-London-Cut</b>
+      </a>
+    </div>
+    <div class="sidebar-wrapper">
+      <ul class="nav">
+        <li class="nav-item active  ">
+          <a class="nav-link" [routerLink]="['/admin']">
+            <i class="material-icons">dashboard</i>
+            <p>Dashboard</p>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" [routerLink]="['/employee-management']">
+            <i class="material-icons">person</i>
+            <p>Employee Management</p>
+          </a>
+        </li>
+        <!-- <li class="nav-item ">
+          <a class="nav-link" [routerLink]="['/inventory']">
+            <i class="material-icons">content_paste</i>
+            <p>Inventory</p>
+          </a>
+        </li> -->
+        <!-- <li class="nav-item ">
+          <a class="nav-link" [routerLink]="['/employee']">
+            <i class="material-icons">face</i>
+            <p>Employees</p>
+          </a>
+        </li> -->
+        <!-- <li class="nav-item ">
+          <a class="nav-link" [routerLink]="['/appointment']">
+            <i class="material-icons">Appointment</i>
+            <p>Appointment</p>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="">
+            <button >
+            <i class="material-icons">exit_to_app</i>
+            <input type="button" (click)="onLogout()" value="Logout">
+            </button>
+          </a>
+        </li> -->
+      </ul>
+    </div>
+  </div>

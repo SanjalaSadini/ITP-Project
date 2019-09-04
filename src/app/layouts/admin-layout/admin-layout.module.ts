@@ -14,8 +14,12 @@ import {
   MatTooltipModule,
   MatSelectModule
 } from '@angular/material';
+
 import { EmployeeManagementComponent } from 'app/employee-management/employee-management.component';
 import { MaterialModule } from 'app/shared/material.module';
+import { SidebarComponent } from 'app/components/sidebar/sidebar.component';
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -34,6 +38,7 @@ import { MaterialModule } from 'app/shared/material.module';
     DashboardComponent,
     UserProfileComponent,
     EmployeeManagementComponent,
+    SidebarComponent,
   ]
 })
 

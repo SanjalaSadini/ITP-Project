@@ -26,6 +26,7 @@ import { AuthService } from './auth/auth.service';
 import { EmployeeManagementComponent } from './employee-management/employee-management.component';
 
 
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,

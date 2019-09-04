@@ -7,14 +7,13 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { LandingComponent } from './landing/landing.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
 import { SignUpComponent} from './user/sign-up/sign-up.component';
-import { DashboardComponent} from './dashboard/dashboard.component';
-import { EmployeeManagementComponent } from './employee-management/employee-management.component';
 
 export const routes: Routes =[
-  { path: 'employee', component: EmployeeManagementComponent,
-  children: [{ path: 'employee', component: EmployeeManagementComponent }]
-  },
 
+  { path: 'adminLayout', component: AdminLayoutComponent,
+  children: [{ path: 'adminLayout', component: AdminLayoutComponent }]
+  },
+  
   { path: 'signIn', component: SignInComponent,
     children: [{ path: 'signIn', component: SignInComponent }]  
   },

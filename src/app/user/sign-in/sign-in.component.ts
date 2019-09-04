@@ -64,7 +64,7 @@ export class SignInComponent implements OnInit {
     .then(res => {
       console.log(res);
 
-    this.router.navigate(['/employee']);
+    this.router.navigate(['/adminLayout']);
     }, err => {
       console.log(err);
       // this.errorMessage = err.message;

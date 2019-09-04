@@ -1,4 +1,6 @@
-import { Routes } from '@angular/router';
+import { CommonModule, } from '@angular/common';
+import { BrowserModule  } from '@angular/platform-browser';
+import { Routes, RouterModule } from '@angular/router';
 
 import { DashboardComponent } from '../../dashboard/dashboard.component';
 import { UserProfileComponent } from '../../user-profile/user-profile.component';
@@ -6,19 +8,14 @@ import { EmployeeManagementComponent } from 'app/employee-management/employee-ma
 
 
 export const AdminLayoutRoutes: Routes = [
-    // {
-    //   path: '',
-    //   children: [ {
-    //     path: 'dashboard',
-    //     component: DashboardComponent
-    // }]}, {
-    // path: '',
-    // children: [ {
-    //   path: 'userprofile',
-    //   component: UserProfileComponent
-    // }]
-    // }, {
-    //   path: '',
+
+    //  { path: '', children: [ { path: 'menuItem.path',component: DashboardComponent } ] },
+     
+    //  { path: '', children: [ { path: 'userprofile', component: UserProfileComponent } ] }, 
+
+    //  { path: '', children: [ { path: 'employee', component: EmployeeManagementComponent } ] },
+
+    // {  path: '',
     //   children: [ {
     //     path: 'icons',
     //     component: IconsComponent
@@ -48,8 +45,10 @@ export const AdminLayoutRoutes: Routes = [
     //         component: UpgradeComponent
     //     }]
     // }
+
+
     { path: 'dashboard',      component: DashboardComponent },
     { path: 'user-profile',   component: UserProfileComponent },
-    { path: 'employee-management',     component: EmployeeManagementComponent, },
+    { path: 'employee-management',     component: EmployeeManagementComponent },
    
 ];
