@@ -1,7 +1,8 @@
 
 <!-- Navbar -->
+<app-navbar></app-navbar>
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container" style="color:black">
+  <div class="container" >
 
     <!-- Brand -->
     <a class="navbar-brand" href="/index" target="_self">
@@ -176,7 +177,7 @@
               <h5 class="feature-title">Tailor Store Member</h5>
               <p class="grey-text">Become a Tailor Store member for free and get exclusive promotional offers. You will also get the chance to learn more about the craft of tailored clothes.</p>
               <div class="example-button-row">
-                <button mat-raised-button color="primary" outline="true" rounded="true" block="true" class="my-4 waves-effect z-depth-0" type="submit" style="width: 30%">
+                <button  outline="true" rounded="true" block="true" class="my-4 waves-effect z-depth-0" type="submit" style="width: 30%">
                   <a [routerLink]="['/signup']">Become Member</a>
                 </button>
               </div>
@@ -323,44 +324,48 @@
               <form class="text-center" [formGroup]="contactUsForm" (ngSubmit)="onSubmit(contactUsForm)">
 
                   <!-- First name -->
+ 
                   <div class="md-form">
-                    <mat-form-field>
-                      <mat-label appearance="outline">
-                        <p style="color: rgb(1, 1, 10)"><strong>Full Name</strong></p>
-                      </mat-label>
-                      <input matInput id="" formControlName="fullName" class="form-control" matInput required placeholder="Full Name">
-                      <mat-error >
-                        This field cannot be empty!
-                      </mat-error>
-                    </mat-form-field>
-                  </div>
+               
+                      <mat-form-field appearance="outline" style="color: black">
+                        <mat-label style="color: black"><b>Full Name</b></mat-label>
+                        <input matInput type="text" type="text" id="" formControlName="fullName" class="form-control" required matInput >
+                          <mat-error>
+                            This field cannot be empty!
+                          </mat-error>
+                      </mat-form-field>
+      
+                   </div>
             
                   <!-- E-mail -->
-                  <div class="md-form mt-0">
-                    <mat-form-field>
-                      <mat-label appearance="outline">
-                          <p style="color: rgb(1, 1, 10);"><strong>Email</strong></p>
-                      </mat-label>
-                      <input type="email" id="" formControlName="email" class="form-control" matInput placeholder="Email">
-                      <mat-error>
-                          Enter valid email!
-                      </mat-error>
-                    </mat-form-field>
+                  
+                  <div class="md-form">
+               
+                      <mat-form-field appearance="outline" style="color: black">
+                        <mat-label style="color: black"><b>Email</b></mat-label>
+                        <input matInput type="email" type="email" id="" formControlName="email" class="form-control" required matInput >
+                          <mat-error>
+                            This field cannot be empty!
+                          </mat-error>
+                      </mat-form-field>
+      
                   </div>
             
                   <!-- Password -->
-                  <div class="md-form">
-                    <mat-form-field>
-                      <mat-label appearance="outline">
-                          <p style="color: rgb(1, 1, 10);"><strong>Message</strong></p>
-                      </mat-label>
-                      <input type="text" id="" formControlName="message" class="form-control" aria-describedby="" matInput placeholder="Message">
-                      <mat-error>
-                        The password should have at least 8 characters!
-                      </mat-error>
-                    </mat-form-field>
-                  </div>
-            
+
+             <div class="md-form">
+               
+                <mat-form-field appearance="outline" style="color: black">
+                  <mat-label style="color: black"><b>Message</b></mat-label>
+                  <input matInput type="text" type="text" id="" formControlName="message" class="form-control" required matInput>
+                    <mat-error>
+                      This field cannot be empty!
+                    </mat-error>
+                </mat-form-field>
+
+              </div>
+      
+
                   <div class="alert alert-success" role="alert" *ngIf="showSuccessMessage">
                     Registered Successfully!
                   </div>

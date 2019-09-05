@@ -18,68 +18,84 @@
       <div class="row">
             <div class="col-md-6">
               <mat-card class="card1">
-              <form [formGroup]="employeesForm" (ngSubmit)="onSubmit()">
-                <input type="hidden" formControlName="_id">
-                <mat-form-field appearance="outline">
+                         
+              <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+              <input type="hidden" name="id" #id="ngModel" [(ngModel)]="service.formData.id">
+
+                  <mat-form-field appearance="outline">
                       <mat-label> <b>Employee ID</b></mat-label>
-                      <input matInput #empID formControlName="empId" placeholder="">
+                      <input matInput name="empID" #empID="ngModel" class="form-control"  [(ngModel)]="service.formData.empId" placeholder="" required>
+                      <div *ngIf="empID.invalid && empID.touched" class="validation-error">This field is required.</div>
                   </mat-form-field>
+
                   <mat-form-field appearance="outline">
                       <mat-label><b>Employee Name</b></mat-label>
-                      <input matInput #empName formControlName="empName" placeholder="">
+                      <input matInput name="empName" #empName="ngModel" class="form-control"  [(ngModel)]="service.formData.empName" placeholder="" required>
+                      <div *ngIf="empName.invalid && empName.touched" class="validation-error">This field is required.</div>
                   </mat-form-field>
+
                   <mat-form-field appearance="outline">
                     <mat-label><b>Department</b></mat-label>
-                    <mat-select #empDept formControlName="empDept" placeholder="">
+                    <mat-select name="empDept"#empDept="ngModel" class="form-control"  [(ngModel)]="service.formData.empDept" placeholder="" required>
                           <mat-option value="Sales">Sales</mat-option>  
                           <mat-option value="IT">IT</mat-option> 
                           <mat-option value="Inventory">Inventory</mat-option> 
                           <mat-option value="Management" selected>Management</mat-option>
                     </mat-select>     
                 </mat-form-field>
+
                   <mat-form-field appearance="outline">
                     <mat-label><b>Designation</b></mat-label>
-                    <input matInput #empDesignation formControlName="empDesignation" placeholder="">
+                    <input matInput name="empDesignation" #empDesignation="ngModel" class="form-control"  [(ngModel)]="service.formData.empDesignation" placeholder="" required>
+                    <div *ngIf="empDesignation.invalid && empDesignation.touched" class="validation-error">This field is required.</div>
                 </mat-form-field>
+
                   <mat-form-field appearance="outline">
                       <mat-label><b>Address</b></mat-label>
-                      <input matInput #empAddress formControlName="empAddress" placeholder="">
+                      <input matInput name="empAddress" #empAddress="ngModel" class="form-control"  [(ngModel)]="service.formData.empAddress" placeholder="">
                   </mat-form-field>
+
                   <mat-form-field appearance="outline">
                       <mat-label><b>Contact No</b></mat-label>
-                      <input matInput #empContact formControlName="empContact" placeholder="">
+                      <input matInput name="empContact" #empContact="ngModel" class="form-control"  [(ngModel)]="service.formData.empContact" placeholder="">
                   </mat-form-field>
+
                   <mat-form-field appearance="outline">
                     <mat-label><b>Employee Email</b></mat-label>
-                    <input matInput #empEmail formControlName="empEmail" placeholder="">
-                </mat-form-field>
+                    <input matInput name="empEmail" #empEmail="ngModel" class="form-control"  [(ngModel)]="service.formData.empEmail" placeholder="">
+                  </mat-form-field>
+
                 <mat-form-field appearance="outline">
                   <mat-label><b>Date of Birth</b></mat-label>
-                  <input matInput #birthday formControlName = "birthday" placeholder="Choose a date">
+                  <input matInput name="birthday" #birthday="ngModel" class="form-control"  [(ngModel)]="service.formData.birthday" placeholder="Choose a date">
                   <mat-datepicker-toggle matSuffix [for]="fdate"></mat-datepicker-toggle>      
-              </mat-form-field>
+                </mat-form-field>
+
                   <mat-form-field appearance="outline">
                       <mat-label><b>Gender</b></mat-label>
-                  <mat-select #empGender formControlName="empGender"> 
+                  <mat-select name="empGender" #empGender="ngModel" class="form-control"  [(ngModel)]="service.formData.empGender"> 
                           <!-- <button value="Male" selected > Male </button>
                           <button value="Male" selected > Female </button> -->
                           <mat-option value="Male" selected >Male</mat-option>  
                           <mat-option value="Female" selected >Female</mat-option>
                   </mat-select>
                   </mat-form-field>
+
                   <mat-form-field appearance="outline">
                       <mat-label><b>Work Started Date</b></mat-label>
-                      <input matInput #startDate formControlName = "startDate" placeholder="Choose a date">
+                      <input matInput name="startDate" #startDate="ngModel" class="form-control"  [(ngModel)]="service.formData.startDate" placeholder="Choose a date" required>
+                      <div *ngIf="startDate.invalid && startDate.touched" class="validation-error">This field is required.</div>
                       <mat-datepicker-toggle matSuffix [for]="fdate"></mat-datepicker-toggle>      
                   </mat-form-field>
+
                   <mat-form-field appearance="outline">
                     <mat-label><b>Educational Qualification</b></mat-label>
-                    <input matInput #empEdu formControlName="empEdu" placeholder="">
+                    <input matInput name="empEdu" #empEdu="ngModel" class="form-control"  [(ngModel)]="service.formData.empEdu" placeholder="">
                 </mat-form-field>
                 <input type="file" (change)="upload($event)" accept=".png,.jpg,.txt"/>
                   <mat-card-actions>
                           <div class="example-button-row">
-                          <button mat-flat-button color="primary">Submit</button>    
+                          <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid" >SUBMIT</button>    
                           </div>
                   </mat-card-actions>  
               </form>

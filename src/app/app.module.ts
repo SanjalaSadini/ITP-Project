@@ -8,6 +8,7 @@ import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './shared/material.module';
 import { routes } from './app.routing';
+import { ToastrModule } from 'ngx-toastr';
 
 import {
   AgmCoreModule
@@ -25,6 +26,7 @@ import { AngularFireStorage,AngularFireStorageReference,AngularFireUploadTask } 
 import { AuthService } from './auth/auth.service';
 import { EmployeeManagementComponent } from './employee-management/employee-management.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { EmployeeService } from './shared/services/employee.service';
 
 
 
@@ -43,7 +45,13 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     }),
     AngularFireModule.initializeApp(environment.firebaseConfig),
-   AngularFirestoreModule,
+    AngularFirestoreModule,
+    BrowserAnimationsModule,    // Required animations module for Toastr
+    ToastrModule.forRoot({      // Register NgxToast NPM module
+      timeOut: 3000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }),
    //AngularFireStorage
   
 
@@ -62,7 +70,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
   ],
-  providers: [AuthService],
+  providers: [AuthService,EmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
