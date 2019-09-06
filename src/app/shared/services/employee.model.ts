@@ -12,6 +12,5 @@ export class Employee {
     empGender:string;
     startDate:Date;
     empEdu:string;
-    
-   
+  
  }

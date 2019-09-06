@@ -10,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./employee-list.component.scss']
 })
 export class EmployeeListComponent implements OnInit {
-  list:Employee[];
+  employeeList:Employee[];
 
   constructor(private firestore: AngularFirestore,
               private service : EmployeeService,
@@ -18,18 +18,20 @@ export class EmployeeListComponent implements OnInit {
 
   ngOnInit() {
     this.service.getEmployee().subscribe(actionArray => {
-      this.list = actionArray.map(item=>{
+      this.employeeList = actionArray.map(item=>{
         return {
           id: item.payload.doc.id,
           ...item.payload.doc.data() 
         } as Employee;
         
         })
+        console.log(this.employeeList);
   });
+  
   }
 
   onEdit(employee:Employee){
-    this.service.formData=Object.assign({},employee);
+    this.service.formData = Object.assign ({},employee);
 
   }
 
@@ -39,14 +41,6 @@ export class EmployeeListComponent implements OnInit {
       this.toastr.warning('Deleted successfully !','Employee Record');
     }
 
-  }
-
-  createRange(number){
-    var items: number[] = [];
-    for(var i = 0; i < number; i++){
-       items.push(i);
-    }
-    return items;
   }
 
 }

@@ -31,10 +31,10 @@
               </tr>
             </thead>
                      
-            <ng-container *ngFor="let employee of employeeList | async" class="table-striped">
+            <ng-container *ngFor="let employee of employeeList ">
               <tr class="table-striped">
               
-                <td>{{employee.empId}}</td>
+                <td>{{employee.empID}}</td>
                 <td>{{employee.empName}}</td>
                 <td>{{employee.empDept}}</td>
                 <td>{{employee.empDesignation}}</td>
@@ -43,14 +43,7 @@
                 <td>{{employee.empEmail}}</td>
                 <td>{{employee.birthday}}</td>
                 <td>{{employee.empEdu}}</td>
-
-                <td>
-                    <ul *ngFor="let item of createRange(employee.resourceStatus.length);"> 
-                        <li>{{employee.resourceStatus[item].display}}</li>
-                      </ul>
-                </td>
                 
-               
           
                 <td>
                   <a class="action-btn" style="color:rgb(36, 143, 192); cursor: pointer" (click)="onEdit(employee)">
@@ -66,7 +59,9 @@
             
          
           </table>
+
     </mat-card>
 
 </mat-card>
 </div>
+
