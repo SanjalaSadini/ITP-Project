@@ -5,18 +5,11 @@
           <div class="card-header card-header-danger" style="background-color:whitesmoke">
               <h2 class="card-title"><b>Employee Information</b></h2>
               <p class="card-category" style="color: black"> <b>Complete Employee Information</b></p>
-          <!-- <mat-card-title>
-              <h2><b>Employee Information</b></h2>
-          </mat-card-title> -->
           </div>
-          <mat-form-field >
-              <mat-label class = "Search" >Search</mat-label>
-              <input matInput #term (keyup)="search(term.value)">
-              <mat-icon matSuffix>search</mat-icon>
-          </mat-form-field>
+          <br><br>
       </div>
-      <div class="row">
-            <div class="col-md-6">
+      <!-- <div class="row"> -->
+            <!-- <div class="col-md-6"> -->
               <mat-card class="card1">
                          
               <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
@@ -74,8 +67,6 @@
                   <mat-form-field appearance="outline">
                       <mat-label><b>Gender</b></mat-label>
                   <mat-select name="empGender" #empGender="ngModel" class="form-control"  [(ngModel)]="service.formData.empGender"> 
-                          <!-- <button value="Male" selected > Male </button>
-                          <button value="Male" selected > Female </button> -->
                           <mat-option value="Male" selected >Male</mat-option>  
                           <mat-option value="Female" selected >Female</mat-option>
                   </mat-select>
@@ -93,54 +84,17 @@
                     <input matInput name="empEdu" #empEdu="ngModel" class="form-control"  [(ngModel)]="service.formData.empEdu" placeholder="">
                 </mat-form-field>
                 <input type="file" (change)="upload($event)" accept=".png,.jpg,.txt"/>
+
                   <mat-card-actions>
-                          <div class="example-button-row">
-                          <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid" >SUBMIT</button>    
+                          <div class="form-group">
+                          <button class="btn btn-lg btn-block btn-info" type="submit" [disabled]="form.invalid" >SUBMIT</button>    
                           </div>
                   </mat-card-actions>  
+                  
               </form>
             </mat-card>
-            </div>
-
-            <div class="col-md-4" >
-                <mat-card class="card2">
-                    <table class="table table-md">
-                        <thead>
-                          <tr>
-                            <th scope="col"><b>Employee ID</b></th>
-                            <th scope="col"><b>Employee Name</b></th>
-                            <th scope="col"><b>Contact No</b></th>
-                            <th scope="col"></th>
-                           
-                          </tr>
-                        </thead>
-                        
-                          
-                          
-                                 
-                             <tr *ngFor="let employee of employeeList | async" class="table-striped">
-                            <td>{{employee.empId}}</td>
-                            <td>{{employee.empName}}</td>
-                            <td>{{employee.empContact}}</td>
-                            
-                           
-                      
-                               <td>
-                                <a class="action-btn" style="color:rgb(36, 143, 192); cursor: pointer" (click)="onEdit(employee)">
-                                  <i class="material-icons">edit</i>
-                                </a>
-                                <a class="action-btn" style="color:lightcoral; cursor: pointer" (click)="deleteEmployee(employee._id)">
-                                  <i class="material-icons">delete</i>
-                                </a>
-                              </td>
-                          </tr>
-                        
-                     
-                      </table>
-                </mat-card>
-              </div>
-        
-            
-          </div>
+            <!-- </div> -->
+                 
+          <!-- </div> -->
     </mat-card>
 </div>

@@ -5,6 +5,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from  'app/auth/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { EmployeeService } from 'app/shared/services/employee.service';
+import { Employee } from 'app/shared/services/employee.model';
 //import { AngularFireStorage,AngularFireStorageReference,AngularFireUploadTask } from '@angular/fire/storage';
 
 @Component({
@@ -13,6 +14,9 @@ import { EmployeeService } from 'app/shared/services/employee.service';
   styleUrls: ['./employee-management.component.css']
 })
 export class EmployeeManagementComponent implements OnInit {
+
+  public isButtonVisible = true;
+  list:Employee[];
 
   constructor(private service : EmployeeService,
               private firestore: AngularFirestore,
@@ -49,7 +53,15 @@ export class EmployeeManagementComponent implements OnInit {
 
   ngOnInit() {
     this.resetForm();
-
+    this.service.getEmployee().subscribe(actionArray => {
+      this.list = actionArray.map(item=>{
+        return {
+          id: item.payload.doc.id,
+          ...item.payload.doc.data() 
+        } as Employee;
+        
+        })
+  });
   }
 
   resetForm(form ?: NgForm) {
@@ -72,19 +84,26 @@ export class EmployeeManagementComponent implements OnInit {
     
     }
   }
-
+  
   
   onSubmit(form:NgForm){
     let data = Object.assign({},form.value);
     delete data.id;
     
-    if(form.value.id == null)
+    if(form.value.id == null){
       this.firestore.collection('Employee-Information').add(data);
+      this.resetForm(form);
+      this.toastr.success('Submitted successfully','Employee Information');
+    }
+     
     
-    else
+    else{
       this.firestore.doc('Employee-Information/'+ form.value.id).update(data);
       this.resetForm(form);
-      this.toastr.success('Submitted successfully','Hall Details');
+      this.toastr.success('Submitted successfully','Employee Information');
+
+    }
+   
   }
 
   // upload(event){

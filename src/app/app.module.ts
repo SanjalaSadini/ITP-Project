@@ -1,4 +1,3 @@
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -8,7 +7,7 @@ import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './shared/material.module';
 import { routes } from './app.routing';
-import { ToastrModule } from 'ngx-toastr';
+
 
 import {
   AgmCoreModule
@@ -27,12 +26,12 @@ import { AuthService } from './auth/auth.service';
 import { EmployeeManagementComponent } from './employee-management/employee-management.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { EmployeeService } from './shared/services/employee.service';
+import { EmployeeListComponent } from './employee-list/employee-list.component';
 
 
 
 @NgModule({
   imports: [
-    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
@@ -46,12 +45,7 @@ import { EmployeeService } from './shared/services/employee.service';
     }),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    BrowserAnimationsModule,    // Required animations module for Toastr
-    ToastrModule.forRoot({      // Register NgxToast NPM module
-      timeOut: 3000,
-      positionClass: 'toast-bottom-right',
-      preventDuplicates: true,
-    }),
+    
    //AngularFireStorage
   
 
@@ -65,7 +59,8 @@ import { EmployeeService } from './shared/services/employee.service';
     SignInComponent,
     UserComponent,
     EmployeeManagementComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    EmployeeListComponent
 
 
 

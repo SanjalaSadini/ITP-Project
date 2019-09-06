@@ -4386,7 +4386,7 @@ tbody.collapse.show {
   .navbar-expand-lg>.container,
   .navbar-expand-lg>.container-fluid {
     flex-wrap: nowrap;
-    background-color:gray;
+    /* background-color:gray; */
 
   }
   .navbar-expand-lg .navbar-collapse {
