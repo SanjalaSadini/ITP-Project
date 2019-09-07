@@ -30,6 +30,9 @@ export class EmployeeManagementComponent implements OnInit {
   }
   public employeesForm: FormGroup;
 
+  submitted: boolean;
+  formControls=this.service.form.controls;
+
 
   //-------- image-uploader part--------------
 
@@ -62,9 +65,6 @@ export class EmployeeManagementComponent implements OnInit {
     
     }
   }
-
-  submitted: boolean;
-  // formControls=this.service.form.controls;
   
   onSubmit(form:NgForm){
     let data = Object.assign({},form.value);
