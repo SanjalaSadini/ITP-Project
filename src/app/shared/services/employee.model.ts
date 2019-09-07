@@ -10,7 +10,7 @@ export class Employee {
     empEmail:string;
     birthday:string;
     empGender:string;
-    startDate:Date;
+    startDate:string;
     empEdu:string;
   
  }

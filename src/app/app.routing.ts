@@ -9,15 +9,25 @@ import { SignInComponent } from './user/sign-in/sign-in.component';
 import { SignUpComponent} from './user/sign-up/sign-up.component';
 import { EmployeeManagementComponent} from './employee-management/employee-management.component';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
+import { SupplierComponent } from './supplier/supplier.component';
+import { EmployeeEditComponent } from './employee-edit/employee-edit.component';
 
 export const routes: Routes =[ 
+
+  { path: 'supplier', component: SupplierComponent,
+  children: [{ path: 'supplier', component: SupplierComponent }]
+  },
 
   { path: 'employee-list', component: EmployeeListComponent,
   children: [{ path: 'employee-list', component: EmployeeListComponent }]
   },
 
-  { path: 'employee-management', component: EmployeeManagementComponent,
-  children: [{ path: 'employee-management', component: EmployeeManagementComponent }]
+  { path: 'employee-create', component: EmployeeManagementComponent,
+  //children: [{ path: 'employee-management', component: EmployeeManagementComponent }]
+  },
+
+  { path: 'employee-edit/:id', component: EmployeeEditComponent,
+  //children: [{ path: 'employee-management/:id', component: EmployeeManagementComponent }]
   },
 
   { path: 'adminLayout', component: AdminLayoutComponent,

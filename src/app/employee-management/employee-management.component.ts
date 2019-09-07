@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm, FormBuilder, Validators, FormGroup, AbstractControl } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from  'app/auth/auth.service';
 import { ToastrService } from 'ngx-toastr';
@@ -17,28 +17,16 @@ export class EmployeeManagementComponent implements OnInit {
 
   public isButtonVisible = true;
   list:Employee[];
+  employee: Employee;
 
   constructor(private service : EmployeeService,
               private firestore: AngularFirestore,
               private toastr : ToastrService,
               public fb: FormBuilder, 
               private router: Router ,
+              private route: ActivatedRoute ,
               private  authService: AuthService) {
-     this.employeesForm = new FormGroup({
-
-      id: new FormControl(),
-      empId: new FormControl(),
-      empName: new FormControl(),
-      empDept: new FormControl(),
-      empDesignation: new FormControl(),
-      empAddress: new FormControl(),
-      empContact: new FormControl(),
-      empEmail: new FormControl(),
-      birthday: new FormControl(),
-      empGender: new FormControl(),
-      startDate: new FormControl(),
-      empEdu: new FormControl(),
-   });
+     this.employee = new Employee();
   }
   public employeesForm: FormGroup;
 
@@ -52,20 +40,10 @@ export class EmployeeManagementComponent implements OnInit {
   //   ) { }
 
   ngOnInit() {
-    this.resetForm();
-    this.service.getEmployee().subscribe(actionArray => {
-      this.list = actionArray.map(item=>{
-        return {
-          id: item.payload.doc.id,
-          ...item.payload.doc.data() 
-        } as Employee;
-        
-        })
-  });
+    console.log(this.service.formData)
   }
 
   resetForm(form ?: NgForm) {
-    // tslint:disable-next-line:curly
     if (form != null)
       form.resetForm();
       this.service.formData= {
@@ -79,28 +57,38 @@ export class EmployeeManagementComponent implements OnInit {
       empEmail:'',
       birthday:'',
       empGender:'',
-      startDate:null,
+      startDate:'',
       empEdu:'',
     
     }
   }
-  
+
+  submitted: boolean;
+  // formControls=this.service.form.controls;
   
   onSubmit(form:NgForm){
     let data = Object.assign({},form.value);
     delete data.id;
     
     if(form.value.id == null){
-      this.firestore.collection('Employee-Information').add(data);
+      this.firestore.collection('Employee-Information').add(data).then(
+        res => {
+          console.log('createdre')
+          this.toastr.success('Submitted successfully','Employee Information');
+        }
+      );
       this.resetForm(form);
       this.toastr.success('Submitted successfully','Employee Information');
     }
      
     
     else{
-      this.firestore.doc('Employee-Information/'+ form.value.id).update(data);
+      this.firestore.doc('Employee-Information/'+ form.value.id).update(data).then(
+        res => {
+          this.toastr.success('Submitted successfully','Employee Information');
+        }
+      );
       this.resetForm(form);
-      this.toastr.success('Submitted successfully','Employee Information');
 
     }
    
@@ -110,6 +98,7 @@ export class EmployeeManagementComponent implements OnInit {
   //   this.ref=this.afstorage.ref(event.target.files[0].name)
   //   this.task=this.ref.put(event.target.files[0]);
   // }
+  
   
 
 }

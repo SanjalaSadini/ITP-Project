@@ -1,4 +1,7 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
@@ -27,12 +30,17 @@ import { EmployeeManagementComponent } from './employee-management/employee-mana
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { EmployeeService } from './shared/services/employee.service';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
+import { SupplierComponent } from './supplier/supplier.component';
+import { EmployeeEditComponent } from './employee-edit/employee-edit.component';
 
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   imports: [
     FormsModule,
+    CommonModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot() ,// ToastrModule added
     ReactiveFormsModule,
     HttpModule,
     MaterialModule,
@@ -45,7 +53,7 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
     }),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    
+    Ng2SearchPipeModule
    //AngularFireStorage
   
 
@@ -60,7 +68,9 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
     UserComponent,
     EmployeeManagementComponent,
     UserProfileComponent,
-    EmployeeListComponent
+    EmployeeListComponent,
+    SupplierComponent,
+    EmployeeEditComponent
 
 
 

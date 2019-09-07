@@ -8,7 +8,7 @@
         </div>
         <mat-form-field >
             <mat-label class = "Search" >Search</mat-label>
-            <input matInput #term (keyup)="search(term.value)">
+            <input matInput #term (keyup)="onSearch($event.target.value)" [(ngModel)]="searchText">
             <mat-icon matSuffix>search</mat-icon>
         </mat-form-field>
     </div>
@@ -31,7 +31,7 @@
               </tr>
             </thead>
                      
-            <ng-container *ngFor="let employee of employeeList ">
+            <ng-container *ngFor="let employee of employeeList | filter:searchText ">
               <tr class="table-striped">
               
                 <td>{{employee.empID}}</td>
@@ -49,7 +49,7 @@
                   <a class="action-btn" style="color:rgb(36, 143, 192); cursor: pointer" (click)="onEdit(employee)">
                       <i class="material-icons">edit</i>
                   </a>
-                  <a class="action-btn" style="color:lightcoral; cursor: pointer" (click)="deleteEmployee(employee.id)">
+                  <a class="action-btn" style="color:lightcoral; cursor: pointer" (click)="onDelete(employee.id)">
                       <i class="material-icons">delete</i>
                   </a>
                 </td>
@@ -65,3 +65,4 @@
 </mat-card>
 </div>
 
+ 
