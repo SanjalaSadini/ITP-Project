@@ -37,6 +37,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { SupplierInvoicesComponent } from './supplier-invoices/supplier-invoices.component';
 
 @NgModule({
   imports: [
@@ -73,7 +74,8 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     UserProfileComponent,
     EmployeeListComponent,
     SupplierComponent,
-    EmployeeEditComponent
+    EmployeeEditComponent,
+    SupplierInvoicesComponent
 
 
 

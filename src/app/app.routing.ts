@@ -11,8 +11,14 @@ import { EmployeeManagementComponent} from './employee-management/employee-manag
 import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { SupplierComponent } from './supplier/supplier.component';
 import { EmployeeEditComponent } from './employee-edit/employee-edit.component';
+import { SupplierInvoicesComponent } from './supplier-invoices/supplier-invoices.component';
 
 export const routes: Routes =[ 
+
+  { path: 'supplier-invoices', component: SupplierInvoicesComponent,
+  children: [{ path: 'supplier-invoices', component: SupplierInvoicesComponent }]
+  },
+
 
   { path: 'supplier', component: SupplierComponent,
   children: [{ path: 'supplier', component: SupplierComponent }]
