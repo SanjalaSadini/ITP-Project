@@ -35,16 +35,29 @@ export class EmployeeListComponent implements OnInit {
   }
 
   onEdit(employee:Employee){
-    this.service.formData = Object.assign ({},employee);
+
+    if (confirm('Are you sure do you want to edit?')) {
+      this.service.formData = Object.assign ({},employee);
     this.router.navigate(['/employee-edit',employee.id])
+      
+    } else {
+    }
+   
   }
 
   onDelete(id:String){
-    this.service.deleteEmployee(id).then(
-      res => {
-        this.router.navigate(['/employee-list']);
-      }
-    );
+    if (confirm('Are you sure do you want to delete?')) {
+      this.service.deleteEmployee(id).then(
+        res => {
+          this.router.navigate(['/employee-list']);
+        }
+  
+      );
+
+      
+    } else {
+    }
+  
   
 
   }
