@@ -17,26 +17,25 @@
 
                   <mat-form-field appearance="outline">
                       <mat-label> <b>Employee ID</b></mat-label>
-                      <input matInput name="empID" #empID="ngModel" class="form-control"    [(ngModel)]="employee.empId" placeholder="" required maxlength="10" pattern="[a-zA-Z0-9]+$">
-                       <div *ngIf="empID.invalid && empID.touched" class="validation-error">This field is required.</div>
-                       <div *ngIf="empID.invalid && empID.maxlength" class="validation-error">Maximun length is 8.</div>  
-                       <div *ngIf="empID.invalid && empID.pattern" class="validation-error">Use valid pattern.</div> 
+                      <input matInput name="empID" #empID="ngModel" class="form-control"    [(ngModel)]="employee.empID" placeholder="" required maxlength="10" pattern="^[a-zA-Z0-9]+$">
+                       <div *ngIf="empID.invalid && empID.touched" class="validation-error">Maximum length is 10 , use valid pattern </div> 
                   </mat-form-field>
 
                   <mat-form-field appearance="outline">
                       <mat-label><b>Employee Name</b></mat-label>
-                      <input matInput name="empName" #empName="ngModel" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.empName.errors}"  [(ngModel)]="employee.empName" placeholder="" required>
-                      <div *ngIf="empName.invalid && empName.touched" class="validation-error">This field is required.</div>
+                      <input matInput name="empName" #empName="ngModel" class="form-control" [(ngModel)]="employee.empName" placeholder="" required pattern="^[a-zA-Z]+$">
+                      <div *ngIf="empName.invalid && empName.touched" class="validation-error">Enter valid name</div> 
                   </mat-form-field>
 
                   <mat-form-field appearance="outline">
                     <mat-label><b>Department</b></mat-label>
-                    <mat-select name="empDept"#empDept="ngModel" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.empDept.errors}"  [(ngModel)]="employee.empDept" placeholder="" required>
+                    <mat-select name="empDept"#empDept="ngModel" class="form-control" [(ngModel)]="employee.empDept" placeholder="" required>
                           <mat-option value="Sales">Sales</mat-option>  
                           <mat-option value="IT">IT</mat-option> 
                           <mat-option value="Inventory">Inventory</mat-option> 
                           <mat-option value="Management" selected>Management</mat-option>
-                    </mat-select>     
+                    </mat-select>
+                    <div *ngIf="empDept.invalid && empDept.touched" class="validation-error">This field is required.</div>    
                 </mat-form-field>
 
                   <mat-form-field appearance="outline">
@@ -52,27 +51,26 @@
 
                   <mat-form-field appearance="outline">
                       <mat-label><b>Contact No</b></mat-label>
-                      <input matInput name="empContact" #empContact="ngModel" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.empContact.errors}"  [(ngModel)]="employee.empContact" placeholder="">
-                      <div *ngIf="empDesignation.invalid && empDesignation.touched" class="validation-error">
-                        <label *ngIf="formControls.empContact.errors.required">This field is required</label>
-                        <label *ngIf="formControls.empContact.errors.maxlength">At least 10 numbers</label>
-                      </div>
+                      <input matInput name="empContact" #empContact="ngModel" class="form-control" [(ngModel)]="employee.empContact" placeholder="" maxlength="10" type="number">
+                        <div *ngIf="empContact.invalid && empContact.touched" class="validation-error">Enter contact number</div>  
                     </mat-form-field>
 
                   <mat-form-field appearance="outline">
                     <mat-label><b>Employee Email</b></mat-label>
-                    <input matInput name="empEmail" #empEmail="ngModel" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.empEmail.errors}"  [(ngModel)]="employee.empEmail" placeholder="">
+                    <input matInput name="empEmail" #empEmail="ngModel" class="form-control" [(ngModel)]="employee.empEmail" placeholder="" email>
+                    <div *ngIf="empEmail.invalid && empEmail.touched" class="validation-error">Enter valid email.</div> 
                   </mat-form-field>
 
                 <mat-form-field appearance="outline">
                   <mat-label><b>Date of Birth</b></mat-label>
-                  <input matInput name="birthday" #birthday="ngModel" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.birthday.errors}"  [(ngModel)]="employee.birthday" placeholder="Choose a date">
+                  <input matInput name="birthday" #birthday="ngModel" class="form-control" [(ngModel)]="employee.birthday" placeholder="Choose a date" maxlength="10" type="date" >
+                  <div *ngIf="birthday.invalid && birthday.touched" class="validation-error">This field is required.</div> 
                   <mat-datepicker-toggle matSuffix [for]="fdate"></mat-datepicker-toggle>      
                 </mat-form-field>
 
                   <mat-form-field appearance="outline">
                       <mat-label><b>Gender</b></mat-label>
-                  <mat-select name="empGender" #empGender="ngModel" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.empGender.errors}"  [(ngModel)]="employee.empGender"> 
+                  <mat-select name="empGender" #empGender="ngModel" class="form-control"  [(ngModel)]="employee.empGender"> 
                           <mat-option value="Male" selected >Male</mat-option>  
                           <mat-option value="Female" selected >Female</mat-option>
                   </mat-select>
@@ -80,14 +78,14 @@
 
                   <mat-form-field appearance="outline">
                       <mat-label><b>Work Started Date</b></mat-label>
-                      <input matInput name="startDate" #startDate="ngModel" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.startDate.errors}"   [(ngModel)]="employee.startDate" placeholder="Choose a date" required>
+                      <input matInput name="startDate" #startDate="ngModel" class="form-control"   [(ngModel)]="employee.startDate" placeholder="Choose a date" required type="date">
                       <div *ngIf="startDate.invalid && startDate.touched" class="validation-error">This field is required.</div>
                       <mat-datepicker-toggle matSuffix [for]="fdate"></mat-datepicker-toggle>      
                   </mat-form-field>
 
                   <mat-form-field appearance="outline">
                     <mat-label><b>Educational Qualification</b></mat-label>
-                    <input matInput name="empEdu" #empEdu="ngModel" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.empEdu.errors}"  [(ngModel)]="employee.empEdu" placeholder="">
+                    <input matInput name="empEdu" #empEdu="ngModel" class="form-control"  [(ngModel)]="employee.empEdu" placeholder="">
                 </mat-form-field>
                 <input type="file" (change)="upload($event)" accept=".png,.jpg,.txt"/>
 

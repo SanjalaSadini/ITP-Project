@@ -33,13 +33,6 @@ export class EmployeeManagementComponent implements OnInit {
      this.employee = new Employee();
   }
   public employeesForm: FormGroup;
-
-  // submitted: boolean;
-  // formControls=this.service.form.controls;
-
-
-  //-------- image-uploader part--------------
-
   
 
   // constructor(private afstorage:AngularFireStorage
