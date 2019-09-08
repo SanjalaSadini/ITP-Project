@@ -23,7 +23,7 @@
 
                   <mat-form-field appearance="outline">
                       <mat-label><b>Employee Name</b></mat-label>
-                      <input matInput name="empName" #empName="ngModel" class="form-control" [(ngModel)]="employee.empName" placeholder="" required pattern="^[a-zA-Z]+$">
+                      <input matInput name="empName" #empName="ngModel" class="form-control" [(ngModel)]="employee.empName" placeholder="" required pattern="^[a-z A-Z]+$">
                       <div *ngIf="empName.invalid && empName.touched" class="validation-error">Enter valid name</div> 
                   </mat-form-field>
 
@@ -40,18 +40,18 @@
 
                   <mat-form-field appearance="outline">
                     <mat-label><b>Designation</b></mat-label>
-                    <input matInput name="empDesignation" #empDesignation="ngModel" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.empDesignation.errors}"  [(ngModel)]="employee.empDesignation" placeholder="" required>
+                    <input matInput name="empDesignation" #empDesignation="ngModel" class="form-control"  [(ngModel)]="employee.empDesignation" placeholder="" required>
                     <div *ngIf="empDesignation.invalid && empDesignation.touched" class="validation-error">This field is required.</div>
                 </mat-form-field>
 
                   <mat-form-field appearance="outline">
                       <mat-label><b>Address</b></mat-label>
-                      <input matInput name="empAddress" #empAddress="ngModel" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.empAddress.errors}"   [(ngModel)]="employee.empAddress" placeholder="">
+                      <input matInput name="empAddress" #empAddress="ngModel" class="form-control"  [(ngModel)]="employee.empAddress" placeholder="">
                   </mat-form-field>
 
                   <mat-form-field appearance="outline">
                       <mat-label><b>Contact No</b></mat-label>
-                      <input matInput name="empContact" #empContact="ngModel" class="form-control" [(ngModel)]="employee.empContact" placeholder="" maxlength="10" type="number">
+                      <input matInput name="empContact" #empContact="ngModel" class="form-control" [(ngModel)]="employee.empContact" placeholder="" maxlength="8" type="number">
                         <div *ngIf="empContact.invalid && empContact.touched" class="validation-error">Enter contact number</div>  
                     </mat-form-field>
 

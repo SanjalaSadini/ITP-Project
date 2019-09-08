@@ -84,7 +84,7 @@ export class EmployeeManagementComponent implements OnInit {
     let data = Object.assign({},form.value);
     delete data.id;
     
-    if(form.value.id == null){
+    if(form.value.id == null){ if(confirm('Are you sure do you want to submit?')){
       this.firestore.collection('Employee-Information').add(data).then(
         res => {
           console.log('createdre')
@@ -94,6 +94,7 @@ export class EmployeeManagementComponent implements OnInit {
       this.resetForm(form);
       this.toastr.success('Submitted successfully','Employee Information');
     }
+  }
      
     
     else{

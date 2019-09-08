@@ -3,7 +3,7 @@
   <mat-card class = "formcard">
       <div class = "menu">
           <div class="card-header card-header-danger" style="background-color:whitesmoke">
-              <h2 class="card-title"><b>Employee Information</b></h2>
+              <h2 class="card-title"><b>Edit Employee Information</b></h2>
               <p class="card-category" style="color: black"> <b>Complete Employee Information</b></p>
           </div>
           <br><br>
@@ -17,14 +17,14 @@
 
                   <mat-form-field appearance="outline">
                       <mat-label> <b>Employee ID</b></mat-label>
-                      <input matInput name="empID" #empID="ngModel" class="form-control"    [(ngModel)]="employee.empID" placeholder="" required maxlength="10" pattern="^[a-zA-Z0-9]+$">
+                      <input matInput name="empID" #empID="ngModel" class="form-control"    [(ngModel)]="employee.empID" placeholder="" required maxlength="10" type="text">
                        <div *ngIf="empID.invalid && empID.touched" class="validation-error">Maximum length is 10 , use valid pattern </div> 
                   </mat-form-field>
 
                   <mat-form-field appearance="outline">
                       <mat-label><b>Employee Name</b></mat-label>
-                      <input matInput name="empName" #empName="ngModel" class="form-control" [(ngModel)]="employee.empName" placeholder="" required pattern="^[a-zA-Z]+$">
-                      <div *ngIf="empName.invalid && empName.touched" class="validation-error">Enter valid name</div> 
+                      <input matInput name="empName" #empName="ngModel" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.empName.errors}"  [(ngModel)]="employee.empName" placeholder="" required>
+                      <div *ngIf="empName.invalid && empName.touched" class="validation-error">This field is required.</div>
                   </mat-form-field>
 
                   <mat-form-field appearance="outline">

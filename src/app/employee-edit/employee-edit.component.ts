@@ -48,12 +48,17 @@ export class EmployeeEditComponent implements OnInit {
     let data = Object.assign({},form.value);
     let id = data.id;
     delete data.id;
+    if(confirm('Are you sure do you want to submit?')){
     this.service.updateEmployee(id,data).then(
       res => {
         this.router.navigate(['/employee-list']);
       }
     );
+    }else{
+      
+    }
   
-  }
+}
+
 
 }

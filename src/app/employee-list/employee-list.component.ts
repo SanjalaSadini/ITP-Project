@@ -38,7 +38,7 @@ export class EmployeeListComponent implements OnInit {
 
     if (confirm('Are you sure do you want to edit?')) {
       this.service.formData = Object.assign ({},employee);
-    this.router.navigate(['/employee-edit',employee.id])
+      this.router.navigate(['/employee-edit',employee.id])
       
     } else {
     }
