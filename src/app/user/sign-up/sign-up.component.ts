@@ -3,6 +3,8 @@ import { FormControl, FormGroupDirective, NgForm, FormBuilder, Validators, FormG
 import { ErrorStateMatcher } from '@angular/material/core';
 import { AuthService } from '../../auth/auth.service';
 import { Router, Params } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { SignupService } from 'app/shared/services/signup.service';
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -22,7 +24,12 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class SignUpComponent implements OnInit {
 
-  constructor(public fb: FormBuilder ,public authService: AuthService,private router: Router) { }
+  constructor(public fb: FormBuilder ,
+    public authService: AuthService,
+    private router: Router,
+    private firestore: AngularFirestore,
+    private signup : SignupService,
+    ) { }
 
   matcher = new MyErrorStateMatcher();
   public signUpForm: FormGroup;
@@ -33,12 +40,28 @@ export class SignUpComponent implements OnInit {
   ngOnInit() {
     this.registerForm();
   }
+
+
+
+  resetForm(signUpForm ?: NgForm) {
+    if (signUpForm != null)
+    signUpForm.resetForm();
+      this.signup.formData= {
+        id: 'null',
+        firstName: '',
+        lastName: '',
+        email: '',
+        password:'',
+        confirmPassword:'',
+    
+    }
+  }
   
   registerForm() {
     this.signUpForm = this.fb.group({
       userRole: ['2'],
-      firstName: ['', [Validators.required , Validators.pattern('[a-z]+[A-Z]')]],
-      lastName: ['',[Validators.required, , Validators.pattern('[a-z]+[A-Z]')]],
+      firstName: ['',[Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
+      lastName: ['',[Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
       email: ['',[Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', [Validators.required, Validators.minLength(8)]]
@@ -77,10 +100,11 @@ export class SignUpComponent implements OnInit {
     return this.signUpForm.get('password');
   }
 
-   onSubmit(form: NgForm){
-    console.log("in on submit",form.value);
+   onSubmit(signUpForm: NgForm){
+    let data = Object.assign({},signUpForm.value);
 
-    this.authService.doRegister(form.value)
+    console.log("in on submit",signUpForm.value);
+    this.authService.doRegister(signUpForm.value)
     .then(res => {
       console.log(res);
       this.router.navigate(['/signIn']);
@@ -91,23 +115,26 @@ export class SignUpComponent implements OnInit {
       // this.errorMessage = err.message;
       // this.successMessage = "";
     })
-  //   this.userService.postUser(form.value).subscribe(
-  //     res => {
-  //       this.showSuccessMessage = true;
-  //       setTimeout(() => this.showSuccessMessage = false,4000);
-  //       // this.signUpForm.reset();
-  //       this.resetForm(form);
-  //     },
-  //     err => {
-  //       if (err.status == 422) {
-  //         this.serverErrorMessages = err.error.join('<br/>');
-  //       }
-  //       else {
-  //         this.serverErrorMessages = 'Something went wrong!';
-  //         setTimeout(() => this.serverErrorMessages = '',4000);
-  //       }
-  //     }
-  //   );
+ 
+
+  if(signUpForm.value.id == null){
+    this.firestore.collection('Login-Information').add(data).then(
+      res => {
+        console.log('createdre')
+      }
+    );
+    this.resetForm(signUpForm);
+  }
+   
+  
+  else{
+    this.firestore.doc('Login-Information/'+ signUpForm.value.id).update(data).then(
+      res => {
+      }
+    );
+    this.resetForm(signUpForm);
+
+  }
   }
 
   // resetForm(form: NgForm) {

@@ -35,6 +35,9 @@ import { EmployeeEditComponent } from './employee-edit/employee-edit.component';
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
+
+import { AngularFireStorageModule } from '@angular/fire/storage';
+
 @NgModule({
   imports: [
     FormsModule,
@@ -53,8 +56,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     }),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    Ng2SearchPipeModule
-   //AngularFireStorage
+    Ng2SearchPipeModule,
+    AngularFireStorageModule 
   
 
   ],

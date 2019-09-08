@@ -23,7 +23,7 @@ export const routes: Routes =[
   },
 
   { path: 'employee-create', component: EmployeeManagementComponent,
-  //children: [{ path: 'employee-management', component: EmployeeManagementComponent }]
+  children: [{ path: 'employee-create', component: EmployeeManagementComponent }]
   },
 
   { path: 'employee-edit/:id', component: EmployeeEditComponent,

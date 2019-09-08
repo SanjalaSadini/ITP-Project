@@ -6,7 +6,7 @@ import { AuthService } from  'app/auth/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { EmployeeService } from 'app/shared/services/employee.service';
 import { Employee } from 'app/shared/services/employee.model';
-//import { AngularFireStorage,AngularFireStorageReference,AngularFireUploadTask } from '@angular/fire/storage';
+import { AngularFireStorage,AngularFireStorageReference,AngularFireUploadTask } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-employee-management',
@@ -19,31 +19,52 @@ export class EmployeeManagementComponent implements OnInit {
   list:Employee[];
   employee: Employee;
 
+ ref:AngularFireStorageReference;
+ task:AngularFireUploadTask ;
+
   constructor(private service : EmployeeService,
               private firestore: AngularFirestore,
               private toastr : ToastrService,
               public fb: FormBuilder, 
               private router: Router ,
               private route: ActivatedRoute ,
+              private afstorage:AngularFireStorage,
               private  authService: AuthService) {
      this.employee = new Employee();
   }
   public employeesForm: FormGroup;
 
-  submitted: boolean;
-  formControls=this.service.form.controls;
+  // submitted: boolean;
+  // formControls=this.service.form.controls;
 
 
   //-------- image-uploader part--------------
 
-  // ref:AngularFireStorageReference;
-  // task:AngularFireUploadTask ;
+  
 
   // constructor(private afstorage:AngularFireStorage
   //   ) { }
 
   ngOnInit() {
-    console.log(this.service.formData)
+    console.log(this.service.formData);
+
+    this.employeesForm = this.fb.group({
+
+      id: new FormControl(null),
+      empId: ['',[Validators.required,Validators.maxLength(10),Validators.pattern('[a-zA-Z0-9]+$')]],
+      empName: new FormControl('',[Validators.required,Validators.pattern('[a-z]+[A-Z]')]),
+      empDept: new FormControl('',[Validators.required,Validators.pattern('[a-z]+[A-Z]')]),
+      empDesignation: new FormControl('',[Validators.required,Validators.pattern('[a-z]+[A-Z]')]),
+      empAddress: new FormControl('',[Validators.required,Validators.pattern('[a-z]+[A-Z]+[0-9]')]),
+      empContact: new FormControl('',[Validators.required,Validators.maxLength(10)]),
+      empEmail: new FormControl('',Validators.email),
+      birthday: new FormControl('',[Validators.required,Validators.pattern('[0-9]')]),
+      empGender: new FormControl(''),
+      startDate: new FormControl('',[Validators.required,Validators.pattern('[0-9]')]),
+      empEdu: new FormControl('',[Validators.required,Validators.pattern('[a-z]+[A-Z]')]),
+   });
+    
+    
   }
 
   resetForm(form ?: NgForm) {
@@ -94,10 +115,11 @@ export class EmployeeManagementComponent implements OnInit {
    
   }
 
-  // upload(event){
-  //   this.ref=this.afstorage.ref(event.target.files[0].name)
-  //   this.task=this.ref.put(event.target.files[0]);
-  // }
+   upload(event){
+     debugger;
+     this.ref=this.afstorage.ref(event.target.files[0].name)
+     this.task=this.ref.put(event.target.files[0]);
+  }
   
   
 
