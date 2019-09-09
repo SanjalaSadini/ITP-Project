@@ -2,14 +2,14 @@
 <div class ="emp" style="padding-left: 260px;">
 <mat-card class = "formcard">
     <div class = "menu">
-        <div class="card-header card-header-danger" style="background-color:whitesmoke">
-            <h2 class="card-title"><b> Edit Employee Information</b></h2>
-            <p class="card-category" style="color: black"> <b> Edit Employee Information</b></p>
+        <div class="card-header card-header-danger" style="background-color:rgb(196, 43, 43)">
+            <h2 class="card-title" style="color:white"><b> Edit Employee Information</b></h2>
+            <p class="card-category" style="color:whitesmoke"> <b> Edit Employee Information</b></p>
         </div>
         <mat-form-field >
-            <mat-label class = "Search" >Search</mat-label>
+            <mat-label class = "Search" style="color: black">Search</mat-label>
             <input matInput #term (keyup)="onSearch($event.target.value)" [(ngModel)]="searchText">
-            <mat-icon matSuffix>search</mat-icon>
+            <mat-icon matSuffix style="color: black">search</mat-icon>
         </mat-form-field>
     </div>
        <mat-card class="card2">

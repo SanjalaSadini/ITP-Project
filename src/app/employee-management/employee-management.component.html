@@ -1,12 +1,13 @@
 <app-sidebar></app-sidebar>
 <div class ="emp" style="padding-left: 260px;">
-  <mat-card class = "formcard">
+  <mat-card class = "card">
       <div class = "menu">
-          <div class="card-header card-header-danger" style="background-color:whitesmoke">
-              <h2 class="card-title"><b>Employee Information</b></h2>
-              <p class="card-category" style="color: black"> <b>Complete Employee Information</b></p>
+          <div class="card-header card-header-danger" 
+          >
+              <h3 class="card-title" style="color: whitesmoke"><b>Employee Information</b></h3>
+              <p class="card-category" style="color:whitesmoke"> <b>Complete Employee Information</b></p>
           </div>
-          <br><br>
+          <br>
       </div>
       <!-- <div class="row"> -->
             <!-- <div class="col-md-6"> -->
@@ -91,7 +92,7 @@
 
                   <mat-card-actions>
                           <div class="form-group">
-                          <button class="btn btn-lg btn-block btn-info" type="submit" [disabled]="form.invalid" >SUBMIT</button>    
+                          <button class="btn btn-lg btn-block btn-warn" type="submit" [disabled]="form.invalid" >SUBMIT</button>    
                           </div>
                   </mat-card-actions>  
                   
