@@ -65,7 +65,7 @@ export class EmployeeManagementComponent implements OnInit {
       form.resetForm();
       this.service.formData= {
       id: null,
-      empID: '',
+      empID:'',
       empName: '',
       empDept: '',
       empDesignation:'',

@@ -1,10 +1,10 @@
 <app-sidebar></app-sidebar>
 <div class ="emp" style="padding-left: 260px;">
-  <mat-card class = "formcard">
+  <mat-card class = "card">
       <div class = "menu">
-          <div class="card-header card-header-danger" style="background-color:whitesmoke">
-              <h2 class="card-title"><b>Edit Employee Information</b></h2>
-              <p class="card-category" style="color: black"> <b>Complete Employee Information</b></p>
+          <div class="card-header card-header-danger">
+              <h2 class="card-title" style="color: white"><b>Edit Employee Information</b></h2>
+              <p class="card-category" style="color:whitesmoke"> <b>Complete Employee Information</b></p>
           </div>
           <br><br>
       </div>
@@ -17,13 +17,13 @@
 
                   <mat-form-field appearance="outline">
                       <mat-label> <b>Employee ID</b></mat-label>
-                      <input matInput name="empID" #empID="ngModel" class="form-control"    [(ngModel)]="employee.empID" placeholder="" required maxlength="10" type="text">
-                       <div *ngIf="empID.invalid && empID.touched" class="validation-error">Maximum length is 10 , use valid pattern </div> 
+                      <input disabled matInput name="empID" #empID="ngModel" class="form-control" [(ngModel)]="employee.empID" placeholder="" required maxlength="10" type="text">
+                      
                   </mat-form-field>
 
                   <mat-form-field appearance="outline">
                       <mat-label><b>Employee Name</b></mat-label>
-                      <input matInput name="empName" #empName="ngModel" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.empName.errors}"  [(ngModel)]="employee.empName" placeholder="" required>
+                      <input matInput name="empName" #empName="ngModel" class="form-control"  [(ngModel)]="employee.empName" placeholder="" required>
                       <div *ngIf="empName.invalid && empName.touched" class="validation-error">This field is required.</div>
                   </mat-form-field>
 
@@ -70,15 +70,16 @@
 
                   <mat-form-field appearance="outline">
                       <mat-label><b>Gender</b></mat-label>
-                  <mat-select name="empGender" #empGender="ngModel" class="form-control"  [(ngModel)]="employee.empGender"> 
+                      <input disabled matInput name="empGender" #empGender="ngModel" class="form-control" [(ngModel)]="employee.empGender" placeholder="" >
+                  <!-- <mat-select name="empGender" #empGender="ngModel" class="form-control"  [(ngModel)]="employee.empGender"> 
                           <mat-option value="Male" selected >Male</mat-option>  
                           <mat-option value="Female" selected >Female</mat-option>
-                  </mat-select>
+                  </mat-select> -->
                   </mat-form-field>
 
                   <mat-form-field appearance="outline">
                       <mat-label><b>Work Started Date</b></mat-label>
-                      <input matInput name="startDate" #startDate="ngModel" class="form-control"   [(ngModel)]="employee.startDate" placeholder="Choose a date" required type="date">
+                      <input disabled matInput name="startDate" #startDate="ngModel" class="form-control"   [(ngModel)]="employee.startDate" placeholder="Choose a date" required type="date">
                       <div *ngIf="startDate.invalid && startDate.touched" class="validation-error">This field is required.</div>
                       <mat-datepicker-toggle matSuffix [for]="fdate"></mat-datepicker-toggle>      
                   </mat-form-field>
@@ -91,7 +92,7 @@
 
                   <mat-card-actions>
                           <div class="form-group">
-                          <button class="btn btn-lg btn-block btn-info" type="submit" [disabled]="form.invalid" >SUBMIT</button>    
+                          <button class="btn btn-lg btn-block btn-wrp" type="submit" [disabled]="form.invalid" >SUBMIT</button>    
                           </div>
                   </mat-card-actions>  
                   
