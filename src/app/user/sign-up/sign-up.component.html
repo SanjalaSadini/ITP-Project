@@ -6,15 +6,19 @@ background-image: url('assets/img/signup.jpg');
 
 <div style="background-image: url('assets/img/signin.jpg')">
 
-    <div class="container">
+    <div class="container" >
       <br><br><br><br>
-    <mat-card class="example-card" style="background-color:gainsboro; background-repeat: no-repeat; background-size: cover; height: 900px">
+      <div class="row ">
+          <div class="col-md-3">
+          </div>
+          <div class="col-md-9">
+          <mat-card class="example-card text-center " style="background-color:gainsboro;  background-repeat: no-repeat; background-size: cover; height: 800px; width:70%">
     
-      <mat-card-title class="text-center py-4">
+          <mat-card-title class="text-center">
         <h2><strong><b>THE-LONDON-CUT </b></strong></h2>
         <h2><strong><b>SIGN UP </b></strong></h2>
       </mat-card-title>
-    
+      <br><br>
       <hr>
     
       <!--Card content-->
@@ -56,9 +60,8 @@ background-image: url('assets/img/signup.jpg');
             <mat-form-field appearance="outline" style="color: black">
               <mat-label style="color: black"><b>Email</b></mat-label>
               <input matInput type="email" id="materialRegisterFormEmail" formControlName="email" class="form-control" matInput>
-                <mat-error>
-                  Enter valid email!
-                </mat-error>
+                <mat-error *ngIf="signup.signUpForm.controls['email'].errors?.required">Enter valid email!</mat-error>
+                <mat-error *ngIf="signup.signUpForm.controls['email'].errors?.minlength">Minimum 10 charactors needed.</mat-error>
             </mat-form-field>
 
           </div>
@@ -100,7 +103,6 @@ background-image: url('assets/img/signup.jpg');
           <!-- Sign up button -->
           <div class="example-button-row">
               <button style = "color:whitesmoke" outline="true" rounded="true" block="true" class="my-4 waves-effect z-depth-0" type="submit" style="width: 30%" [disabled]="!signUpForm.valid">
-                <mat-icon matSuffix>save_alt</mat-icon>
                 <a style="color: black"> <strong><b>Sign Up</b></strong> </a>
               </button>
           </div>
@@ -125,6 +127,8 @@ background-image: url('assets/img/signup.jpg');
     
     </mat-card>
     </div>
+    </div>
+  </div>
     <br><br><br><br><br>
     </div>
  

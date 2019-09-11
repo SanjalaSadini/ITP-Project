@@ -35,9 +35,6 @@ export class EmployeeManagementComponent implements OnInit {
   public employeesForm: FormGroup;
   
 
-  // constructor(private afstorage:AngularFireStorage
-  //   ) { }
-
   ngOnInit() {
     console.log(this.service.formData);
 
@@ -88,7 +85,7 @@ export class EmployeeManagementComponent implements OnInit {
       this.firestore.collection('Employee-Information').add(data).then(
         res => {
           console.log('createdre')
-          this.toastr.success('Submitted successfully','Employee Information');
+          // this.toastr.success('Submitted successfully','Employee Information');
         }
       );
       this.resetForm(form);
