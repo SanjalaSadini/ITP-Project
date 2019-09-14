@@ -17,9 +17,9 @@ export class SignupService {
     id :new FormControl(null),
     firstName: new FormControl('',[Validators.required,Validators.pattern('^[a-z A-Z]+$')]),
     lastName:  new FormControl('',[Validators.required,Validators.pattern('^[a-z A-Z]+$')]),
-    email:new FormControl('',[Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'),Validators.minLength(10)]), 
-    password: new FormControl('',[Validators.required, Validators.minLength(10)]),
-    confirmPassword: new FormControl('',[Validators.required, Validators.minLength(10)]),
+    email:new FormControl('',[Validators.required, Validators.minLength(10)]), 
+    password: new FormControl('',[Validators.required, Validators.minLength(8)]),
+    confirmPassword: new FormControl('',[Validators.required, Validators.minLength(8)]),
 
   });
 

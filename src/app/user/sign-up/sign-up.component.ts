@@ -5,9 +5,13 @@ import { AuthService } from '../../auth/auth.service';
 import { Router, Params } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { SignupService } from 'app/shared/services/signup.service';
+import { Signup } from 'app/shared/services/signup.model';
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
+
+  list:Signup[];
+  signup:Signup;
 
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const invalidCtrl = !!(control && control.invalid && control.parent.dirty);
@@ -28,8 +32,10 @@ export class SignUpComponent implements OnInit {
     public authService: AuthService,
     private router: Router,
     private firestore: AngularFirestore,
-    private signup : SignupService,
-    ) { }
+    private signup : SignupService ) {
+
+  
+      }
 
   matcher = new MyErrorStateMatcher();
   public signUpForm: FormGroup;
@@ -41,6 +47,10 @@ export class SignUpComponent implements OnInit {
     this.registerForm();
   }
 
+  onClear() {
+    this.signup.form.reset();
+
+  }
 
 
   resetForm(signUpForm ?: NgForm) {
@@ -63,8 +73,8 @@ export class SignUpComponent implements OnInit {
       firstName: ['',[Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
       lastName: ['',[Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
       email: ['',[Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
-      password: ['', [Validators.required, Validators.minLength(10)]],
-      confirmPassword: ['', [Validators.required, Validators.minLength(10)]]
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(8)]]
     });
   }
 
