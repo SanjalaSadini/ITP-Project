@@ -59,7 +59,7 @@
                           >Checked</mat-checkbox>
                       </td>
   
-                      <td>
+                      <!-- <td>
                         <button mat-raised-button
                           (click)="editSupplierInvoice(inv)"
                           class="btn btn-info  ">EDIT</button>
@@ -68,6 +68,15 @@
                         <button mat-raised-button
                           (click)="deleteSupplierInvoice(inv.id)"
                           class="btn btn-danger  ">DELETE</button>
+                      </td> -->
+
+                      <td>
+                          <a class="action-btn" style="color:rgb(36, 143, 192); cursor: pointer" (click)="editSupplierInvoice(inv)">
+                              <i class="material-icons">edit</i>
+                          </a>
+                          <a class="action-btn" style="color:lightcoral; cursor: pointer" (click)="deleteSupplierInvoice(inv.id)">
+                              <i class="material-icons">delete</i>
+                          </a>
                       </td>
                     </tr>
                   </tbody>
