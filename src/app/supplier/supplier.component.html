@@ -63,16 +63,27 @@
                                       <td>{{supplier.type}}</td>
                                       <td>{{supplier.discount}}</td>
                                       <td>{{supplier.dueDate}}</td>
-                                      <td>
+                                      <!-- <td>
                                         <button mat-raised-button
                                           (click)="editSupplier(supplier)"
                                           class="btn btn-info  ">EDIT</button>
-                  
+                                                           
                   
                                         <button mat-raised-button
                                           (click)="deleteSupplier(supplier.id)"
                                           class="btn btn-danger  ">DELETE</button>
+                        
+                                      </td> -->
+
+                                      <td>
+                                          <a class="action-btn" style="color:rgb(36, 143, 192); cursor: pointer" (click)="editSupplier(supplier)">
+                                              <i class="material-icons">edit</i>
+                                          </a>
+                                          <a class="action-btn" style="color:lightcoral; cursor: pointer" (click)="deleteSupplier(supplier.id)">
+                                              <i class="material-icons">delete</i>
+                                          </a>
                                       </td>
+
                                     </tr>
                                   </tbody>
                   
