@@ -62,7 +62,11 @@ background-image: url('assets/img/signup.jpg');
               <mat-label style="color: black"><b>Email</b></mat-label>
               <input matInput type="email" id="materialRegisterFormEmail" formControlName="email" class="form-control" matInput>
                 <mat-error *ngIf="signup.form.controls['email'].errors?.required">Enter valid email!</mat-error>
-                <mat-error *ngIf="signup.form.controls['email'].errors?.minLength">Minimum 10 charactors needed.</mat-error>
+                <mat-error *ngIf="signup.form.controls['email'].errors?.minLength">Minimum 10 charactors needed.</mat-error> 
+                
+                 <!-- <mat-error *ngIf="signUpForm.controls['email'].errors?.required">Enter valid email!</mat-error>
+                <mat-error *ngIf="signUpForm.controls['email'].errors?.minLength">Minimum 10 charactors needed.</mat-error> -->
+
             </mat-form-field>
 
           </div>
@@ -75,8 +79,10 @@ background-image: url('assets/img/signup.jpg');
             <input matInput type="password" id="materialRegisterFormPassword" formControlName="password" class="form-control" aria-describedby="materialRegisterFormPasswordHelpBlock" matInput>
               <mat-error *ngIf="signup.form.controls['password'].errors?.required"> This field is required. </mat-error>
               <mat-error *ngIf="signup.form.controls['password'].errors?.minLength"> The password should have at least 8 characters.</mat-error>
-          </mat-form-field>
-
+          
+             
+            </mat-form-field>
+     
           </div>
     
           <!-- Confirm Password -->

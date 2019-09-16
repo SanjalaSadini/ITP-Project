@@ -17,7 +17,7 @@
 
                   <mat-form-field appearance="outline">
                       <mat-label> <b>Employee ID</b></mat-label>
-                      <input disabled matInput name="empID" #empID="ngModel" class="form-control" [(ngModel)]="employee.empID" placeholder="" required maxlength="10" type="text">
+                      <input readonly matInput name="empID" #empID="ngModel" class="form-control" [(ngModel)]="employee.empID" placeholder="">
                       
                   </mat-form-field>
 
@@ -70,7 +70,7 @@
 
                   <mat-form-field appearance="outline">
                       <mat-label><b>Gender</b></mat-label>
-                      <input disabled matInput name="empGender" #empGender="ngModel" class="form-control" [(ngModel)]="employee.empGender" placeholder="" >
+                      <input readonly matInput name="empGender" #empGender="ngModel" class="form-control" [(ngModel)]="employee.empGender" placeholder="" >
                   <!-- <mat-select name="empGender" #empGender="ngModel" class="form-control"  [(ngModel)]="employee.empGender"> 
                           <mat-option value="Male" selected >Male</mat-option>  
                           <mat-option value="Female" selected >Female</mat-option>
@@ -79,7 +79,7 @@
 
                   <mat-form-field appearance="outline">
                       <mat-label><b>Work Started Date</b></mat-label>
-                      <input disabled matInput name="startDate" #startDate="ngModel" class="form-control"   [(ngModel)]="employee.startDate" placeholder="Choose a date" required type="date">
+                      <input readonly matInput name="startDate" #startDate="ngModel" class="form-control"   [(ngModel)]="employee.startDate" placeholder="Choose a date" required type="date">
                       <div *ngIf="startDate.invalid && startDate.touched" class="validation-error">This field is required.</div>
                       <mat-datepicker-toggle matSuffix [for]="fdate"></mat-datepicker-toggle>      
                   </mat-form-field>

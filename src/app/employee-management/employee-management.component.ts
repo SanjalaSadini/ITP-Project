@@ -85,7 +85,6 @@ export class EmployeeManagementComponent implements OnInit {
       this.firestore.collection('Employee-Information').add(data).then(
         res => {
           console.log('createdre')
-          // this.toastr.success('Submitted successfully','Employee Information');
         }
       );
       this.resetForm(form);
@@ -101,6 +100,7 @@ export class EmployeeManagementComponent implements OnInit {
         }
       );
       this.resetForm(form);
+      this.toastr.success('Updated successfully','Employee Information');
 
     }
    
