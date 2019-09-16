@@ -41,7 +41,7 @@ export class EmployeeManagementComponent implements OnInit {
     this.employeesForm = this.fb.group({
 
       id: new FormControl(null),
-      empId: ['',[Validators.required,Validators.maxLength(10),Validators.pattern('[a-zA-Z0-9]+$')]],
+      empId: ['',[Validators.required,Validators.maxLength(8),Validators.pattern('[a-zA-Z0-9]+$')]],
       empName: new FormControl('',[Validators.required,Validators.pattern('[a-z]+[A-Z]')]),
       empDept: new FormControl('',[Validators.required,Validators.pattern('[a-z]+[A-Z]')]),
       empDesignation: new FormControl('',[Validators.required,Validators.pattern('[a-z]+[A-Z]')]),

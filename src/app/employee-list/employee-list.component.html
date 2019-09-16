@@ -6,13 +6,14 @@
             <h3 class="card-title" style="color:white"><b> Edit Employee Information</b></h3>
             <p class="card-category" style="color:whitesmoke"> <b> Edit Employee Information</b></p>
         </div>
+        <br>
         <mat-form-field >
             <mat-label class = "Search" style="color: black">Search</mat-label>
-            <input matInput #term (keyup)="onSearch($event.target.value)" [(ngModel)]="searchText">
+            <input style="color: black" matInput #term (keyup)="onSearch($event.target.value)" [(ngModel)]="searchText">
             <mat-icon matSuffix style="color: black">search</mat-icon>
         </mat-form-field>
     </div>
-       <mat-card class="card2">
+       <mat-card class="card">
 
         <table class="table table-md">
             <thead>
@@ -25,6 +26,8 @@
                 <th scope="col"><b>Contact No</b></th>
                 <th scope="col"><b>Employee Email</b></th>
                 <th scope="col"><b>Date of Birth</b></th>
+                <th scope="col"><b>Gender</b></th>
+                <th scope="col"><b>Work start Date</b></th>
                 <th scope="col"><b>Educational Qualification</b></th>
                 <th scope="col"></th>
                
@@ -42,6 +45,8 @@
                 <td>{{employee.empContact}}</td>
                 <td>{{employee.empEmail}}</td>
                 <td>{{employee.birthday}}</td>
+                <td>{{employee.empGender}}</td>
+                <td>{{employee.startDate}}</td>
                 <td>{{employee.empEdu}}</td>
                 
           
