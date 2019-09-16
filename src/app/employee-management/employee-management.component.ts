@@ -100,7 +100,7 @@ export class EmployeeManagementComponent implements OnInit {
         }
       );
       this.resetForm(form);
-      this.toastr.success('Updated successfully','Employee Information');
+      this.toastr.success('Submitted successfully','Employee Information');
 
     }
    

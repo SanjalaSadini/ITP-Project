@@ -31,7 +31,7 @@
                   <mat-form-field appearance="outline">
                       <mat-label><b>Employee Name</b></mat-label>
                       <input matInput name="empName" #empName="ngModel" class="form-control" [(ngModel)]="employee.empName" placeholder="" required pattern="^[a-zA-Z ]+$">
-                      <div *ngIf="empName.invalid && empID.touched"><br>
+                      <div *ngIf="empName.invalid && empName.touched"><br>
 
                         <span *ngIf="empName.errors.required"   class="validation-error ">Employee Name is required field</span>
                         <span *ngIf="empName.errors.pattern"   class="validation-error">Enter valid name</span>
@@ -52,7 +52,7 @@
                   <mat-form-field appearance="outline">
                     <mat-label><b>Designation</b></mat-label>
                     <input matInput name="empDesignation" #empDesignation="ngModel" class="form-control"  [(ngModel)]="employee.empDesignation" placeholder="" required  pattern="^[a-zA-Z ]+$">
-                    <div *ngIf="empDesignation.invalid && empID.touched"><br>
+                    <div *ngIf="empDesignation.invalid && empDesignation.touched"><br>
 
                       <span *ngIf="empDesignation.errors.required"   class="validation-error ">Designation is required field</span>
                       <span *ngIf="empDesignation.errors.pattern"   class="validation-error">Enter valid Designation</span>
@@ -67,7 +67,7 @@
                   <mat-form-field appearance="outline">
                       <mat-label><b>Contact No</b></mat-label>
                       <input matInput name="empContact" #empContact="ngModel" class="form-control" [(ngModel)]="employee.empContact" placeholder="" required maxlength="10" minlength="10" pattern="^[0-9]+$">
-                      <div *ngIf="empContact.invalid && empID.touched"><br>
+                      <div *ngIf="empContact.invalid && empContact.touched"><br>
 
                         <span *ngIf="empContact.errors.required"   class="validation-error ">Contact is required field</span>
                         <span *ngIf="empContact.errors.minlength"   class="validation-error">Minimum character should be 10</span>
@@ -78,7 +78,7 @@
                   <mat-form-field appearance="outline">
                     <mat-label><b>Employee Email</b></mat-label>
                     <input matInput name="empEmail" #empEmail="ngModel" class="form-control" [(ngModel)]="employee.empEmail" placeholder="" required email>
-                    <div *ngIf="empEmail.invalid && empID.touched"><br>
+                    <div *ngIf="empEmail.invalid && empEmail.touched"><br>
                       <span *ngIf="empEmail.errors.required"   class="validation-error ">Email is required field</span>
                       <span *ngIf="empEmail.errors.email"   class="validation-error">Enter valid Email</span>
                     </div>

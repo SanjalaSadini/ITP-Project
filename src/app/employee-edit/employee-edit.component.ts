@@ -51,7 +51,9 @@ export class EmployeeEditComponent implements OnInit {
     if(confirm('Are you sure do you want to submit?')){
     this.service.updateEmployee(id,data).then(
       res => {
+        this.toastr.success('Updated successfully','Employee Information');
         this.router.navigate(['/employee-list']);
+        
       }
     );
     }else{
