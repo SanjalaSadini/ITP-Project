@@ -6,6 +6,7 @@ import { Router, Params } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { SignupService } from 'app/shared/services/signup.service';
 import { Signup } from 'app/shared/services/signup.model';
+import { ToastrService } from 'ngx-toastr';
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -32,7 +33,8 @@ export class SignUpComponent implements OnInit {
     public authService: AuthService,
     private router: Router,
     private firestore: AngularFirestore,
-    private signup : SignupService ) {
+    private signup : SignupService,
+    private toastr : ToastrService, ) {
 
   
       }
@@ -118,9 +120,11 @@ export class SignUpComponent implements OnInit {
     .then(res => {
       console.log(res);
       this.router.navigate(['/signIn']);
+      this.toastr.success('Your account has been created','Successfully');
       // this.errorMessage = "";
       // this.successMessage = "Your account has been created";
     }, err => {
+      this.toastr.error(err.message,'');
       console.log(err);
       // this.errorMessage = err.message;
       // this.successMessage = "";
