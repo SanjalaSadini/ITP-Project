@@ -12,6 +12,7 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { SupplierComponent } from './supplier/supplier.component';
 import { EmployeeEditComponent } from './employee-edit/employee-edit.component';
 import { SupplierInvoicesComponent } from './supplier-invoices/supplier-invoices.component';
+import { NewOrderComponent } from './order-mgmt/new-order/new-order.component';
 
 export const routes: Routes =[ 
 
@@ -50,8 +51,10 @@ export const routes: Routes =[
   
   { path: '', redirectTo: 'index', pathMatch: 'full'},
   { path: 'index', component: LandingComponent },
-  
-  
+
+  { path: 'order', component: NewOrderComponent,
+    children: [{ path: 'new-order', component: NewOrderComponent }]
+  },
 
 
 ];

@@ -39,6 +39,9 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { SupplierInvoicesComponent } from './supplier-invoices/supplier-invoices.component';
 
+//order management imports
+import {NewOrderComponent} from './order-mgmt/new-order/new-order.component'
+
 @NgModule({
   imports: [
     FormsModule,
@@ -75,7 +78,8 @@ import { SupplierInvoicesComponent } from './supplier-invoices/supplier-invoices
     EmployeeListComponent,
     SupplierComponent,
     EmployeeEditComponent,
-    SupplierInvoicesComponent
+    SupplierInvoicesComponent,
+    NewOrderComponent
 
 
 

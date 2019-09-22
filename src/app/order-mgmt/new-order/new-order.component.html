@@ -1,0 +1,143 @@
+<app-sidebar></app-sidebar>
+<div class ="emp" style="padding-left: 260px;">
+    <mat-card class = "card">
+        <div class = "menu">
+            <div class="card-header card-header-danger" >
+                <h3 class="card-title" style="color: whitesmoke"><b>New Order</b></h3>
+                <p class="card-category" style="color:whitesmoke"> <b>Fill Order Information</b></p>
+            </div>
+            <br>
+        </div>
+        <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+        <div class="row" style="width: 100%;">
+
+        <mat-card class="card1">
+
+                <input type="hidden" name="order_id" #order_id="ngModel" [(ngModel)]="order.order_id">
+                <input type="hidden" name="customer_id" #order_id="ngModel" [(ngModel)]="order.customer_id">
+
+                <mat-form-field appearance="outline">
+                    <mat-label><b>Dress Type</b></mat-label>
+                    <mat-select name="dress_id"#dress_id="ngModel" class="form-control" [(ngModel)]="order.dress_id" (ngModelChange)="loadAmount(form)" placeholder="" required>
+                        <mat-option *ngFor="let dress of dresses" value={{dress.dress_id}}>
+                            {{dress.dress_name}}
+                        </mat-option>
+
+                    </mat-select>
+                    <div *ngIf="dress_id.invalid && dress_id.touched" class="validation-error">This field is required.</div>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label><b>Fabric Type</b></mat-label>
+                    <mat-select name="fabric_id"#fabric_id="ngModel" class="form-control" [(ngModel)]="order.fabric_id" (ngModelChange)="loadAmount(form)" placeholder="" required>
+                        <mat-option *ngFor="let fabric of fabrics" value={{fabric.fabric_id}}>
+                            {{fabric.fabric_description}}
+                        </mat-option>
+
+                    </mat-select>
+                    <div *ngIf="fabric_id.invalid && fabric_id.touched" class="validation-error">This field is required.</div>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label><b>Material Type</b></mat-label>
+                    <mat-select name="material_id"#material_id="ngModel" class="form-control" [(ngModel)]="order.material_id" (ngModelChange)="loadAmount(form)" placeholder="" required>
+                        <mat-option *ngFor="let material of materials" value={{material.id}}>
+                            {{material.name}}
+                        </mat-option>
+
+                    </mat-select>
+                    <div *ngIf="material_id.invalid && material_id.touched" class="validation-error">This field is required.</div>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label><b>Quantity</b></mat-label>
+                    <input matInput name="order_quantity" #order_quantity="ngModel" class="form-control"  [(ngModel)]="order.order_quantity" (ngModelChange)="loadAmount(form)" placeholder="" required  pattern="^[0-9]+$">
+                    <div *ngIf="order_quantity.invalid && order_quantity.touched"><br>
+
+                        <span *ngIf="order_quantity.errors.required"   class="validation-error ">Quantity is required field</span>
+                        <span *ngIf="order_quantity.errors.pattern"   class="validation-error">Enter valid Quantity</span>
+                    </div>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label><b>Amount</b></mat-label>
+                    <input matInput name="amount" #amount="ngModel" class="form-control"  [(ngModel)]="order.amount" placeholder="" disabled [value]="orderAmount">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label><b>Delivery Date</b></mat-label>
+                    <input matInput name="delivery_date" #delivery_date="ngModel" class="form-control" [(ngModel)]="order.delivery_date" placeholder="Choose a date" maxlength="10" required type="date" >
+                    <div *ngIf="delivery_date.invalid && delivery_date.touched" class="validation-error">This field is required.</div>
+                    <mat-datepicker-toggle matSuffix [for]="fdate"></mat-datepicker-toggle>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label><b>Size</b></mat-label>
+                    <input matInput name="size" #size="ngModel" class="form-control" [(ngModel)]="order.size" placeholder="" required pattern="^[a-zA-Z0-9]+$">
+                    <div *ngIf="size.invalid && size.touched"><br>
+
+                        <span *ngIf="size.errors.required"   class="validation-error ">Size is required field</span>
+                        <span *ngIf="size.errors.pattern"   class="validation-error">Enter valid size</span>
+                    </div>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label><b>Color</b></mat-label>
+                    <input matInput name="color" #color="ngModel" class="form-control" [(ngModel)]="order.color" placeholder="" required pattern="^[a-zA-Z0-9]+$">
+                    <div *ngIf="color.invalid && color.touched"><br>
+
+                        <span *ngIf="color.errors.required"   class="validation-error ">Color is required field</span>
+                        <span *ngIf="color.errors.pattern"   class="validation-error">Enter valid color</span>
+                    </div>
+                </mat-form-field>
+
+
+                <mat-card-actions>
+                    <div class="form-group">
+                        <button class="btn btn-lg btn-block btn-wrp" type="submit" [disabled]="form.invalid" >Place Order</button>
+                    </div>
+                </mat-card-actions>
+
+
+
+        </mat-card>
+        <mat-card class="card2">
+
+            <mat-form-field appearance="outline">
+                <mat-label><b>Full Length</b></mat-label>
+                <input matInput name="length" #length="ngModel" class="form-control" [(ngModel)]="order.length" placeholder="">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label><b>Shoulders</b></mat-label>
+                <input matInput name="shoulder" #shoulder="ngModel" class="form-control" [(ngModel)]="order.shoulder" placeholder="">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label><b>Chest</b></mat-label>
+                <input matInput name="chest" #chest="ngModel" class="form-control" [(ngModel)]="order.chest" placeholder="">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label><b>Sleeve Length</b></mat-label>
+                <input matInput name="slLength" #slLength="ngModel" class="form-control" [(ngModel)]="order.slLength" placeholder="">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label><b>Natural Waist</b></mat-label>
+                <input matInput name="waist" #waist="ngModel" class="form-control" [(ngModel)]="order.waist" placeholder="">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label><b>Waist Length</b></mat-label>
+                <input matInput name="wLength" #wLength="ngModel" class="form-control" [(ngModel)]="order.wLength" placeholder="">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label><b>Neck Measurement</b></mat-label>
+                <input matInput name="neck" #neck="ngModel" class="form-control" [(ngModel)]="order.neck" placeholder="">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label><b>Comment/Design</b></mat-label>
+                <input matInput name="comment" #comment="ngModel" class="form-control" [(ngModel)]="order.comment" placeholder="">
+            </mat-form-field>
+
+        </mat-card>
+
+        </div>
+        </form>
+    </mat-card>
+</div>
