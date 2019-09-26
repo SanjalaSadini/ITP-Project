@@ -1,0 +1,46 @@
+<h1 mat-dialog-title>Edit Order</h1>
+<mat-dialog-content class="dialog-detail-content">
+
+    <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+        <div class="row" style="width: 100%;">
+
+            <mat-card class="card1">
+
+                <input type="hidden" name="order_id" #order_id="ngModel" [(ngModel)]="order.order_id">
+                <input type="hidden" name="customer_id" #order_id="ngModel" [(ngModel)]="order.customer_id">
+
+                <mat-form-field appearance="outline">
+                    <mat-label><b>Trial Date</b></mat-label>
+                    <input matInput name="trial_date" #trial_date="ngModel" class="form-control" [(ngModel)]="order.trial_date" placeholder="Choose a date" maxlength="10" type="date" >
+                    <mat-datepicker-toggle matSuffix [for]="fdate"></mat-datepicker-toggle>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label><b>Order Status</b></mat-label>
+                    <mat-select name="status"#status="ngModel" class="form-control" [(ngModel)]="order.status"  placeholder="">
+                        <mat-option [value]="1" *ngIf="!order.ready_for_worker">Pending</mat-option>
+                        <mat-option [value]="2" *ngIf="!order.proceed_to_sketch">Proceed for worker</mat-option>
+                        <mat-option [value]="3" *ngIf="!order.ready_to_deliver">Ready to sketch</mat-option>
+                        <mat-option [value]="4">Ready to Deliver</mat-option>
+                    </mat-select>
+
+                </mat-form-field>
+
+
+                <mat-card-actions>
+                    <div class="form-group">
+                        <button class="btn btn-lg btn-block btn-wrp" type="submit" [disabled]="form.invalid" >Save</button>
+                    </div>
+                </mat-card-actions>
+
+
+
+            </mat-card>
+        </div>
+    </form>
+
+
+</mat-dialog-content>
+
+<mat-dialog-actions class="dialog-detail-actions">
+    <button mat-button type="button" (click)="close()">Close</button>
+</mat-dialog-actions>

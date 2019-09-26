@@ -13,6 +13,10 @@ import { SupplierComponent } from './supplier/supplier.component';
 import { EmployeeEditComponent } from './employee-edit/employee-edit.component';
 import { SupplierInvoicesComponent } from './supplier-invoices/supplier-invoices.component';
 import { NewOrderComponent } from './order-mgmt/new-order/new-order.component';
+import {OrdersComponent} from './order-mgmt/orders/orders.component'
+import {ViewOrderComponent} from './order-mgmt/view-order/view-order.component';
+import {TrackOrderComponent} from './order-mgmt/track-order/track-order.component';
+import {EditOrderComponent} from './order-mgmt/edit-order/edit-order.component';
 
 export const routes: Routes =[ 
 
@@ -56,6 +60,18 @@ export const routes: Routes =[
     children: [{ path: 'new-order', component: NewOrderComponent }]
   },
 
+  { path: 'orders', component: OrdersComponent,
+    children: [{ path: 'orders', component: OrdersComponent }]
+  },
+  { path: 'view-order', component: ViewOrderComponent,
+    children: [{ path: 'view-order', component: ViewOrderComponent }]
+  },
+  { path: 'order-track', component: TrackOrderComponent,
+    children: [{ path: 'track-order', component: TrackOrderComponent }]
+  },
+  { path: 'edit-order', component: EditOrderComponent,
+    children: [{ path: 'edit-order', component: EditOrderComponent }]
+  },
 
 ];
 

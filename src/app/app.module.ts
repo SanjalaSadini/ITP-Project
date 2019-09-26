@@ -41,30 +41,40 @@ import { SupplierInvoicesComponent } from './supplier-invoices/supplier-invoices
 
 //order management imports
 import {NewOrderComponent} from './order-mgmt/new-order/new-order.component'
+import {OrdersComponent} from './order-mgmt/orders/orders.component'
+import {ViewOrderComponent} from './order-mgmt/view-order/view-order.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {TrackOrderComponent} from './order-mgmt/track-order/track-order.component';
+import {EditOrderComponent} from './order-mgmt/edit-order/edit-order.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
-  imports: [
-    FormsModule,
-    CommonModule,
-    BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot() ,// ToastrModule added
-    ReactiveFormsModule,
-    HttpModule,
-    MaterialModule,
-    AngularFireAuthModule,
-    ComponentsModule,
-    RouterModule.forRoot(routes),
-    AppRoutingModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
-    }),
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule,
-    Ng2SearchPipeModule,
-    AngularFireStorageModule 
-  
+    imports: [
+        FormsModule,
+        CommonModule,
+        BrowserAnimationsModule, // required animations module
+        ToastrModule.forRoot(),// ToastrModule added
+        ReactiveFormsModule,
+        HttpModule,
+        MaterialModule,
+        AngularFireAuthModule,
+        ComponentsModule,
+        RouterModule.forRoot(routes),
+        AppRoutingModule,
+        AgmCoreModule.forRoot({
+            apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
+        }),
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        AngularFirestoreModule,
+        Ng2SearchPipeModule,
+        AngularFireStorageModule,
+        MatDialogModule,
+        MatPaginatorModule,
+        MatTooltipModule
 
-  ],
+
+    ],
   
   declarations: [
     AppComponent,
@@ -79,8 +89,11 @@ import {NewOrderComponent} from './order-mgmt/new-order/new-order.component'
     SupplierComponent,
     EmployeeEditComponent,
     SupplierInvoicesComponent,
-    NewOrderComponent
-
+    NewOrderComponent,
+      OrdersComponent,
+    ViewOrderComponent,
+      TrackOrderComponent,
+      EditOrderComponent,
 
 
   ],

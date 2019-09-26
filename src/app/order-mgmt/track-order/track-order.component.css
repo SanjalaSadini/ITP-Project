@@ -1,0 +1,63 @@
+
+
+.example-button-row button,
+.example-button-row a {
+  width: 150px;
+  margin-top: 10px;
+  margin-left: 10px;
+  
+}
+
+
+
+.emp{
+  opacity: 50%;
+  background-size: 100%;
+  
+}
+
+.card1{
+  width: 48%;
+  margin: 1%;
+  background-color: rgba(255, 255, 255, 0.75);
+}
+.card2{
+  margin: 1%;
+  width:48%;
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+.Search{
+  margin-top: 10px;
+  width: 100%;
+  color: white;
+  
+}
+
+.formcard{
+  background-color: rgba(241, 236, 236, 0.85);
+}
+
+.sub-entry {
+  width: 50%;
+  float: left;
+}
+
+.sub-entry1 {
+  width: 50%;
+  float: right;
+}
+.title{
+  margin-left: 10px;
+  color:black;
+}
+
+.menu{
+  color: white;
+}
+
+.md-input-container label {
+  color: white;
+}
+
+

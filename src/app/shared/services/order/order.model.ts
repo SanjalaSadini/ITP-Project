@@ -5,7 +5,7 @@ export class Order {
     order_date: string;
     trial_date: string;
     delivery_date: string;
-    amount: number;
+    amount: string;
     order_quantity: string;
     proceed_to_sketch: boolean;
     ready_for_worker: boolean;

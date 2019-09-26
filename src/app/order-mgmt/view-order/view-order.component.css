@@ -1,0 +1,21 @@
+.lbl-title{
+  color:#7f7f7f;
+  font-size: 12px;
+}
+
+.lbl-value{
+  font-size: 16px;
+}
+
+.dialog-detail-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+.dialog-detail-content {
+  display: flex;
+  flex-direction: column;
+}
+.div_row{
+  margin-bottom: 10px;
+
+}

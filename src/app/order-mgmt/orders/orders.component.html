@@ -1,0 +1,60 @@
+<app-sidebar></app-sidebar>
+<div class ="emp" style="padding-left: 260px;">
+    <mat-card class = "card">
+        <div class = "menu">
+            <div class="card-header card-header-danger" >
+                <h3 class="card-title" style="color: whitesmoke"><b>Orders</b></h3>
+                <p class="card-category" style="color:whitesmoke"> <b>Orders Information</b></p>
+            </div>
+            <br>
+        </div>
+
+        <mat-card class="card">
+
+            <table class="table table-md">
+                <thead>
+                <tr>
+                    <th scope="col"><b>Order ID</b></th>
+                    <th scope="col"><b>Customer ID</b></th>
+                    <th scope="col"><b>Customer Name</b></th>
+                    <th scope="col"><b>Order Date</b></th>
+                    <th scope="col"><b>Trial Date</b></th>
+                    <th scope="col"><b>Delivery Date</b></th>
+                    <th scope="col"><b>Amount(Rs.)</b></th>
+
+                    <th scope="col"></th>
+
+                </tr>
+                </thead>
+
+                <ng-container *ngFor="let order of orderList | filter:searchText ">
+                    <tr class="table-striped">
+
+                        <td>{{order.order_id}}</td>
+                        <td>{{order.customer_id}}</td>
+                        <td>{{order.customer_name}}</td>
+                        <td>{{order.order_date}}</td>
+                        <td>{{order.trial_date}}</td>
+                        <td>{{order.delivery_date}}</td>
+                        <td>{{order.amount}}</td>
+
+                        <td>
+                            <a class="action-btn" style="color:rgb(36, 143, 192); cursor: pointer" (click)="onView(order)">
+                                <i class="material-icons">description</i>
+                            </a>
+                        </td>
+
+
+
+                    </tr>
+                </ng-container>
+
+            </table>
+            <button mat-raised-button
+                    type="button" (click)="nextPage()"
+                    class="btn btn-danger pull-right">Next</button>
+            <br><br><br>
+        </mat-card>
+
+    </mat-card>
+</div>

@@ -1,0 +1,67 @@
+<app-sidebar></app-sidebar>
+<div class ="emp" style="padding-left: 260px;">
+    <mat-card class = "card">
+        <div class = "menu">
+            <div class="card-header card-header-danger" >
+                <h3 class="card-title" style="color: whitesmoke"><b>Track Orders</b></h3>
+                <p class="card-category" style="color:whitesmoke"> <b>Track Order Information</b></p>
+            </div>
+            <br>
+        </div>
+
+        <mat-card class="card">
+
+            <table class="table table-md">
+                <thead>
+                <tr>
+                    <th scope="col"><b>Order ID</b></th>
+<!--                    <th scope="col"><b>Customer ID</b></th>-->
+                    <th scope="col"><b>Customer Name</b></th>
+                    <th scope="col"><b>Order Date</b></th>
+                    <th scope="col"><b>Trial Date</b></th>
+                    <th scope="col"><b>Delivery Date</b></th>
+                    <th scope="col"><b>Amount(Rs.)</b></th>
+                    <th scope="col"><b>Proceed For Worker</b></th>
+                    <th scope="col"><b>Ready For Sketch</b></th>
+                    <th scope="col"><b>Ready To Deliver</b></th>
+                    <th scope="col"><b>Returns</b></th>
+
+                    <th scope="col"></th>
+
+                </tr>
+                </thead>
+
+                <ng-container *ngFor="let order of orderList | filter:searchText ">
+                    <tr class="table-striped">
+
+                        <td>{{order.order_id}}</td>
+<!--                        <td>{{order.customer_id}}</td>-->
+                        <td>{{order.customer_name}}</td>
+                        <td>{{order.order_date}}</td>
+                        <td>{{order.trial_date}}</td>
+                        <td>{{order.delivery_date}}</td>
+                        <td>{{order.amount}}</td>
+                        <td>{{order.ready_for_worker?'Yes':'No'}}</td>
+                        <td>{{order.proceed_to_sketch?'Yes':'No'}}</td>
+                        <td>{{order.ready_to_deliver?'Yes':'No'}}</td>
+                        <td>{{order.returns}}</td>
+                        <td>
+                            <a class="action-btn" style="color:rgb(36, 143, 192); cursor: pointer" (click)="onView(order)" >
+                                <i class="material-icons">description</i>
+                            </a>
+                            <a class="action-btn" style="color:rgb(36, 143, 192); cursor: pointer" (click)="onEdit(order)" >
+                                <i class="material-icons">edit</i>
+                            </a>
+                        </td>
+
+
+
+                    </tr>
+                </ng-container>
+
+            </table>
+
+        </mat-card>
+
+    </mat-card>
+</div>

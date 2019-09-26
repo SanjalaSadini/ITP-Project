@@ -15,37 +15,16 @@ export class OrderService {
     }
 
 
-    getDressTypes() {
+    getOrders() {
 
-        return this.firestore.collection('dressType').snapshotChanges();
-
-    }
-
-    getDressType(id) {
-        return this.firestore.collection('dressType').doc(id).snapshotChanges();
+        return this.firestore.collection('order').snapshotChanges();
 
     }
 
-    getFabricProducts() {
-
-        return this.firestore.collection('FabricProducts').snapshotChanges();
-
-    }
-
-    getFabricProduct(id) {
-        return this.firestore.collection('FabricProducts').doc(id).snapshotChanges();
+    getOrder(id) {
+        return this.firestore.collection('order').doc(id).snapshotChanges();
 
     }
 
-    getMaterialTypes() {
-
-        return this.firestore.collection('MaterialType').snapshotChanges();
-
-    }
-
-    getMaterialType(id) {
-        return this.firestore.collection('MaterialType').doc(id).snapshotChanges();
-
-    }
 
 }

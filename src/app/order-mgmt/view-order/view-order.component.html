@@ -1,0 +1,148 @@
+<h1 mat-dialog-title>Order Details</h1>
+<mat-dialog-content class="dialog-detail-content">
+    <div class="div_row">
+        <mat-label class="lbl-title">Order Id</mat-label>
+        <br>
+        <mat-label class="lbl-value">{{order.order_id}}</mat-label>
+    </div>
+    <div class="div_row">
+        <mat-label class="lbl-title">Customer Id</mat-label>
+        <br>
+        <mat-label class="lbl-value">{{order.customer_id}}</mat-label>
+    </div>
+
+    <div class="div_row">
+        <mat-label class="lbl-title">Customer Name</mat-label>
+        <br>
+        <mat-label class="lbl-value">{{order.customer_name}}</mat-label>
+    </div>
+    <div class="div_row"  *ngIf="order.order_date">
+        <mat-label class="lbl-title">Order Date</mat-label>
+        <br>
+        <mat-label class="lbl-value">{{order.order_date}}</mat-label>
+    </div>
+
+    <div class="div_row"  *ngIf="order.trial_date">
+        <mat-label class="lbl-title">Trial Date</mat-label>
+        <br>
+        <mat-label class="lbl-value">{{order.trial_date}}</mat-label>
+    </div>
+    <div class="div_row"  *ngIf="order.delivery_date">
+        <mat-label class="lbl-title">Delivery Date</mat-label>
+        <br>
+        <mat-label class="lbl-value">{{order.delivery_date}}</mat-label>
+    </div>
+    <div class="div_row"  >
+        <mat-label class="lbl-title">Ready For Worker</mat-label>
+        <br>
+        <mat-label class="lbl-value">{{order.ready_for_worker?'yes':'no'}}</mat-label>
+    </div>
+
+    <div class="div_row"  >
+        <mat-label class="lbl-title">Proceed To Sketch</mat-label>
+        <br>
+        <mat-label class="lbl-value">{{order.proceed_to_sketch?'yes':'no'}}</mat-label>
+    </div>
+    <div class="div_row"  >
+        <mat-label class="lbl-title">Ready To Deliver</mat-label>
+        <br>
+        <mat-label class="lbl-value">{{order.ready_to_deliver?'yes':'no'}}</mat-label>
+    </div>
+
+
+    <div class="div_row" *ngIf="order.dress_id">
+        <mat-label class="lbl-title">Dress Type</mat-label>
+        <br>
+        <mat-label class="lbl-value" >{{order.dress_id}}</mat-label>
+    </div>
+
+    <div class="div_row" *ngIf="order.fabric_id">
+        <mat-label class="lbl-title">Fabric Type</mat-label>
+        <br>
+        <mat-label class="lbl-value" >{{order.fabric_id}}</mat-label>
+    </div>
+
+    <div class="div_row" *ngIf="order.material_id">
+        <mat-label class="lbl-title">Material Type</mat-label>
+        <br>
+        <mat-label class="lbl-value" >{{order.material_id}}</mat-label>
+    </div>
+
+    <div class="div_row" *ngIf="order.order_quantity">
+        <mat-label class="lbl-title">Quantity</mat-label>
+        <br>
+        <mat-label class="lbl-value" >{{order.order_quantity}}</mat-label>
+    </div>
+
+    <div class="div_row">
+        <mat-label class="lbl-title">Amount</mat-label>
+        <br>
+        <mat-label class="lbl-value">{{order.amount}}</mat-label>
+    </div>
+
+    <div class="div_row" *ngIf="order.size">
+        <mat-label class="lbl-title">Size</mat-label>
+        <br>
+        <mat-label class="lbl-value" >{{order.size}}</mat-label>
+    </div>
+
+    <div class="div_row" *ngIf="order.color">
+        <mat-label class="lbl-title">Color</mat-label>
+        <br>
+        <mat-label class="lbl-value" >{{order.color}}</mat-label>
+    </div>
+
+    <div class="div_row" *ngIf="order.length">
+        <mat-label class="lbl-title">Full Length</mat-label>
+        <br>
+        <mat-label class="lbl-value" >{{order.length}}</mat-label>
+    </div>
+
+    <div class="div_row" *ngIf="order.shoulder">
+        <mat-label class="lbl-title">Shoulders</mat-label>
+        <br>
+        <mat-label class="lbl-value" >{{order.shoulder}}</mat-label>
+    </div>
+
+    <div class="div_row" *ngIf="order.chest">
+        <mat-label class="lbl-title">Chest</mat-label>
+        <br>
+        <mat-label class="lbl-value" >{{order.chest}}</mat-label>
+    </div>
+
+    <div class="div_row" *ngIf="order.slLength">
+        <mat-label class="lbl-title">Sleeve Length</mat-label>
+        <br>
+        <mat-label class="lbl-value" >{{order.slLength}}</mat-label>
+    </div>
+
+    <div class="div_row" *ngIf="order.waist">
+        <mat-label class="lbl-title">Natural Waist</mat-label>
+        <br>
+        <mat-label class="lbl-value" >{{order.waist}}</mat-label>
+    </div>
+
+    <div class="div_row" *ngIf="order.wLength">
+        <mat-label class="lbl-title">Waist Length</mat-label>
+        <br>
+        <mat-label class="lbl-value" >{{order.wLength}}</mat-label>
+    </div>
+
+    <div class="div_row" *ngIf="order.neck">
+        <mat-label class="lbl-title">Neck Measurements</mat-label>
+        <br>
+        <mat-label class="lbl-value" >{{order.neck}}</mat-label>
+    </div>
+
+
+    <div class="div_row" *ngIf="order.comment">
+        <mat-label class="lbl-title">Comments</mat-label>
+        <br>
+        <mat-label class="lbl-value" >{{order.comment}}</mat-label>
+    </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions class="dialog-detail-actions">
+    <button mat-button type="button" (click)="close()">Close</button>
+</mat-dialog-actions>

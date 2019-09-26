@@ -12,15 +12,20 @@ import {FabricProducts} from 'app/shared/services/order/fabricProducts.model';
 import {MaterialType} from 'app/shared/services/order/materialType.model';
 import {OrderPreDataService} from 'app/shared/services/order/orderPreData.service';
 import {Employee} from '../../shared/services/employee.model';
+import {OrderRequire} from '../../shared/services/order/orderRequires.model';
+import {DatePipe} from '@angular/common';
 
 @Component({
     selector: 'app-new-order',
     templateUrl: './new-order.component.html',
-    styleUrls: ['./new-order.component.css']
+    styleUrls: ['./new-order.component.css'],
+    providers: [DatePipe]
 })
 export class NewOrderComponent implements OnInit {
 
     order: PlaceOrder
+    orderData: Order
+    requireData: OrderRequire
     public ordersForm: FormGroup;
     ref: AngularFireStorageReference;
     task: AngularFireUploadTask;
@@ -34,6 +39,8 @@ export class NewOrderComponent implements OnInit {
     materialType: MaterialType;
     orderAmount: string;
 
+    orderDate: string;
+
     constructor(private firestore: AngularFirestore,
                 private toastr: ToastrService,
                 public fb: FormBuilder,
@@ -41,10 +48,13 @@ export class NewOrderComponent implements OnInit {
                 private route: ActivatedRoute,
                 private afstorage: AngularFireStorage,
                 private  authService: AuthService,
-                private orderPreService: OrderPreDataService) {
+                private orderPreService: OrderPreDataService,
+                private datePipe: DatePipe) {
         this.order = new PlaceOrder();
+        this.orderData = new Order();
+        this.requireData = new OrderRequire();
+        this.orderDate = this.datePipe.transform(new Date(), 'yyyy-MM-dd')
     }
-
 
     ngOnInit() {
         this.ordersForm = this.fb.group({
@@ -120,17 +130,51 @@ export class NewOrderComponent implements OnInit {
     }
 
     onSubmit(form: NgForm) {
-        let dataOrder = Object.assign({}, form.value);
-        let dataRequire = Object.assign({}, form.value);
-        let id = this.firestore.createId();
-        this.firestore.collection('order').doc(id).set(JSON.parse(JSON.stringify(this.order))).then(() => {
-            this.toastr.success('Submitted successfully', 'Employee Information');
-            console.log(id);
+        const dataOrder = Object.assign({}, form.value);
+        const id = this.firestore.createId();
+        this.orderData = {
+            order_id: id,
+            customer_id: 'ypbXPLWxQpycb4ZiJtqr',  // TODO
+            amount: this.orderAmount,
+            delivery_date: dataOrder.delivery_date,
+            order_date: this.orderDate,
+            order_quantity: dataOrder.order_quantity,
+            proceed_to_sketch: false,
+            ready_for_worker: false,
+            ready_to_deliver: false,
+            returns: 0,
+            trial_date: ''
+        };
+        this.requireData = {
+            order_id: id,
+            dress_id: this.dressType.dress_id,
+            fabric_id: this.fabricType.fabric_id,
+            material_id: this.materialType.id,
+            order_quantity: dataOrder.order_quantity,
+            size: dataOrder.size,
+            color: dataOrder.color,
+            length: dataOrder.length !== undefined ? dataOrder.length : '',
+            shoulder: dataOrder.shoulder !== undefined ? dataOrder.shoulder : '',
+            chest: dataOrder.chest !== undefined ? dataOrder.chest : '',
+            slLength: dataOrder.slLength !== undefined ? dataOrder.slLength : '',
+            waist: dataOrder.waist !== undefined ? dataOrder.waist : '',
+            wLength: dataOrder.wLength !== undefined ? dataOrder.wLength : '',
+            neck: dataOrder.neck !== undefined ? dataOrder.neck : '',
+            comment: dataOrder.comment !== undefined ? dataOrder.comment : '',
+        };
+        this.firestore.collection('order').doc(id).set(JSON.parse(JSON.stringify(this.orderData))).then(() => {
+            this.firestore.collection('requires').add(JSON.parse(JSON.stringify(this.requireData))).then(() => {
+                this.toastr.success('Placed successfully', 'New Order');
+                console.log(id);
+                setTimeout(() => {
+                    this.router.navigate(['/orders']);
+                }, 3000);
+            });
         });
     }
 
     loadAmount(form: NgForm) {
-        let datas = Object.assign({}, form.value);
+        const datas = Object.assign({}, form.value);
         console.log(datas.dress_id);
 
         if (datas.dress_id !== undefined && datas.fabric_id !== undefined &&
@@ -155,7 +199,6 @@ export class NewOrderComponent implements OnInit {
                                         id: datax.payload.id,
                                         ...datax.payload.data()
                                     } as MaterialType;
-                                    // alert(this.dressType.amount + 'F ' + this.fabricType.amount + ' M' + this.materialType.amount + ' Q' + datas.order_quantity);
                                     this.orderAmount = ((parseFloat(this.dressType.amount) +
                                         parseFloat(this.fabricType.amount) +
                                         parseFloat(this.materialType.amount)) * (parseInt(datas.order_quantity, 10))).toFixed(2);
