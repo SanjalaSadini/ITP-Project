@@ -48,6 +48,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {TrackOrderComponent} from './order-mgmt/track-order/track-order.component';
 import {EditOrderComponent} from './order-mgmt/edit-order/edit-order.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {OrderPaymentComponent} from './order-mgmt/order-payment/order-payment.component';
 
 @NgModule({
     imports: [
@@ -94,6 +95,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     ViewOrderComponent,
       TrackOrderComponent,
       EditOrderComponent,
+      OrderPaymentComponent,
 
 
   ],

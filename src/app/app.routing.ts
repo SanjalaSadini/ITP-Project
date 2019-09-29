@@ -17,6 +17,7 @@ import {OrdersComponent} from './order-mgmt/orders/orders.component'
 import {ViewOrderComponent} from './order-mgmt/view-order/view-order.component';
 import {TrackOrderComponent} from './order-mgmt/track-order/track-order.component';
 import {EditOrderComponent} from './order-mgmt/edit-order/edit-order.component';
+import {OrderPaymentComponent} from './order-mgmt/order-payment/order-payment.component';
 
 export const routes: Routes =[ 
 
@@ -71,6 +72,9 @@ export const routes: Routes =[
   },
   { path: 'edit-order', component: EditOrderComponent,
     children: [{ path: 'edit-order', component: EditOrderComponent }]
+  },
+  { path: 'order-payment/:id', component: OrderPaymentComponent,
+    // children: [{ path: 'order-payment', component: OrderPaymentComponent }]
   },
 
 ];

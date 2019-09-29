@@ -1,0 +1,63 @@
+<app-sidebar></app-sidebar>
+<div class ="emp" style="padding-left: 260px;">
+    <mat-card class = "card">
+        <div class = "menu">
+            <div class="card-header card-header-danger" >
+                <h3 class="card-title" style="color: whitesmoke"><b>Pay Order</b></h3>
+                <p class="card-category" style="color:whitesmoke"> <b>Fill Payment Information</b></p>
+            </div>
+            <br>
+        </div>
+        <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+        <div class="row" style="width: 100%;">
+
+        <mat-card class="card1">
+
+                <input type="hidden" name="order_id" #order_id="ngModel" [(ngModel)]="orderPayment.order_id">
+
+            <mat-form-field appearance="outline">
+                <mat-label><b>Card Type</b></mat-label>
+                <mat-select name="cardType"#cardType="ngModel" class="form-control" [(ngModel)]="orderPayment.cardType"  placeholder="" required>
+                    <mat-option [value]="1" >Visa</mat-option>
+                    <mat-option [value]="2" >MasterCard</mat-option>
+                </mat-select>
+                <div *ngIf="cardType.invalid && cardType.touched" class="validation-error">This field is required.</div>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label><b>Card Number</b></mat-label>
+                <input matInput name="card" #card="ngModel" class="form-control" [(ngModel)]="orderPayment.card" placeholder="" required pattern="^[0-9]+$"  minlength="16" maxlength="16">
+                <div *ngIf="card.invalid && card.touched"><br>
+
+                    <span *ngIf="card.errors.required"   class="validation-error ">Card Number is required field</span>
+                    <span *ngIf="card.errors.minlength || card.errors.maxlength || card.errors.pattern"   class="validation-error">Card must contain 16 digits only</span>
+                </div>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label><b>Expire Date</b></mat-label>
+                <input matInput name="expire_date" #expire_date="ngModel" class="form-control" [(ngModel)]="orderPayment.expire_date" placeholder="Choose a date" maxlength="10" required type="date" >
+                <div *ngIf="expire_date.invalid && expire_date.touched" class="validation-error">This field is required.</div>
+                <mat-datepicker-toggle matSuffix [for]="fdate"></mat-datepicker-toggle>
+            </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label><b>Amount</b></mat-label>
+                    <input matInput name="amount" #amount="ngModel" class="form-control"  [(ngModel)]="orderPayment.amount" placeholder="" disabled [value]="orderAmount">
+                </mat-form-field>
+
+                <mat-card-actions>
+                    <div class="form-group">
+                        <button class="btn btn-lg btn-block btn-wrp" type="submit" >Pay</button>
+                    </div>
+                </mat-card-actions>
+
+
+
+        </mat-card>
+
+
+        </div>
+        </form>
+    </mat-card>
+</div>

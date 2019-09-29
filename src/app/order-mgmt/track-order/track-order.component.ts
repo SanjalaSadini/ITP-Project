@@ -233,5 +233,11 @@ export class TrackOrderComponent implements OnInit {
         });
     }
 
+    onPay(order: OrderView) {
+        if (confirm('Are you sure do you want to pay this order?')) {
+            this.router.navigate(['/order-payment', order.order_id])
 
+        } else {
+        }
+    }
 }
