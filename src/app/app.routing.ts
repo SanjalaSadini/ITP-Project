@@ -18,6 +18,8 @@ import {ViewOrderComponent} from './order-mgmt/view-order/view-order.component';
 import {TrackOrderComponent} from './order-mgmt/track-order/track-order.component';
 import {EditOrderComponent} from './order-mgmt/edit-order/edit-order.component';
 import {OrderPaymentComponent} from './order-mgmt/order-payment/order-payment.component';
+import { EmployeeDepartmentsComponent } from './employee-departments/employee-departments.component';
+import { EmployeeReportsComponent } from './employee-reports/employee-reports.component';
 
 export const routes: Routes =[ 
 
@@ -75,6 +77,10 @@ export const routes: Routes =[
   },
   { path: 'order-payment/:id', component: OrderPaymentComponent,
     // children: [{ path: 'order-payment', component: OrderPaymentComponent }]
+  },//department_reports
+  { path: 'department_reports/:name', component: EmployeeDepartmentsComponent,
+  },
+  { path: 'employee_reports', component: EmployeeReportsComponent,
   },
 
 ];

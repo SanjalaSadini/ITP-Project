@@ -1,0 +1,22 @@
+<app-sidebar></app-sidebar>
+<div class ="emp" style="padding-left: 260px;">
+  <h1 class="center-snackbar">Employee Report</h1>
+    <mat-card class = "card">
+        <mat-card >
+            <mat-nav-list *ngFor="let employee of employeeList">
+              <div>
+                  <mat-list-item>
+                      <a matLine>Employee Name :::::: {{ employee.empName }}</a>
+                      <a matLine>Employee Contact ::::::: {{ employee.empContact }}</a>
+                      <a matLine>Employee Email ::::::: {{ employee.empEmail }}</a>
+                      <a matLine>Department ::::::: {{ employee.empDept }}</a>
+                      <a matLine>Designation ::::::: {{ employee.empDesignation }}</a>
+                      <a matLine>Qualifications ::::::: {{ employee.empEdu }}</a>
+                      <a matLine>Gender ::::::: {{ employee.empGender }}</a>
+                      <a matLine>Starting Date ::::::: {{ employee.startDate }}</a>
+                    </mat-list-item>
+              </div>
+            </mat-nav-list>
+          </mat-card>
+      </mat-card>
+      </div>

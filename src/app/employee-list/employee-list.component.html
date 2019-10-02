@@ -1,73 +1,111 @@
 <app-sidebar></app-sidebar>
-<div class ="emp" style="padding-left: 260px;">
-<mat-card class = "card">
-    <div class = "menu">
-        <div class="card-header card-header-danger">
-            <h3 class="card-title" style="color:white"><b> Edit Employee Information</b></h3>
-            <p class="card-category" style="color:whitesmoke"> <b> Edit Employee Information</b></p>
+<div class="emp" style="padding-left: 260px;">
+    <mat-card class="card">
+        <div class="menu">
+            <div class="card-header card-header-danger">
+                <h3 class="card-title" style="color:white">
+                    <b> Edit Employee Information</b>
+                </h3>
+                <p class="card-category" style="color:whitesmoke">
+                    <b> Edit Employee Information</b>
+                </p>
+            </div>
+            <br>
+            <mat-form-field>
+                <mat-label class="Search" style="color: black">Search</mat-label>
+                <input style="color: black" matInput #term (keyup)="onSearch($event.target.value)" [(ngModel)]="searchText">
+                <mat-icon matSuffix style="color: black">search</mat-icon>
+            </mat-form-field>
         </div>
-        <br>
-        <mat-form-field >
-            <mat-label class = "Search" style="color: black">Search</mat-label>
-            <input style="color: black" matInput #term (keyup)="onSearch($event.target.value)" [(ngModel)]="searchText">
-            <mat-icon matSuffix style="color: black">search</mat-icon>
-        </mat-form-field>
-    </div>
-       <mat-card class="card">
+        <mat-card class="card">
 
-        <table class="table table-md">
-            <thead>
-              <tr>
-                <th scope="col"><b>Employee ID</b></th>
-                <th scope="col"><b>Employee Name</b></th>
-                <th scope="col"><b>Department</b></th>
-                <th scope="col"><b>Designation</b></th>
-                <th scope="col"><b>Address</b></th>
-                <th scope="col"><b>Contact No</b></th>
-                <th scope="col"><b>Employee Email</b></th>
-                <th scope="col"><b>Date of Birth</b></th>
-                <th scope="col"><b>Gender</b></th>
-                <th scope="col"><b>Work start Date</b></th>
-                <th scope="col"><b>Educational Qualification</b></th>
-                <th scope="col"></th>
-               
-              </tr>
-            </thead>
-                     
-            <ng-container *ngFor="let employee of employeeList | filter:searchText ">
-              <tr class="table-striped">
-              
-                <td>{{employee.empID}}</td>
-                <td>{{employee.empName}}</td>
-                <td>{{employee.empDept}}</td>
-                <td>{{employee.empDesignation}}</td>
-                <td>{{employee.empAddress}}</td>
-                <td>{{employee.empContact}}</td>
-                <td>{{employee.empEmail}}</td>
-                <td>{{employee.birthday}}</td>
-                <td>{{employee.empGender}}</td>
-                <td>{{employee.startDate}}</td>
-                <td>{{employee.empEdu}}</td>
-                
-          
-                <td>
-                  <a class="action-btn" style="color:rgb(36, 143, 192); cursor: pointer" (click)="onEdit(employee)">
-                      <i class="material-icons">edit</i>
-                  </a>
-                  <a class="action-btn" style="color:lightcoral; cursor: pointer" (click)="onDelete(employee.id)">
-                      <i class="material-icons">delete</i>
-                  </a>
-                </td>
+            <table class="table table-md">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            <b>Employee ID</b>
+                        </th>
+                        <th scope="col">
+                            <b>Employee Name</b>
+                        </th>
+                        <th scope="col">
+                            <b>Department</b>
+                        </th>
+                        <th scope="col">
+                            <b>Designation</b>
+                        </th>
+                        <th scope="col">
+                            <b>Address</b>
+                        </th>
+                        <th scope="col">
+                            <b>Contact No</b>
+                        </th>
+                        <th scope="col">
+                            <b>Employee Email</b>
+                        </th>
+                        <th scope="col">
+                            <b>Date of Birth</b>
+                        </th>
+                        <th scope="col">
+                            <b>Gender</b>
+                        </th>
+                        <th scope="col">
+                            <b>Work start Date</b>
+                        </th>
+                        <th scope="col">
+                            <b>Educational Qualification</b>
+                        </th>
+                        <th scope="col"></th>
 
-              </tr> 
-            </ng-container>
-            
-         
-          </table>
+                    </tr>
+                </thead>
+
+                <ng-container *ngFor="let employee of employeeList | filter:searchText ">
+                    <tr class="table-striped">
+
+                        <td>{{employee.empID}}</td>
+                        <td>{{employee.empName}}</td>
+                        <td>{{employee.empDept}}</td>
+                        <td>{{employee.empDesignation}}</td>
+                        <td>{{employee.empAddress}}</td>
+                        <td>{{employee.empContact}}</td>
+                        <td>{{employee.empEmail}}</td>
+                        <td>{{employee.birthday}}</td>
+                        <td>{{employee.empGender}}</td>
+                        <td>{{employee.startDate}}</td>
+                        <td>{{employee.empEdu}}</td>
+
+
+                        <td>
+                            <a class="action-btn" style="color:rgb(36, 143, 192); cursor: pointer" (click)="onEdit(employee)">
+                                <i class="material-icons">edit</i>
+                            </a>
+                            <a class="action-btn" style="color:lightcoral; cursor: pointer" (click)="onDelete(employee.id)">
+                                <i class="material-icons">delete</i>
+                            </a>
+                        </td>
+
+                    </tr>
+                </ng-container>
+            </table>
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <h4>Department</h4>
+                    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+                        <select class="custom-select" formControlName="departmentName">
+                            <option value="" disabled>Choose the department</option>
+                            <option *ngFor="let department of departments" [ngValue]="department">{{department}}</option>
+                        </select>
+                        <div class="invalid-feedback" *ngIf="isSubmitted && departmentName.errors?.required">
+                        </div>
+                        <button mat-raised-button type="submit">Submit</button>
+                    </form>
+                </div>
+                <div>
+                    <button type="submit" mat-raised-button (click)="reportPage()">Report</button>
+                </div>
+            </div>
+        </mat-card>
 
     </mat-card>
-
-</mat-card>
 </div>
-
- 
