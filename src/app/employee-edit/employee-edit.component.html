@@ -105,7 +105,6 @@
                     <input matInput name="empEdu" #empEdu="ngModel" class="form-control"  [(ngModel)]="employee.empEdu" placeholder="">
                 </mat-form-field>
                 <input type="file" (change)="upload($event)" accept=".png,.jpg,.txt"/>
-
                   <mat-card-actions>
                           <div class="form-group">
                           <button class="btn btn-lg btn-block btn-wrp" type="submit" [disabled]="form.invalid" >SUBMIT</button>    

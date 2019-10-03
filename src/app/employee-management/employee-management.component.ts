@@ -36,8 +36,6 @@ export class EmployeeManagementComponent implements OnInit {
   
 
   ngOnInit() {
-    console.log(this.service.formData);
-
     this.employeesForm = this.fb.group({
 
       id: new FormControl(null),
@@ -105,13 +103,10 @@ export class EmployeeManagementComponent implements OnInit {
     }
    
   }
-
    upload(event){
      debugger;
      this.ref=this.afstorage.ref(event.target.files[0].name)
      this.task=this.ref.put(event.target.files[0]);
   }
-  
-  
 
 }

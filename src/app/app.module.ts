@@ -49,6 +49,8 @@ import {TrackOrderComponent} from './order-mgmt/track-order/track-order.componen
 import {EditOrderComponent} from './order-mgmt/edit-order/edit-order.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {OrderPaymentComponent} from './order-mgmt/order-payment/order-payment.component';
+import { EmployeeDepartmentsComponent } from './employee-departments/employee-departments.component';
+import { EmployeeReportsComponent } from './employee-reports/employee-reports.component';
 
 @NgModule({
     imports: [
@@ -96,6 +98,8 @@ import {OrderPaymentComponent} from './order-mgmt/order-payment/order-payment.co
       TrackOrderComponent,
       EditOrderComponent,
       OrderPaymentComponent,
+      EmployeeDepartmentsComponent,
+      EmployeeReportsComponent,
 
 
   ],
