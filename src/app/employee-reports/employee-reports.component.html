@@ -8,6 +8,24 @@
       </div>
       <br>
   </div>
+
+  <div class="col-md-12">
+      <div class="col-md-6">
+          <h4>Department</h4>
+          <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+              <select class="custom-select" formControlName="departmentName">
+                  <option value="" disabled>Choose the department</option>
+                  <option *ngFor="let department of departments" [ngValue]="department">{{department}}</option>
+              </select>
+              <div class="invalid-feedback" *ngIf="isSubmitted && departmentName.errors?.required">
+              </div>
+              <button mat-raised-button type="submit">Submit</button>
+          </form>
+      </div>
+      <!-- <div>
+          <button type="submit" mat-raised-button (click)="reportPage()">Report Genarate</button>
+      </div> -->
+  </div>
     
         <mat-card >
             <mat-nav-list *ngFor="let employee of employeeList">
