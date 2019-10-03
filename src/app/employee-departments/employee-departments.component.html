@@ -1,7 +1,14 @@
 <app-sidebar></app-sidebar>
-<div class="emp" style="padding-left: 260px;"> 
-   <h1 class="center-snackbar">Department ::::: {{departmentName}}</h1>
-  <mat-card >
+<div class="emp" style="padding-left: 260px;">
+  <mat-card class = "card">
+  <div class = "menu">
+    <div class="card-header card-header-danger" >
+        <h3 class="card-title" style="color: whitesmoke"><b>Employee Department Vise Report</b></h3>
+        <h3 class="card-category" style="color:whitesmoke"> <b>Department ::::: {{departmentName}}</b></h3>
+    </div>
+    <br>
+</div> 
+   <!-- <h1 class="center-snackbar">Department ::::: {{departmentName}}</h1> -->
     <mat-nav-list *ngFor="let employee of employeeList">
       <div *ngIf="employee.empDept == departmentName">
           <mat-list-item>
