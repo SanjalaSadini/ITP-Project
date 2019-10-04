@@ -135,6 +135,12 @@
                 <input matInput name="comment" #comment="ngModel" class="form-control" [(ngModel)]="order.comment" placeholder="">
             </mat-form-field>
 
+            <mat-card-actions>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-block btn-wrp" type="button" (click)="demoOrder(order)">Demo Button</button>
+                </div>
+            </mat-card-actions>
+
         </mat-card>
 
         </div>
