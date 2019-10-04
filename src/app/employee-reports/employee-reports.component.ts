@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { EmployeeService } from 'app/shared/services/employee.service';
 import { Employee } from 'app/shared/services/employee.model';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { FormBuilder,Validators } from '@angular/forms';
 @Component({
   selector: 'app-employee-reports',
   templateUrl: './employee-reports.component.html',
@@ -10,15 +11,27 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class EmployeeReportsComponent implements OnInit {
 
-  departmentName : string;
+  isSubmitted = false;
   employeeList: Employee[];
+  searchText: string;
+  selectedDepartmentName:string;
+  departments: any = ['IT', 'Sales', 'Inventory', 'Management']
+
+  // departmentName : string;
+
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private service : EmployeeService,
     private firestore: AngularFirestore,
+    private fb: FormBuilder
   ) { }
+
+  registrationForm = this.fb.group({
+    departmentName:  ['', [Validators.required]]
+  })
+
 
   ngOnInit() {
     this.service.getEmployees().subscribe(actionArray => {
@@ -30,6 +43,21 @@ export class EmployeeReportsComponent implements OnInit {
 
       })
     });
+  }
+
+  get departmentName() {
+    return this.registrationForm.get('departmentName');
+  }
+
+  onSubmit() {
+    this.isSubmitted = true;
+    if (!this.registrationForm.valid) {
+      return false;
+    } else {
+      this.selectedDepartmentName = this.registrationForm.value.departmentName;
+      this.router.navigate(['/department_reports', this.selectedDepartmentName])
+    }
+
   }
 
 }

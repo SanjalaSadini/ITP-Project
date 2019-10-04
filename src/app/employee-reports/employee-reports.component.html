@@ -1,7 +1,35 @@
 <app-sidebar></app-sidebar>
 <div class ="emp" style="padding-left: 260px;">
-  <h1 class="center-snackbar">Employee Report</h1>
-    <mat-card class = "card">
+  <mat-card class = "card">
+    <div class = "menu">
+      <div class="card-header card-header-danger" >
+          <h3 class="card-title" style="color: whitesmoke"><b>Employee Report</b></h3>
+          <p class="card-category" style="color:whitesmoke"> <b>All Employee Information</b></p>
+      </div>
+      <br>
+  </div>
+
+  <div class="col-md-12">
+      <div class="col-md-6">
+          <h4>Department</h4>
+          <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+              <select class="custom-select" formControlName="departmentName">
+                  <option value="" disabled>Choose the department</option>
+                  <option *ngFor="let department of departments" [ngValue]="department">{{department}}</option>
+              </select>
+              <div class="invalid-feedback" *ngIf="isSubmitted && departmentName.errors?.required">
+              </div>
+              <button type="submit">Submit</button>
+          </form>
+      </div>
+      <!-- <div>
+          <button type="submit" mat-raised-button (click)="reportPage()">Report Genarate</button>
+      </div> -->
+  </div>
+  <br>
+  <button (click)="downloadPDF()"><b>Export to PDF</b></button>
+  <br>
+    
         <mat-card >
             <mat-nav-list *ngFor="let employee of employeeList">
               <div>

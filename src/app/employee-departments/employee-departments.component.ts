@@ -34,4 +34,8 @@ export class EmployeeDepartmentsComponent implements OnInit {
   
   }
 
+  public downloadPDF(){
+     
+  }
+
 }
