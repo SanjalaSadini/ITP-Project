@@ -162,8 +162,18 @@ export class OrdersComponent implements OnInit {
         });
     }
 
-    nextPage(){
+    nextPage() {
         this.router.navigate(['/order-track']);
+    }
+
+    onDelete(order: OrderView) {
+        if (confirm('Are you sure you want to delete?')) {
+
+            this.firestore.doc('order/' + order.order_id).delete();
+            this.toastr.warning('removed successfully', 'Order');
+        } else {
+
+        }
     }
 
 }

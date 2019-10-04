@@ -7,6 +7,11 @@
                 <p class="card-category" style="color:whitesmoke"> <b>Track Order Information</b></p>
             </div>
             <br>
+            <mat-form-field>
+                <mat-label class="Search" style="color: black">Search</mat-label>
+                <input style="color: black" matInput #term (keyup)="onSearch($event.target.value)" [(ngModel)]="searchText">
+                <mat-icon matSuffix style="color: black">search</mat-icon>
+            </mat-form-field>
         </div>
 
         <mat-card class="card">

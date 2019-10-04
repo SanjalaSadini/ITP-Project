@@ -213,4 +213,27 @@ export class NewOrderComponent implements OnInit {
 
     }
 
+    demoOrder(ordert: PlaceOrder) {
+        this.order.color = 'Blue';
+        this.order.size = 'XL';
+        this.order.delivery_date = '2019-10-10';
+        this.order.order_quantity = '10';
+        this.order.length = '23',
+            this.order.shoulder = '33';
+        this.order.chest = '16';
+        this.order.slLength = '28';
+        this.order.waist = '19';
+        this.order.wLength = '15';
+        this.order.neck = '12';
+        this.order.comment = 'other information will be provided at trial date';
+        this.order.dress_id = this.dresses[0].dress_id;
+        this.order.material_id = this.materials[0].id;
+        this.order.fabric_id = this.fabrics[0].fabric_id;
+
+        this.orderAmount = ((parseFloat(this.dresses[0].amount) +
+            parseFloat(this.fabrics[0].amount) +
+            parseFloat(this.materials[0].amount)) * 10).toFixed(2);
+
+    }
+
 }
