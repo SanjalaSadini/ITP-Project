@@ -4,7 +4,7 @@
     <div class = "menu">
       <div class="card-header card-header-danger" >
           <h3 class="card-title" style="color: whitesmoke"><b>Employee Report</b></h3>
-          <p class="card-category" style="color:whitesmoke"> <b>Employee Information</b></p>
+          <p class="card-category" style="color:whitesmoke"> <b>All Employee Information</b></p>
       </div>
       <br>
   </div>
@@ -19,13 +19,16 @@
               </select>
               <div class="invalid-feedback" *ngIf="isSubmitted && departmentName.errors?.required">
               </div>
-              <button mat-raised-button type="submit">Submit</button>
+              <button type="submit">Submit</button>
           </form>
       </div>
       <!-- <div>
           <button type="submit" mat-raised-button (click)="reportPage()">Report Genarate</button>
       </div> -->
   </div>
+  <br>
+  <button (click)="downloadPDF()"><b>Export to PDF</b></button>
+  <br>
     
         <mat-card >
             <mat-nav-list *ngFor="let employee of employeeList">
