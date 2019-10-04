@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,ViewChild, ElementRef} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DepartmentService } from 'app/shared/services/department.service';
 import { Employee } from 'app/shared/services/employee.model';
 import { AngularFirestore } from '@angular/fire/firestore';
+import * as jsPDF from 'jspdf';
+
 
 @Component({
   selector: 'app-employee-departments',
@@ -12,6 +14,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class EmployeeDepartmentsComponent implements OnInit {
   departmentName : string;
   employeeList: Employee[];
+  @ViewChild('content',{static: false}) content : ElementRef;
 
   constructor(
     private router: Router,
@@ -34,8 +37,21 @@ export class EmployeeDepartmentsComponent implements OnInit {
   
   }
 
-  public downloadPDF(){
-     
+   downloadPDF(){
+    console.log("here")
+    let report = new jsPDF();
+
+    let specialElementHeaders = {
+      '#editor' : function(element , renderer){
+        return true;
+      }
+    };
+    let content = this.content.nativeElement;
+    report.fromHTML(content.innerHTML,15,15, {
+      'width':150,
+      'elementHeaders': specialElementHeaders
+    });
+    report.save('report.pdf');
   }
 
 }

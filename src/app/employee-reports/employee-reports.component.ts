@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EmployeeService } from 'app/shared/services/employee.service';
 import { Employee } from 'app/shared/services/employee.model';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { FormBuilder,Validators } from '@angular/forms';
+import * as jsPDF from 'jspdf';
+
 @Component({
   selector: 'app-employee-reports',
   templateUrl: './employee-reports.component.html',
@@ -17,6 +19,7 @@ export class EmployeeReportsComponent implements OnInit {
   selectedDepartmentName:string;
   departments: any = ['IT', 'Sales', 'Inventory', 'Management']
 
+  @ViewChild('content',{static: false}) content : ElementRef;
   // departmentName : string;
 
 
@@ -32,8 +35,25 @@ export class EmployeeReportsComponent implements OnInit {
     departmentName:  ['', [Validators.required]]
   })
 
+  downloadPDF(){
+    console.log("here")
+    let report = new jsPDF();
+
+    let specialElementHeaders = {
+      '#editor' : function(element , renderer){
+        return true;
+      }
+    };
+    let content = this.content.nativeElement;
+    report.fromHTML(content.innerHTML,15,15, {
+      'width':150,
+      'elementHeaders': specialElementHeaders
+    });
+    report.save('report.pdf');
+  }
 
   ngOnInit() {
+   
     this.service.getEmployees().subscribe(actionArray => {
       this.employeeList = actionArray.map(item => {
         return {

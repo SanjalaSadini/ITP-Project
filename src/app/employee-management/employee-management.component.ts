@@ -103,6 +103,8 @@ export class EmployeeManagementComponent implements OnInit {
     }
    
   }
+
+
    upload(event){
      debugger;
      this.ref=this.afstorage.ref(event.target.files[0].name)
