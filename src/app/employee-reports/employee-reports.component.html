@@ -1,5 +1,5 @@
 <app-sidebar></app-sidebar>
-<div class ="emp" id = "content" #content style="padding-left: 260px;">
+<div class ="emp" style="padding-left: 260px;">
   <mat-card class = "card">
     <div class = "menu">
       <div class="card-header card-header-danger" >
@@ -18,20 +18,24 @@
               </select>
               <div class="invalid-feedback" *ngIf="isSubmitted && departmentName.errors?.required">
               </div>
-              <button type="submit">Submit</button>
+              
+              <button class="btn" type="submit">Submit</button>
+            
           </form>
       </div>
       <!-- <div>
           <button type="submit" mat-raised-button (click)="reportPage()">Report Genarate</button>
       </div> -->
   </div>
-  <br>
-  
-  <br>
-  <button (click)="downloadPDF()">Export to PDF</button>
         <mat-card >
+                <button mat-raised-button
+                type="button"
+                class="btn pull-right" (click)="downloadPDF()">Export to PDF</button>
+            <div  id = "content" #content>
+            <h3 style="color:black"> <b>All Employees Information Report</b></h3>   
             <mat-nav-list *ngFor="let employee of employeeList">
               <div>
+                    <h5>------------------------------------------------------</h5>
                   <mat-list-item>
                       <br><br>
                       <p matLine>Employee Name :::::: {{ employee.empName }}</p>
@@ -45,6 +49,7 @@
                     </mat-list-item>
               </div>
             </mat-nav-list>
+           </div>
           </mat-card>
       </mat-card>
       </div>

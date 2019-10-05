@@ -1,20 +1,23 @@
 <app-sidebar></app-sidebar>
-<div class="emp" id = "content" #content style="padding-left: 260px;">
+<div class="emp" style="padding-left: 260px;">
   <mat-card class = "card">
   <div class = "menu">
     <div class="card-header card-header-danger" >
         <h3 class="card-title" style="color:black"><b>Employee Department Vise Report</b></h3>
-        <h3 class="card-category" style="color:black"> <b>Department  {{departmentName}}</b></h3>
+        <h4 class="card-category" style="color:black"> <b>Department  {{departmentName}}</b></h4>
     </div>
     <br>
 </div>
-<button (click)="downloadPDF()"><b>Export to PDF</b></button>
+<button class="btn pull-right" (click)="downloadPDF()"><b>Export to PDF</b></button>
 <br>
    <!-- <h1 class="center-snackbar">Department ::::: {{departmentName}}</h1> -->
+   <div  id = "content" #content>
+      <h3 style="color:black"> <b> {{departmentName}} Department Report</b></h3>
     <mat-nav-list *ngFor="let employee of employeeList">
       <div *ngIf="employee.empDept == departmentName">
+          <h5>------------------------------------------------------</h5>
           <mat-list-item>
-            <br><br><br>
+            <br><br>
               <p matLine>Employee Name :::::::  {{ employee.empName }}</p>
               <p matLine>Employee Contact ::::::{{ employee.empContact }}</p>
               <p matLine>Employee Email ::::::: {{ employee.empEmail }}</p>
@@ -26,5 +29,6 @@
             </mat-list-item>
       </div>
     </mat-nav-list>
+  </div>
   </mat-card>
 </div>
