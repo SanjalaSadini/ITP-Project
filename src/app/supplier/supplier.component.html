@@ -8,15 +8,15 @@
                           <div class="card">
                             <div class="card-header card-header-danger">
                               <h4 class="card-title ">Supplier Table</h4>
-                              <p class="card-category"> Here is a the details of suppliers table</p>
+                              <p class="card-category"> Here is the details of suppliers table</p>
                             </div>
                             <div class="card-body">
                               <div class="table-responsive">
                                 <table class="table">
                                   <thead class=" text-primary">
-                                    <th>
+                                 <!--  <th>
                                       ID
-                                    </th>
+                                    </th>-->
                                     <th>
                                       Supplier name
                                     </th>
@@ -53,7 +53,7 @@
                   
                                   <tbody *ngFor="let supplier of listOfSupliers; let i = index">
                                     <tr>
-                                      <td>{{supplier.id}}</td>
+                                      <!--<td>{{supplier.id}}</td>-->
                                       <td>{{supplier.supName}}</td>
                                       <td>{{supplier.code}}</td>
                                       <td>{{supplier.conName}}</td>
@@ -100,7 +100,7 @@
                     <div class="card">
                       <div class="card-header card-header-danger">
                         <h4 class="card-title">Save Supplier</h4>
-                        <p class="card-category">create or update</p>
+                        <p class="card-category">Create or Update</p>
                       </div>
                       <div class="card-body">
                         <form (ngSubmit)="submit()">
@@ -109,7 +109,7 @@
                             
                             type="hidden"
                             [(ngModel)]="supplier.id"
-                            name="id">
+                            name="id" >
               
                           <div class="row">
                             <div class="col-md-5">
@@ -123,8 +123,8 @@
                             </div>
                             <div class="col-md-3">
                               <mat-form-field class="example-full-width">
-                                <input matInput required
-                          
+                                <input matInput
+                                 required
                                   [(ngModel)]="supplier.code"
                                   name="code"
                                   placeholder="Code">
@@ -152,7 +152,7 @@
                             </div>
                             <div class="col-md-6">
                               <mat-form-field class="example-full-width">
-                                <input matInput 
+                                <input matInput required
                                   [(ngModel)]="supplier.email"
                                   name="email"
                                   placeholder="email"
@@ -215,13 +215,20 @@
                             </div>
                           </div>
               
-                          <button mat-raised-button type="button"
+                          <button mat-raised-button
+                           type="button"
                             (click)="reset()"
                             class="btn btn-warn pull-left">RESET</button>
               
                           <button mat-raised-button
                             type="submit"
                             class="btn btn-danger pull-right">SAVE</button>
+
+                            <button mat-raised-button 
+                            type="button"
+                            (click)="demoSup()"
+                            class="btn btn-warn pull-left">DEMO</button>
+
               
                           <div class="clearfix"></div>
                         </form>
