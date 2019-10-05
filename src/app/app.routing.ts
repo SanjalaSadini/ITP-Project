@@ -21,6 +21,7 @@ import {OrderPaymentComponent} from './order-mgmt/order-payment/order-payment.co
 import { EmployeeDepartmentsComponent } from './employee-departments/employee-departments.component';
 import { EmployeeReportsComponent } from './employee-reports/employee-reports.component';
 import {OrderReportComponent} from './order-mgmt/order-report/order-report.component';
+import { PrintPreviewComponent } from './print-preview/print-preview.component';
 
 export const routes: Routes =[ 
 
@@ -86,6 +87,10 @@ export const routes: Routes =[
   { path: 'order-report', component: OrderReportComponent,
     children: [{ path: 'order-report', component: OrderReportComponent }]
   },
+{ path: 'print-preview', component: PrintPreviewComponent, 
+children: [{ path: 'print-preview', component: PrintPreviewComponent }]
+  },
+
 ];
 
 @NgModule({

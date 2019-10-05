@@ -1,0 +1,87 @@
+<div class="body">
+
+  <a mat-raised-button (click)="print();"
+    class="btn btn-danger  print-btn "> <i class="material-icons">print</i> PRINT/ SAVE PAGE
+  </a>
+
+  <div class="page  ">
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title ">Supplier Invoice Table</h4>
+            <p class="card-category"> Scroll Down For Add New Invoices Details </p>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class=" text-primary">
+                  <!-- <th>
+                    ID
+                  </th> -->
+                  <th>
+                    Document Number
+                  </th>
+                  <th>
+                    Supplier Invoice Number
+                  </th>
+                  <th>
+                    Document Date
+                  </th>
+                  <th>
+                    Due Date
+                  </th>
+                  <th>
+                    Total
+                  </th>
+                  <th>
+                    Paid ?
+                  </th>
+
+
+                </thead>
+
+                <tbody *ngFor="let inv of listOfSupliersInvoices; let i = index">
+                  <tr>
+                    <!-- <td>{{inv.id}}</td> -->
+                    <td>{{inv.docNumber}}</td>
+                    <td>{{inv.invNumber}}</td>
+                    <td>{{inv.docDate}}</td>
+                    <td>{{inv.dueDate}}</td>
+                    <td>{{inv.total}}</td>
+                    <td>
+                      <mat-checkbox class="example-margin"
+                        [(ngModel)]="inv.paid"
+                        (click)="save(i,inv.paid)">Checked</mat-checkbox>
+                    </td>
+
+                    <!-- <td>
+                      <button mat-raised-button
+                        (click)="editSupplierInvoice(inv)"
+                        class="btn btn-info  ">EDIT</button>
+
+
+                   
+                    </td> -->
+
+
+                  </tr>
+                </tbody>
+
+
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+
+</div>

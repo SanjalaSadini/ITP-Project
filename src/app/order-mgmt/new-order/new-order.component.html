@@ -72,7 +72,17 @@
                 </mat-form-field>
                 <mat-form-field appearance="outline">
                     <mat-label><b>Size</b></mat-label>
-                    <input matInput name="size" #size="ngModel" class="form-control" [(ngModel)]="order.size" placeholder="" required pattern="^[a-zA-Z0-9]+$">
+<!--                    <input matInput name="size" #size="ngModel" class="form-control" [(ngModel)]="order.size" placeholder="" required pattern="^[a-zA-Z0-9]+$">-->
+                    <mat-select name="size" #size="ngModel" class="form-control" [(ngModel)]="order.size"  placeholder="" required>
+                        <mat-option value="XS">XS</mat-option>
+                        <mat-option value="S">S</mat-option>
+                        <mat-option value="M">M</mat-option>
+                        <mat-option value="L">L</mat-option>
+                        <mat-option value="XL">XL</mat-option>
+                        <mat-option value="XXL">XXL</mat-option>
+                        <mat-option value="XXXL">XXXL</mat-option>
+                    </mat-select>
+
                     <div *ngIf="size.invalid && size.touched"><br>
 
                         <span *ngIf="size.errors.required"   class="validation-error ">Size is required field</span>
@@ -82,11 +92,10 @@
 
                 <mat-form-field appearance="outline">
                     <mat-label><b>Color</b></mat-label>
-                    <input matInput name="color" #color="ngModel" class="form-control" [(ngModel)]="order.color" placeholder="" required pattern="^[a-zA-Z0-9]+$">
+                    <input type="color" matInput name="color" #color="ngModel" class="form-control" [(ngModel)]="order.color" placeholder="" required>
                     <div *ngIf="color.invalid && color.touched"><br>
 
                         <span *ngIf="color.errors.required"   class="validation-error ">Color is required field</span>
-                        <span *ngIf="color.errors.pattern"   class="validation-error">Enter valid color</span>
                     </div>
                 </mat-form-field>
 
