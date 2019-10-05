@@ -6,6 +6,7 @@ import { AuthService } from  'app/auth/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { EmployeeService } from 'app/shared/services/employee.service';
 import { Employee } from 'app/shared/services/employee.model';
+import { AngularFireStorageReference, AngularFireUploadTask, AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-employee-edit',
@@ -17,12 +18,16 @@ export class EmployeeEditComponent implements OnInit {
   employee: Employee;
   id:string;
 
+  ref:AngularFireStorageReference;
+ task:AngularFireUploadTask ;
+
   constructor(private service : EmployeeService,
               private firestore: AngularFirestore,
               private toastr : ToastrService,
               public fb: FormBuilder, 
               private router: Router ,
               private route: ActivatedRoute ,
+              private afstorage:AngularFireStorage,
               private  authService: AuthService) {  
   }
   public employeesForm: FormGroup;
@@ -61,6 +66,14 @@ export class EmployeeEditComponent implements OnInit {
     }
   
 }
+
+
+upload(event){
+     
+  this.ref=this.afstorage.ref(event.target.files[0].name)
+  this.task=this.ref.put(event.target.files[0]);
+}
+
 
 
 }

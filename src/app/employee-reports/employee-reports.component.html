@@ -1,10 +1,10 @@
 <app-sidebar></app-sidebar>
-<div class ="emp" id = "content" #content style="padding-left: 260px;">
+<div class ="emp" style="padding-left: 260px;">
   <mat-card class = "card">
     <div class = "menu">
       <div class="card-header card-header-danger" >
-          <h3 class="card-title" style="color: whitesmoke"><b>Employee Report</b></h3>
-          <p class="card-category" style="color:whitesmoke"> <b>All Employee Information</b></p>
+          <h3 class="card-title" style="color:black"><b>Employee Report</b></h3>
+          <p class="card-category" style="color:black"> <b>All Employee Information</b></p>
       </div>
       <br>
   </div>
@@ -18,32 +18,38 @@
               </select>
               <div class="invalid-feedback" *ngIf="isSubmitted && departmentName.errors?.required">
               </div>
-              <button type="submit">Submit</button>
+              
+              <button class="btn" type="submit">Submit</button>
+            
           </form>
       </div>
       <!-- <div>
           <button type="submit" mat-raised-button (click)="reportPage()">Report Genarate</button>
       </div> -->
   </div>
-  <br>
-  
-  <br>
-  <button (click)="downloadPDF()">Export to PDF</button>
         <mat-card >
+                <button mat-raised-button
+                type="button"
+                class="btn pull-right" (click)="downloadPDF()">Export to PDF</button>
+            <div  id = "content" #content>
+            <h3 style="color:black"> <b>All Employees Information Report</b></h3>   
             <mat-nav-list *ngFor="let employee of employeeList">
               <div>
+                    <h5>------------------------------------------------------</h5>
                   <mat-list-item>
-                      <a matLine>Employee Name :::::: {{ employee.empName }}</a>
-                      <a matLine>Employee Contact ::::::: {{ employee.empContact }}</a>
-                      <a matLine>Employee Email ::::::: {{ employee.empEmail }}</a>
-                      <a matLine>Department ::::::: {{ employee.empDept }}</a>
-                      <a matLine>Designation ::::::: {{ employee.empDesignation }}</a>
-                      <a matLine>Qualifications ::::::: {{ employee.empEdu }}</a>
-                      <a matLine>Gender ::::::: {{ employee.empGender }}</a>
-                      <a matLine>Starting Date ::::::: {{ employee.startDate }}</a>
+                      <br><br>
+                      <p matLine>Employee Name :::::: {{ employee.empName }}</p>
+                      <p matLine>Employee Contact ::::::: {{ employee.empContact }}</p>
+                      <p matLine>Employee Email ::::::: {{ employee.empEmail }}</p>
+                      <p matLine>Department ::::::: {{ employee.empDept }}</p>
+                      <p matLine>Designation ::::::: {{ employee.empDesignation }}</p>
+                      <p matLine>Qualifications ::::::: {{ employee.empEdu }}</p>
+                      <p matLine>Gender ::::::: {{ employee.empGender }}</p>
+                      <p matLine>Starting Date ::::::: {{ employee.startDate }}</p>
                     </mat-list-item>
               </div>
             </mat-nav-list>
+           </div>
           </mat-card>
       </mat-card>
       </div>

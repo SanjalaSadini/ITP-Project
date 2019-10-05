@@ -51,7 +51,7 @@ export class EmployeeDepartmentsComponent implements OnInit {
       'width':150,
       'elementHeaders': specialElementHeaders
     });
-    report.save('report.pdf');
+    report.save('departmentReport.pdf');
   }
 
 }

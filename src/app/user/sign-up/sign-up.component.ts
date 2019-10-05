@@ -77,10 +77,10 @@ export class SignUpComponent implements OnInit {
       email: ['',[Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', [Validators.required, Validators.minLength(8)]]
-    });
+    },{validator: this.matchPassword});
   }
 
-  static matchPassword(AC: AbstractControl) {
+  public matchPassword(AC: AbstractControl) {
     let pass = AC.get('password').value;
     let confirmPass = AC.get('confirmPassword').value;
 

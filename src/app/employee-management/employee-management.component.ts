@@ -76,17 +76,17 @@ export class EmployeeManagementComponent implements OnInit {
   }
 
   demoEmployee(employee: Employee) {
-    this.employee.empID = 'IT107878';
-    this.employee.empName = 'Indrani Jayaweera';
-    this.employee.empDept = 'Sales';
+    this.employee.empID = 'IT107989';
+    this.employee.empName = 'Jayalath Kumarasiri';
+    this.employee.empDept = 'Management';
     this.employee.empDesignation = 'Assistant Manager';
-    this.employee.empAddress = 'Kandy',
-    this.employee.empContact = '0778945159';
-    this.employee.empEmail = 'indrani@gmail.com';
-    this.employee.birthday = '1889-03-11';
-    this.employee.empGender = 'Female';
-    this.employee.startDate = '2018-01-01';
-    this.employee.empEdu = 'MBA';
+    this.employee.empAddress = 'Hikkaduwa',
+    this.employee.empContact = '0778974125';
+    this.employee.empEmail = 'Jayalath@gmail.com';
+    this.employee.birthday = '1889-04-19';
+    this.employee.empGender = 'Male';
+    this.employee.startDate = '2018-02-01';
+    this.employee.empEdu = 'PHD';
  
 
 }
@@ -122,7 +122,7 @@ export class EmployeeManagementComponent implements OnInit {
 
 
    upload(event){
-     debugger;
+     
      this.ref=this.afstorage.ref(event.target.files[0].name)
      this.task=this.ref.put(event.target.files[0]);
   }
