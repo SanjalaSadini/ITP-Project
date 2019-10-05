@@ -44,6 +44,10 @@ export class OrderReportComponent implements OnInit {
     materialType: MaterialType
 
     p: number;
+    reportTitle: string;
+    reportTitleHead: string;
+    reportTitleSubHead: string;
+    loadingCustId: string;
 
     constructor(private firestore: AngularFirestore,
                 private toastr: ToastrService,
@@ -59,8 +63,15 @@ export class OrderReportComponent implements OnInit {
         this.p = 1;
     }
 
-    ngOnInit() {
+    registrationForm = this.fb.group({
+        departmentName: ['', [Validators.required]]
+    })
 
+    ngOnInit() {
+        this.reportTitle = 'Full Order Report';
+        this.reportTitleHead = 'Order Report';
+        this.reportTitleSubHead = 'Order Information';
+        this.loadingCustId = '';
         this.orderPreService.getCustomers().subscribe(actionArray => {
             this.custList = actionArray.map(item => {
                 return {
@@ -105,7 +116,27 @@ export class OrderReportComponent implements OnInit {
             'width': 190,
             'elementHandlers': specialElementHandlers
         });
-        doc.save('test.pdf');
+        doc.save('report.pdf');
+    }
+
+
+    onSubmit() {
+        if (!this.registrationForm.valid) {
+            alert('Select a customer for view customer report');
+        } else {
+            this.reportTitle = 'Customer Report of ' + this.registrationForm.value.departmentName.customer_f_name +
+                ' ' + this.registrationForm.value.departmentName.customer_l_name;
+            this.loadingCustId = this.registrationForm.value.departmentName.id;
+            this.reportTitleHead = 'Customer Order Report';
+            this.reportTitleSubHead = 'Customer Order Information';
+        }
+    }
+
+    onFullReport() {
+        this.reportTitle = 'Full Order Report';
+        this.reportTitleHead = 'Order Report';
+        this.reportTitleSubHead = 'Order Information';
+        this.loadingCustId = '';
     }
 
 }

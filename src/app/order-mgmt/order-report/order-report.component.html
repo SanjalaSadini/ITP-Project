@@ -3,22 +3,55 @@
     <mat-card class="card">
         <div class="menu">
             <div class="card-header card-header-danger">
+<<<<<<< HEAD
                 <h3 class="card-title" style="color:whitesmoke"><b>Order Report</b></h3>
                 <p class="card-category" style="color:whitesmoke"><b>Order Information</b></p>
+=======
+                <h3 class="card-title" style="color:black"><b>{{reportTitleHead}}</b></h3>
+                <p class="card-category" style="color:black"><b>{{reportTitleSubHead}}</b></p>
+>>>>>>> 3aad60f74659843a0cb080eb3f48d5999bce7d82
             </div>
             <br>
         </div>
 
         <mat-card class="card">
+<!--            <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">-->
+<!--            <mat-label><b>Customer</b></mat-label>-->
+<!--            <mat-select name="customer"#customer="ngModel" class="form-control" [(ngModel)]="customer">-->
+<!--                <mat-option *ngFor="let customer of custList" value={{customer.id}}>-->
+<!--                    {{customer.customer_f_name}}{{' '+customer.customer_l_name}}-->
+<!--                </mat-option>-->
+
+<!--            </mat-select>-->
+<!--            </form>-->
+
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <h4>Customer</h4>
+                    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+                        <select class="custom-select" formControlName="departmentName">
+                            <option value="" disabled>Choose the Customer</option>
+                            <option *ngFor="let customer of custList" [ngValue]="customer">{{customer.customer_f_name}}{{' '+customer.customer_l_name}}</option>
+                        </select>
+                        <button type="submit" class="btn btn-danger">Customer Report</button>
+                        <button type="button" class="btn btn-primary" (click)="onFullReport()">Full Report</button>
+                    </form>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+
+
             <button mat-raised-button
                     type="button"
                     class="btn btn-danger pull-right" (click)="genarate()">Generate Pdf
             </button>
 
             <div id="reportContent" #reportContent>
-                <h4>Order Report</h4>
+                <h4>{{reportTitle}}</h4>
                 <mat-nav-list *ngFor="let order of orderList">
-                    <div>
+                    <div *ngIf="loadingCustId=='' || loadingCustId==order.customer_id">
                         <h5>------------------------------------------------------</h5>
                         <h5>ID : {{order.order_id}}</h5>
                         <!--                        <td>{{order.customer_id}}</td>-->
