@@ -74,6 +74,22 @@ export class EmployeeManagementComponent implements OnInit {
     
     }
   }
+
+  demoEmployee(employee: Employee) {
+    this.employee.empID = 'IT107878';
+    this.employee.empName = 'Indrani Jayaweera';
+    this.employee.empDept = 'Sales';
+    this.employee.empDesignation = 'Assistant Manager';
+    this.employee.empAddress = 'Kandy',
+    this.employee.empContact = '0778945159';
+    this.employee.empEmail = 'indrani@gmail.com';
+    this.employee.birthday = '1889-03-11';
+    this.employee.empGender = 'Female';
+    this.employee.startDate = '2018-01-01';
+    this.employee.empEdu = 'MBA';
+ 
+
+}
   
   onSubmit(form:NgForm){
     let data = Object.assign({},form.value);
@@ -110,5 +126,7 @@ export class EmployeeManagementComponent implements OnInit {
      this.ref=this.afstorage.ref(event.target.files[0].name)
      this.task=this.ref.put(event.target.files[0]);
   }
+
+  
 
 }
