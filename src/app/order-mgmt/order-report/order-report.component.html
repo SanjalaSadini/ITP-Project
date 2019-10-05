@@ -1,0 +1,78 @@
+<app-sidebar></app-sidebar>
+<div class="emp" style="padding-left: 260px;">
+    <mat-card class="card">
+        <div class="menu">
+            <div class="card-header card-header-danger">
+                <h3 class="card-title" style="color: whitesmoke"><b>Order Report</b></h3>
+                <p class="card-category" style="color:whitesmoke"><b>Order Information</b></p>
+            </div>
+            <br>
+        </div>
+
+        <mat-card class="card">
+            <button mat-raised-button
+                    type="button"
+                    class="btn btn-danger pull-right" (click)="genarate()">Generate Pdf
+            </button>
+
+            <div id="reportContent" #reportContent>
+                <h4>Order Report</h4>
+                <mat-nav-list *ngFor="let order of orderList">
+                    <div>
+                        <h5>------------------------------------------------------</h5>
+                        <h5>ID : {{order.order_id}}</h5>
+                        <!--                        <td>{{order.customer_id}}</td>-->
+                        <h5>Customer : {{order.customer_name}}</h5>
+                        <h5>Order Date : {{order.order_date}}</h5>
+                        <h5>Trial Date : {{order.trial_date}}</h5>
+                        <h5>Delivery Date : {{order.delivery_date}}</h5>
+                        <h5>Amount : {{order.amount}}</h5>
+                        <h5>Ready for worker : {{order.ready_for_worker ? 'Yes' : 'No'}}</h5>
+                        <h5>Proceed to sketch : {{order.proceed_to_sketch ? 'Yes' : 'No'}}</h5>
+                        <h5>Ready to deliver : {{order.ready_to_deliver ? 'Yes' : 'No'}}</h5>
+                        <h5>Returns : {{order.returns}}</h5>
+                    </div>
+
+                </mat-nav-list>
+            </div>
+            <!--            <table class="table table-md">-->
+            <!--                <thead>-->
+            <!--                <tr>-->
+            <!--                    <th scope="col"><b>Order ID</b></th>-->
+            <!--                    &lt;!&ndash;                    <th scope="col"><b>Customer ID</b></th>&ndash;&gt;-->
+            <!--                    <th scope="col"><b>Customer Name</b></th>-->
+            <!--                    <th scope="col"><b>Order Date</b></th>-->
+            <!--                    <th scope="col"><b>Trial Date</b></th>-->
+            <!--                    <th scope="col"><b>Delivery Date</b></th>-->
+            <!--                    <th scope="col"><b>Amount(Rs.)</b></th>-->
+            <!--                    <th scope="col"><b>Proceed For Worker</b></th>-->
+            <!--                    <th scope="col"><b>Ready For Sketch</b></th>-->
+            <!--                    <th scope="col"><b>Ready To Deliver</b></th>-->
+            <!--                    <th scope="col"><b>Returns</b></th>-->
+
+            <!--                </tr>-->
+            <!--                </thead>-->
+
+            <!--                <ng-container *ngFor="let order of orderList">-->
+            <!--                    <tr class="table-striped">-->
+
+            <!--                        <td>{{order.order_id}}</td>-->
+            <!--                        &lt;!&ndash;                        <td>{{order.customer_id}}</td>&ndash;&gt;-->
+            <!--                        <td>{{order.customer_name}}</td>-->
+            <!--                        <td>{{order.order_date}}</td>-->
+            <!--                        <td>{{order.trial_date}}</td>-->
+            <!--                        <td>{{order.delivery_date}}</td>-->
+            <!--                        <td>{{order.amount}}</td>-->
+            <!--                        <td>{{order.ready_for_worker ? 'Yes' : 'No'}}</td>-->
+            <!--                        <td>{{order.proceed_to_sketch ? 'Yes' : 'No'}}</td>-->
+            <!--                        <td>{{order.ready_to_deliver ? 'Yes' : 'No'}}</td>-->
+            <!--                        <td>{{order.returns}}</td>-->
+            <!--                    </tr>-->
+            <!--                </ng-container>-->
+
+            <!--            </table>-->
+
+        </mat-card>
+
+    </mat-card>
+</div>

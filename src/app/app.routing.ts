@@ -20,6 +20,7 @@ import {EditOrderComponent} from './order-mgmt/edit-order/edit-order.component';
 import {OrderPaymentComponent} from './order-mgmt/order-payment/order-payment.component';
 import { EmployeeDepartmentsComponent } from './employee-departments/employee-departments.component';
 import { EmployeeReportsComponent } from './employee-reports/employee-reports.component';
+import {OrderReportComponent} from './order-mgmt/order-report/order-report.component';
 
 export const routes: Routes =[ 
 
@@ -82,7 +83,9 @@ export const routes: Routes =[
   },
   { path: 'employee_reports', component: EmployeeReportsComponent,
   },
-
+  { path: 'order-report', component: OrderReportComponent,
+    children: [{ path: 'order-report', component: OrderReportComponent }]
+  },
 ];
 
 @NgModule({

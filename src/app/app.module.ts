@@ -51,6 +51,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {OrderPaymentComponent} from './order-mgmt/order-payment/order-payment.component';
 import { EmployeeDepartmentsComponent } from './employee-departments/employee-departments.component';
 import { EmployeeReportsComponent } from './employee-reports/employee-reports.component';
+import {OrderReportComponent} from './order-mgmt/order-report/order-report.component';
 
 @NgModule({
     imports: [
@@ -100,6 +101,7 @@ import { EmployeeReportsComponent } from './employee-reports/employee-reports.co
       OrderPaymentComponent,
       EmployeeDepartmentsComponent,
       EmployeeReportsComponent,
+      OrderReportComponent,
 
 
   ],
