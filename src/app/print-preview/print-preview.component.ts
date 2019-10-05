@@ -1,18 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { Supplier } from 'app/supplier/supplier.component';
-import { invalid } from '@angular/compiler/src/render3/view/util';
 
 @Component({
-  selector: 'app-supplier-invoices',
-  templateUrl: './supplier-invoices.component.html',
-  styleUrls: ['./supplier-invoices.component.scss']
+  selector: 'app-print-preview',
+  templateUrl: './print-preview.component.html',
+  styleUrls: ['./print-preview.component.scss']
 })
-export class SupplierInvoicesComponent implements OnInit {
+export class PrintPreviewComponent implements OnInit {
   supplierInvoice = new SupplierInvoices('', '', '', '', '', '', false)
 
   listOfSupliersInvoices: SupplierInvoices[] = [];
-  currentSearch: String='';
 
   constructor(private firebaseService: AngularFirestore) { }
 
@@ -32,18 +29,6 @@ export class SupplierInvoicesComponent implements OnInit {
       // this.listOfSupliers=res;
 
       res.forEach((r, s, a, ) => {
-        if (this.currentSearch !=='') {
-
-          let data: SupplierInvoices = r.payload.doc.data();
-          data.id =
-            r.payload.doc.id.toString();
-          if (data.docNumber === this.currentSearch || data.invNumber === this.currentSearch) {
-
-            this.listOfSupliersInvoices.push(data);
-          }
-          return;
-        }
-
         let data: SupplierInvoices = r.payload.doc.data();
         data.id =
           r.payload.doc.id.toString();
@@ -99,17 +84,6 @@ export class SupplierInvoicesComponent implements OnInit {
     this.supplierInvoice.total = ''
     this.supplierInvoice.paid = false
   }
-   demo() {
-
-    this.supplierInvoice.id = ''
-    this.supplierInvoice.docNumber ='7532'
-    this.supplierInvoice.invNumber = '6554'
-    this.supplierInvoice.docDate = '2019/07/06'
-    this.supplierInvoice.dueDate = '2019/08/04'
-    this.supplierInvoice.total = '4000'
-    this.supplierInvoice.paid = false
-  }
-
 
   editSupplierInvoice(data) {
     this.supplierInvoice = data
@@ -134,8 +108,8 @@ export class SupplierInvoicesComponent implements OnInit {
 
     }
   }
-  onSearch(value) {
-    this.getSupplierInvoices();
+  print(){
+    window.print();
   }
 
 }
@@ -143,12 +117,13 @@ export class SupplierInvoicesComponent implements OnInit {
 export class SupplierInvoices {
   constructor(
     public id: string,
-    public docNumber: string,
-    public invNumber: string,
-    public docDate: string,
-    public dueDate: string,
-    public total: string,
+    public docNumber: '',
+    public invNumber: '',
+    public docDate: '',
+    public dueDate: '',
+    public total: '',
     public paid: boolean,
 
   ) { }
+
 }

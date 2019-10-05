@@ -21,6 +21,21 @@ export class SupplierComponent implements OnInit {
     this.getSuppliers();
 
   }
+
+  //demoSupplier(supplier:Supplier){
+  // this.supplier.id='7845';
+  //  this.supplier.supName ="W.K.Suppliers";
+   // this.supplier.code="6745a";
+  //  this.supplier.conName="Wimalka";
+  //  this.supplier.mobile='1087636';
+   // this.supplier.address="Colombo";
+   // this.supplier.type="Cotton Supplier";
+    //this.supplier.discount="10%";
+   // this.supplier.dueDate='2019-07-26';
+
+ // }
+
+
   submit() {
     if (this.supplier.supName.length > 0  && this.supplier.mobile.length > 0 && this.supplier.type.length > 0  )  {
       if (this.supplier.id.length === 0) {
@@ -58,6 +73,8 @@ export class SupplierComponent implements OnInit {
           r.payload.doc.id.toString();
         this.listOfSupliers.push(data);
 
+      //  this.task=this.ref.put(event.target.files[0]);
+
       })
 
     })
@@ -86,6 +103,20 @@ export class SupplierComponent implements OnInit {
 
     this.supplier = new Supplier('', '', '', '', '', '', '', '', '', '');
   }
+  demoSup(){
+    
+   this.supplier.id='';
+  this.supplier.supName ="W.K.Suppliers";
+   this.supplier.code="6745a";
+   this.supplier.conName="Wimalka";
+   this.supplier.mobile='1087636';
+   this.supplier.address="Colombo";
+   this.supplier.type="Cotton Supplier";
+    this.supplier.discount="10%";
+   this.supplier.dueDate='2019-07-26';
+
+    
+  }
 }
 
 export class Supplier {
@@ -100,15 +131,15 @@ export class Supplier {
   //   public dueDate: ''
   constructor(
     public id: string,
-    public supName: '',
-    public code: '',
-    public conName: '',
-    public mobile: '',
-    public email: '',
-    public address: '',
-    public type: '',
-    public discount: '',
-    public dueDate: '') {
+    public supName: string,
+    public code: string,
+    public conName: string,
+    public mobile: string,
+    public email:string,
+    public address:string,
+    public type: string,
+    public discount: string,
+    public dueDate: string) {
 
   }
 }

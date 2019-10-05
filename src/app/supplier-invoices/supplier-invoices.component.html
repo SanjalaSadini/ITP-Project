@@ -12,12 +12,18 @@
               <p class="card-category"> Scroll Down For Add New Invoices Details </p>
             </div>
             <div class="card-body">
+                <mat-form-field >
+                    <mat-label class = "Search" style="color: black">Search from Document Number or Supplier Invoice number Here</mat-label>
+                    <input style="color: black" matInput #term (keyup)="onSearch($event.target.value)" [(ngModel)]="currentSearch">
+                    <mat-icon matSuffix style="color: black">search</mat-icon>
+                </mat-form-field>
+
               <div class="table-responsive">
                 <table class="table">
                   <thead class=" text-primary">
-                    <th>
+                   <!-- <th>
                       ID
-                    </th>
+                    </th>-->
                     <th>
                       Document Number
                     </th>
@@ -45,7 +51,7 @@
   
                   <tbody *ngFor="let inv of listOfSupliersInvoices; let i = index">
                     <tr>
-                      <td>{{inv.id}}</td>
+                     <!--<td>{{inv.id}}</td>-->
                       <td>{{inv.docNumber}}</td>
                       <td>{{inv.invNumber}}</td>
                       <td>{{inv.docDate}}</td>
@@ -85,8 +91,11 @@
                 </table>
   
               <button mat-raised-button
-              type="button" (click)="deleteAll()"
-              class="btn btn-danger pull-right">DELETE ALL</button>
+              class="btn btn-primary pull-right" [routerLink]="['/print-preview']" routerLinkActive="router-link-active" >PRINT REPORT</button>
+              <button mat-raised-button
+                type="button"
+                (click)="deleteAll()"
+                class="btn btn-danger pull-right">DELETE ALL</button>
               </div>
             </div>
           </div>
@@ -105,14 +114,16 @@
   
               <input type="hidden"
                 [(ngModel)]="supplierInvoice.id"
-                name="id">
+                name="id" >
   
               <div class="row">
                 <div class="col-md-5">
                   <mat-form-field class="example-full-width">
                     <input matInput
-                      required
-                      [(ngModel)]="supplierInvoice.docNumber"
+                      required 
+                    
+                      [readonly]="supplierInvoice.docNumber!==''"
+                      [(ngModel)]="supplierInvoice.id"
                       name="docNumber"
                       placeholder="Document number">
                   </mat-form-field>
@@ -184,6 +195,12 @@
               <button mat-raised-button
                 type="submit"
                 class="btn btn-danger pull-right">SAVE</button>
+
+                <button mat-raised-button type="button"
+                (click)="demo()"
+                class="btn btn-warn pull-left">DEMO</button>
+
+
   
               <div class="clearfix"></div>
             </form>
