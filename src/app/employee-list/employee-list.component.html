@@ -12,7 +12,7 @@
             </div>
             <br>
             <mat-form-field>
-                <mat-label class="Search" style="color: black">Search</mat-label>
+                <mat-label class="Search" style="color: black">Search from Employee Number, Department or Designation Here</mat-label>
                 <input style="color: black" matInput #term (keyup)="onSearch($event.target.value)" [(ngModel)]="searchText">
                 <mat-icon matSuffix style="color: black">search</mat-icon>
             </mat-form-field>

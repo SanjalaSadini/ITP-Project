@@ -33,8 +33,8 @@
                             <option value="" disabled>Choose the Customer</option>
                             <option *ngFor="let customer of custList" [ngValue]="customer">{{customer.customer_f_name}}{{' '+customer.customer_l_name}}</option>
                         </select>
-                        <button type="submit" class="btn btn-danger">Customer Report</button>
-                        <button type="button" class="btn btn-primary" (click)="onFullReport()">Full Report</button>
+                        <button type="submit" class="btn ">Customer Report</button>
+                        <button type="button" class="btn " (click)="onFullReport()">Full Report</button>
                     </form>
                 </div>
             </div>
@@ -45,7 +45,7 @@
 
             <button mat-raised-button
                     type="button"
-                    class="btn btn-danger pull-right" (click)="genarate()">Generate Pdf
+                    class="btn pull-right" (click)="genarate()">Generate Pdf
             </button>
 
             <div id="reportContent" #reportContent>
