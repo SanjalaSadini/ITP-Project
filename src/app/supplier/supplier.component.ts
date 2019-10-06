@@ -37,7 +37,7 @@ export class SupplierComponent implements OnInit {
 
 
   submit() {
-    if (this.supplier.supName.length > 0  && this.supplier.mobile.length > 0 && this.supplier.type.length > 0  )  {
+    if (this.supplier.supName.length > 0  && this.supplier.mobile.length > 0 && this.supplier.type.length > 0 && this.supplier.address.length>0 && this.supplier.code.length>0 && this.supplier.discount.length>0 && this.supplier.email.length>0  )  {
       if (this.supplier.id.length === 0) {
         this.firebaseService.collection('suppliers').add(JSON.parse(JSON.stringify(this.supplier))).then(() => {
           this.reset()

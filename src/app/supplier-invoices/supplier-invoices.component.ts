@@ -55,7 +55,7 @@ export class SupplierInvoicesComponent implements OnInit {
   }
   submit() {
 
-    if (this.supplierInvoice.docNumber.length > 0 && this.supplierInvoice.dueDate.length > 0) {
+    if (this.supplierInvoice.docNumber.length > 0 && this.supplierInvoice.dueDate.length > 0 && this.supplierInvoice.docDate.length >0 && this.supplierInvoice.dueDate.length>0 &&this.supplierInvoice.total.length>0) {
 
       if (this.supplierInvoice.id.length === 0) {
         this.firebaseService.collection('suppliers-invoices')
